@@ -1,0 +1,976 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>期货 2026 年中总结与计划</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+/* ===========================================
+   FIXED 16:9 STAGE: MANDATORY BASE STYLES
+   Include this ENTIRE file in every presentation.
+   Slides are authored at 1920×1080 and scaled as a whole.
+   =========================================== */
+
+/* 1. Lock the browser viewport */
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background: var(--stage-bg, #000);
+}
+
+/* 2. Full-window deck viewport */
+.deck-viewport {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background: var(--stage-bg, #000);
+}
+
+/* 3. Fixed 16:9 design canvas.
+   JavaScript sets transform: translate(...) scale(...). */
+.deck-stage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    transform-origin: 0 0;
+    background: var(--slide-bg, #fff);
+}
+
+/* 4. Slides stack inside the fixed stage.
+   Content must be laid out at 1920×1080, not reflowed per device. */
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    background: var(--slide-bg, #fff);
+}
+
+.slide.active,
+.slide.visible {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+/* 5. Keep media inside authored slide bounds */
+img,
+video,
+canvas,
+svg {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* 6. Presentation chrome stays outside the slide design system */
+.deck-controls {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+/* 7. Print one fixed-size slide per page */
+@media print {
+    html,
+    body {
+        width: 1920px;
+        height: auto;
+        overflow: visible;
+        background: #fff;
+    }
+
+    .deck-viewport {
+        position: static;
+        overflow: visible;
+        background: #fff;
+    }
+
+    .deck-stage {
+        position: static;
+        width: auto;
+        height: auto;
+        transform: none !important;
+        background: none;
+    }
+
+    .slide {
+        position: relative;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        width: 1920px;
+        height: 1080px;
+        break-after: page;
+        page-break-after: always;
+    }
+
+    .slide:last-child {
+        break-after: auto;
+        page-break-after: auto;
+    }
+
+    .deck-controls {
+        display: none !important;
+    }
+}
+
+/* 8. Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.2s !important;
+    }
+}
+
+/* === THEME TOKENS === */
+:root{--stage-bg:#020b15;--slide-bg:#061a2e;--navy:#061a2e;--navy2:#0a2742;--ink:#eafaff;--muted:#8fb0c3;--cyan:#62e8ff;--lime:#b6ff5f;--blue:#2e8dff;--amber:#ffc857;--red:#ff6b6b;--line:rgba(98,232,255,.18);--panel:rgba(8,39,66,.88);--font-display:"Barlow Condensed","Noto Sans SC",sans-serif;--font-body:"Noto Sans SC",sans-serif;--font-mono:"IBM Plex Mono",monospace;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box}
+body{font-family:var(--font-body);color:var(--ink)}
+button{font:inherit}
+.slide{background:radial-gradient(circle at 82% 18%,rgba(46,141,255,.12),transparent 34%),linear-gradient(135deg,#041525,#07223a 68%,#052b3e)}
+.slide:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(98,232,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(98,232,255,.045) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(90deg,transparent 0,black 24%,black 100%);pointer-events:none}
+.slide-inner{position:absolute;inset:0;padding:108px 112px 82px;overflow:hidden}
+.axis{position:absolute;left:58px;top:98px;width:8px;height:760px;background:linear-gradient(var(--cyan),var(--lime));box-shadow:0 0 26px rgba(98,232,255,.48)}
+.brand{position:absolute;right:76px;top:48px;display:flex;align-items:center;gap:12px;font-size:21px;font-weight:700;z-index:4}
+.brand img{width:42px;height:42px;border-radius:9px}
+.chrome{position:absolute;left:112px;right:360px;top:50px;height:42px;display:flex;align-items:center;justify-content:space-between;font-family:var(--font-mono);font-size:17px;letter-spacing:.13em;color:var(--muted);z-index:3}
+.chrome .section{color:var(--cyan)}
+h1,h2,h3,p{margin:0}
+.action-title{font-family:var(--font-display);font-size:70px;line-height:1.04;letter-spacing:-.01em;max-width:1550px;margin-bottom:32px;padding-bottom:8px}
+.action-title .accent{color:var(--lime)}
+.eyebrow{font-family:var(--font-mono);font-size:19px;letter-spacing:.18em;color:var(--cyan)}
+.detail-trigger{position:absolute;right:78px;bottom:28px;border:1px solid var(--line);background:rgba(5,24,42,.78);color:var(--cyan);padding:10px 18px;border-radius:999px;cursor:pointer;z-index:6}
+.detail-panel{position:absolute;inset:110px 115px 90px;background:rgba(3,16,30,.97);border:1px solid rgba(98,232,255,.35);box-shadow:0 30px 80px rgba(0,0,0,.5);padding:64px 72px;z-index:20;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(24px);transition:.35s var(--ease)}
+.detail-panel.open{opacity:1;visibility:visible;pointer-events:auto;transform:none}
+.detail-panel h3{font-family:var(--font-display);font-size:50px;color:var(--lime);margin-bottom:34px}
+.detail-list{display:grid;grid-template-columns:1fr 1fr;gap:22px 52px}
+.detail-list li{font-size:27px;line-height:1.45;color:#d7edf6;padding:20px 0;border-top:1px solid var(--line)}
+.detail-close{position:absolute;right:28px;top:24px;width:48px;height:48px;border:1px solid var(--line);background:transparent;color:#fff;border-radius:50%;font-size:28px;cursor:pointer}
+.reveal,.reveal-left,.reveal-scale{opacity:0;transition:opacity .62s var(--ease),transform .62s var(--ease),filter .75s var(--ease)}
+.reveal{transform:translateY(28px)}
+.reveal-left{transform:translateX(-34px)}
+.reveal-scale{transform:scale(.96);filter:blur(5px)}
+.slide.visible .reveal,.slide.visible .reveal-left,.slide.visible .reveal-scale{opacity:1;transform:none;filter:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+/* === COVER === */
+.cover .slide-inner{padding:92px 112px}
+.cover-title{font-family:var(--font-display);font-size:134px;line-height:1.04;margin:176px 0 18px;padding-bottom:22px;letter-spacing:-.02em}
+.cover-title span{display:block;color:var(--lime)}
+.cover-sub{font-size:31px;color:#a9c9d9;max-width:860px;line-height:1.55}
+.orbit{position:absolute;right:55px;top:190px;width:700px;height:700px;border:2px solid rgba(98,232,255,.28);border-radius:50%;animation:orbitPulse 3.8s ease-in-out infinite}
+.orbit:before{content:"";position:absolute;inset:110px;border:1px dashed rgba(182,255,95,.38);border-radius:50%}
+.orbit:after{content:"";position:absolute;left:50%;top:-8px;width:16px;height:16px;border-radius:50%;background:var(--lime);box-shadow:0 0 28px var(--lime)}
+.cover-metrics{position:absolute;left:112px;bottom:72px;display:flex;gap:18px}
+.cover-metric{width:250px;border-top:2px solid var(--cyan);padding-top:14px}
+.cover-metric b{font-family:var(--font-display);font-size:44px}.cover-metric small{display:block;color:var(--muted);font-size:17px}
+/* === SUMMARY & KPI === */
+.hero-statement{font-family:var(--font-display);font-size:52px;color:var(--cyan);margin:4px 0 46px}
+.metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.big-metric{min-height:260px;border-top:2px solid var(--cyan);padding:26px 24px;background:linear-gradient(180deg,rgba(15,54,86,.72),rgba(5,27,47,.3))}
+.big-metric b{font-family:var(--font-display);font-size:76px;color:#fff}.big-metric span{display:block;font-size:24px;margin-top:4px}.big-metric small{display:block;color:var(--lime);font-size:19px;margin-top:26px}
+.insight-strip{margin-top:34px;border-left:8px solid var(--lime);background:rgba(182,255,95,.07);padding:24px 30px;font-size:27px;line-height:1.45}
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 26px;margin-top:8px}
+.kpi{padding:18px 22px 20px;border:1px solid var(--line);background:rgba(7,36,61,.74)}
+.kpi-head{display:flex;justify-content:space-between;align-items:end;gap:18px}.kpi label{font-size:21px;color:var(--muted)}.kpi b{font-family:var(--font-display);font-size:52px}.kpi .goal{font-size:18px;color:#b7d2df;text-align:right;line-height:1.35}
+.gauge{height:10px;background:#143754;margin:13px 0 10px;overflow:hidden}.gauge i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--lime))}
+.kpi-note{color:var(--cyan);font-size:16px}
+.kpi-subgrid{display:grid;grid-template-columns:repeat(var(--subcols,2),minmax(0,1fr));gap:8px;margin-top:12px}
+.kpi-subitem{min-height:54px;padding:8px 10px;background:rgba(98,232,255,.055);border-left:3px solid rgba(98,232,255,.82)}
+.kpi-subitem span{display:block;color:var(--muted);font-size:13px;line-height:1.15;white-space:nowrap}
+.kpi-subitem b{display:block;font-family:var(--font-display);font-size:26px;line-height:1.05;color:#fff;margin-top:2px}
+.kpi-subitem small{display:block;color:var(--lime);font-size:12px;line-height:1.2;margin-top:2px}
+.kpi-grid.kpi-two{gap:34px;margin-top:22px}
+.kpi-grid.kpi-two .kpi{min-height:520px;padding:34px 36px 32px;background:linear-gradient(180deg,rgba(11,45,73,.86),rgba(6,31,54,.72))}
+.kpi-grid.kpi-two .kpi label{font-size:30px}
+.kpi-grid.kpi-two .kpi b{font-size:76px}
+.kpi-grid.kpi-two .kpi .goal{font-size:24px}
+.kpi-grid.kpi-two .gauge{height:14px;margin:28px 0 18px}
+.kpi-grid.kpi-two .kpi-note{font-size:23px}
+.kpi-grid.kpi-two .kpi-subgrid{gap:16px;margin-top:30px}
+.kpi-grid.kpi-two .kpi-subitem{min-height:132px;padding:18px 20px;background:rgba(98,232,255,.065)}
+.kpi-grid.kpi-two .kpi-subitem span{font-size:20px}
+.kpi-grid.kpi-two .kpi-subitem b{font-size:44px;margin-top:6px}
+.kpi-grid.kpi-two .kpi-subitem small{font-size:18px;line-height:1.38;margin-top:8px}
+.kpi-grid.kpi-two+.insight-strip{margin-top:28px;font-size:25px;padding:22px 30px}
+/* === FLOW === */
+.flow-start{font-family:var(--font-display);font-size:54px;color:#fff;margin:24px 0 40px}
+.flow-line{display:flex;align-items:stretch;gap:18px}
+.flow-node{flex:1;min-height:190px;border-top:3px solid var(--cyan);padding:24px;background:rgba(8,44,73,.72);position:relative}
+.flow-node:not(:last-child):after{content:"→";position:absolute;right:-28px;top:68px;color:var(--lime);font-size:34px;z-index:2}
+.flow-node b{font-family:var(--font-display);font-size:52px}.flow-node span{display:block;font-size:23px}.flow-node small{display:block;color:var(--lime);font-size:22px;margin-top:12px}
+.side-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}.side-metrics div{padding:18px 22px;border-bottom:1px solid var(--line)}.side-metrics b{font-size:31px}.side-metrics span,.side-metrics small{display:block;color:var(--muted);font-size:17px}
+/* === GROWTH ANALYSIS === */
+.growth-analysis .action-title{font-size:58px;line-height:1.02;margin-bottom:16px;max-width:1600px}
+.growth-top{display:grid;grid-template-columns:1.05fr 1.55fr;gap:16px}
+.growth-headlines{display:grid;grid-template-columns:.85fr 1.25fr;gap:12px}.growth-headline{min-height:78px;padding:12px 16px;border-top:2px solid var(--cyan);background:rgba(7,38,64,.74)}.growth-headline span{display:block;color:var(--muted);font-size:16px}.growth-headline b{font-family:var(--font-display);font-size:38px;color:#fff}
+.growth-drivers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.growth-driver{min-height:78px;padding:11px 14px;border-top:2px solid var(--lime);background:rgba(182,255,95,.055)}.growth-driver span{display:block;color:var(--muted);font-size:15px}.growth-driver b{font-family:var(--font-display);font-size:31px}.growth-driver small{color:var(--lime);font-size:15px;margin-left:8px}
+.growth-charts{display:grid;grid-template-columns:1.08fr .92fr;gap:18px;margin-top:14px}.growth-chart{height:350px;padding:15px 18px 12px;background:rgba(6,32,55,.82);border:1px solid var(--line)}.growth-chart-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}.growth-chart h3{font-size:21px;font-weight:700}.growth-legend{display:flex;gap:14px;color:var(--muted);font-size:13px}.growth-legend i{display:inline-block;width:16px;height:4px;margin-right:5px;vertical-align:middle}.growth-chart svg{display:block;width:100%;height:292px}.chart-grid{stroke:rgba(143,176,195,.18);stroke-width:1}.chart-axis{fill:#7fa2b5;font-size:12px}.chart-value{fill:#dff7ff;font-size:12px;font-weight:700}.chart-total{fill:#b6ff5f;font-size:13px;font-weight:700}
+.growth-causes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}.growth-cause{min-height:98px;padding:13px 16px;background:rgba(8,40,67,.7);border-top:3px solid var(--cyan)}.growth-cause:nth-child(2){border-color:var(--amber)}.growth-cause:nth-child(3){border-color:var(--lime)}.growth-cause b{display:block;font-size:19px;margin-bottom:5px}.growth-cause p{font-size:15.5px;line-height:1.38;color:#c8e0ea}
+.trend-line{stroke-dasharray:1;stroke-dashoffset:1}.chart-dot{opacity:0}.stack-group{transform-box:fill-box;transform-origin:center bottom;transform:scaleY(0)}.stack-label{opacity:0}
+.slide.active .trend-line{animation:chartDraw 1.35s var(--ease) forwards}.slide.active .trend-line.real-line{animation-delay:.18s}.slide.active .chart-dot{animation:chartDot .32s ease forwards;animation-delay:calc(.72s + var(--dot) * .035s)}.slide.active .stack-group{animation:chartBar .78s var(--ease) forwards;animation-delay:calc(.18s + var(--bar) * .09s)}.slide.active .stack-label{animation:chartLabel .35s ease forwards;animation-delay:calc(.62s + var(--bar) * .09s)}
+@keyframes chartDraw{to{stroke-dashoffset:0}}@keyframes chartDot{to{opacity:1}}@keyframes chartBar{to{transform:scaleY(1)}}@keyframes chartLabel{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.trend-line{stroke-dashoffset:0}.chart-dot,.stack-label{opacity:1}.stack-group{transform:none}.slide.active .trend-line,.slide.active .chart-dot,.slide.active .stack-group,.slide.active .stack-label{animation:none}}
+/* === COMPETITOR ANALYSIS === */
+.competitor-analysis .action-title{font-size:58px;line-height:1.02;margin-bottom:14px;max-width:1630px}
+.competitor-section-head{display:grid;grid-template-columns:132px 1fr auto;align-items:center;gap:16px;min-height:34px;margin-bottom:8px;border-bottom:1px solid rgba(98,232,255,.22)}.competitor-section-head span{font-family:var(--font-display);font-size:25px;font-weight:800;letter-spacing:.04em;color:var(--cyan);border-left:5px solid var(--cyan);padding-left:12px}.competitor-section-head p{font-size:16px;color:var(--muted)}.competitor-section-head strong{font-size:16px;font-weight:600;color:var(--lime)}.competitor-section-head.dynamic{margin-top:12px;margin-bottom:7px;border-color:rgba(255,200,87,.28)}.competitor-section-head.dynamic span{color:var(--amber);border-color:var(--amber)}.competitor-section-head.dynamic p{font-size:20px;font-weight:700;color:#eafaff}.competitor-section-head.dynamic strong{font-size:15px}
+.competitor-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.competitor-kpi{min-height:78px;padding:10px 15px;border-top:2px solid var(--cyan);background:rgba(7,38,64,.74)}.competitor-kpi:nth-child(2),.competitor-kpi:nth-child(4){border-color:var(--lime)}.competitor-kpi span{display:block;color:var(--muted);font-size:16px}.competitor-kpi b{font-family:var(--font-display);font-size:34px;color:#fff;margin-right:9px}.competitor-kpi small{font-size:16px;color:#c7e0ea}
+.competitor-charts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px}.competitor-chart{height:340px;padding:13px 16px 9px;background:rgba(6,32,55,.82);border:1px solid var(--line)}.competitor-chart-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px}.competitor-chart h3{font-size:23px}.competitor-chart svg{display:block;width:100%;height:292px}.competitor-chart .chart-axis{font-size:13px}.competitor-legend{display:flex;gap:13px;color:var(--muted);font-size:15px}.competitor-legend i{display:inline-block;width:16px;height:4px;margin-right:5px;vertical-align:middle}
+.competitor-end{font-family:var(--font-display);font-size:17px;font-weight:700}.competitor-cross{fill:var(--lime);font-size:13px;font-weight:700}.competitor-cross-line{stroke:rgba(182,255,95,.38);stroke-width:1;stroke-dasharray:4 5}
+.competitor-moves{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.competitor-move{min-height:140px;padding:14px 17px;background:rgba(8,40,67,.72);border-top:3px solid var(--cyan)}.competitor-move:nth-child(2){border-color:var(--amber)}.competitor-move:nth-child(3){border-color:var(--lime)}.competitor-move b{display:block;font-size:19px;margin-bottom:6px}.competitor-move p{font-size:17px;line-height:1.42;color:#c8e0ea}
+/* === MARKET / CHANNEL RESEARCH === */
+.market-research .project-name,.channel-research .project-name{font-size:52px}.market-research .project-conclusion,.channel-research .project-conclusion{font-size:23px}
+.research-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}.research-metric{min-height:92px;padding:12px 16px;background:rgba(7,38,64,.78);border-top:3px solid var(--cyan)}.research-metric:nth-child(2){border-color:var(--lime)}.research-metric:nth-child(3){border-color:var(--amber)}.research-metric:nth-child(4){border-color:#ff6f91}.research-metric span{display:block;font-size:15px;color:var(--muted)}.research-metric b{display:block;font-family:var(--font-display);font-size:38px;line-height:1.1;margin:3px 0}.research-metric small{font-size:14px;color:#cde4ed}
+.market-research-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;height:630px}.research-panel{padding:16px 19px;background:rgba(6,32,55,.82);border:1px solid var(--line);min-width:0}.research-panel h3{font-size:22px;margin-bottom:10px}.research-panel h3 span{color:var(--cyan);font-family:var(--font-mono);font-size:13px;letter-spacing:.12em;margin-right:10px}.broker-bars{display:grid;gap:9px}.broker-row{display:grid;grid-template-columns:88px 1fr 60px;align-items:center;gap:10px}.broker-row label{font-size:16px;color:#cfe5ee}.broker-track{height:15px;background:#143754;overflow:hidden}.broker-track i{display:block;height:100%;width:calc(var(--value) * .5%);max-width:100%;background:linear-gradient(90deg,var(--cyan),var(--lime))}.broker-row:nth-child(n+4) .broker-track i{background:linear-gradient(90deg,var(--amber),var(--lime))}.broker-row b{font-family:var(--font-mono);font-size:15px;color:#fff;text-align:right}.market-share-chart{height:342px;padding:2px 0 0}.market-share-chart svg{display:block;width:100%;height:100%}.market-share-values{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:9px}.market-share-values div{min-height:55px;padding:7px 10px;background:rgba(8,40,67,.76);border-top:2px solid rgba(98,232,255,.55)}.market-share-values div:nth-child(4n+2){border-color:rgba(182,255,95,.65)}.market-share-values div:nth-child(4n+3){border-color:rgba(255,200,87,.68)}.market-share-values b{display:block;font-family:var(--font-display);font-size:23px;line-height:1.05;color:#fff}.market-share-values span{display:block;margin-top:4px;font-size:12px;color:var(--muted)}.market-share-dot-label{font-family:var(--font-mono);font-size:15px;font-weight:700;fill:#eafaff}.research-caption{margin-top:12px;padding:11px 14px;border-left:5px solid var(--lime);background:rgba(182,255,95,.06);font-size:15px;line-height:1.4;color:#cde4ed}
+.research-stack{display:grid;grid-template-rows:1fr 1fr 1fr;gap:10px}.research-card{padding:14px 17px;background:rgba(8,40,67,.76);border-left:5px solid var(--cyan)}.research-card:nth-child(2){border-color:var(--amber)}.research-card:nth-child(3){border-color:#ff6f91}.research-card h3{font-size:19px;margin-bottom:6px}.research-card p{font-size:16px;line-height:1.44;color:#cce1ea}.research-card ul{margin:0;padding-left:19px}.research-card li{font-size:15.5px;line-height:1.4;color:#cce1ea;margin:4px 0}.research-card strong{color:var(--lime)}
+.channel-grid{display:grid;grid-template-columns:1.1fr .9fr;grid-template-rows:1fr 172px;gap:16px;height:718px}.channel-panel{padding:16px 18px;background:rgba(6,32,55,.82);border:1px solid var(--line);min-height:0}.channel-panel h3{font-size:22px;margin-bottom:12px}.channel-groups{display:grid;grid-template-columns:1fr 1fr;gap:12px}.channel-group{padding:14px 16px;background:rgba(8,40,67,.75);border-top:4px solid var(--lime)}.channel-group.gap{border-color:var(--amber)}.channel-group h4{margin:0 0 9px;font-size:19px}.channel-group p{font-size:15px;line-height:1.45;color:#cce1ea;margin:7px 0}.channel-group strong{color:#fff}.channel-compare{display:grid;gap:8px}.channel-row{display:grid;grid-template-columns:64px 1fr;gap:10px;align-items:center}.channel-row label{font-size:15px}.channel-row div{display:flex;align-items:center;gap:8px}.channel-row i{height:12px;background:var(--cyan);width:calc(var(--value) * .058%);max-width:100%}.channel-row.gap i{background:var(--amber)}.channel-row small{font-family:var(--font-mono);font-size:12px;color:#cde4ed}.channel-insight{margin-top:12px;padding:13px 16px;border-left:6px solid var(--cyan);background:rgba(98,232,255,.07);font-size:16px;line-height:1.45;color:#d8ebf3}
+.geo-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}.geo-kpi{padding:12px 14px;background:rgba(8,40,67,.76);border-top:3px solid var(--cyan)}.geo-kpi:nth-child(2n){border-color:var(--lime)}.geo-kpi span{display:block;color:var(--muted);font-size:14px}.geo-kpi b{font-family:var(--font-display);font-size:30px}.geo-kpi small{display:block;color:#cde4ed;font-size:13px;margin-top:2px}.geo-actions{margin-top:12px;padding:14px 16px;background:rgba(255,200,87,.07);border-left:5px solid var(--amber)}.geo-actions h4{margin:0 0 7px;font-size:18px}.geo-actions li{font-size:15.5px;line-height:1.42;color:#cce1ea;margin:5px 0}
+.channel-proof{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.channel-proof-card{padding:16px 18px;background:linear-gradient(180deg,rgba(15,54,86,.8),rgba(6,32,55,.72));border-top:3px solid var(--cyan)}.channel-proof-card:nth-child(2){border-color:var(--lime)}.channel-proof-card:nth-child(3){border-color:var(--amber)}.channel-proof-card:nth-child(4){border-color:#ff6f91}.channel-proof-card span{display:block;color:var(--muted);font-size:15px}.channel-proof-card b{display:block;font-family:var(--font-display);font-size:34px;line-height:1.05;margin:4px 0 6px}.channel-proof-card small{display:block;font-size:14px;line-height:1.35;color:#cde4ed}
+/* === H1 WORK REVIEW === */
+.project-heading{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:end;gap:30px;min-height:76px;margin-bottom:14px;padding:0 0 12px;border-bottom:1px solid rgba(98,232,255,.24)}
+.project-name{font-family:var(--font-display);font-size:58px;line-height:1;font-weight:900;letter-spacing:-.025em;color:#fff;white-space:nowrap}
+.project-conclusion{font-size:25px;line-height:1.35;font-weight:650;color:#c8e0ea;padding-bottom:2px}
+.work-review .action-title{font-size:58px;line-height:1.02;margin-bottom:16px}
+.work-review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;height:744px}.work-review-col{--accent:var(--cyan);height:744px;padding:0 16px 14px;background:rgba(6,32,55,.82);border:1px solid var(--line);border-top:5px solid var(--accent);overflow:hidden}.work-review-col:nth-child(1){--accent:var(--amber)}.work-review-col:nth-child(3){--accent:var(--lime)}
+.work-review-head{height:66px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.work-review-head h3{font-family:var(--font-display);font-size:31px}.work-review-head span{font-size:15px;color:var(--accent);text-align:right}
+.work-review-kpis{padding:8px 0 6px}.work-review-kpi{display:grid;grid-template-columns:108px 1fr 60px;align-items:baseline;min-height:34px;border-bottom:1px solid rgba(143,176,195,.13)}.work-review-kpi b{font-family:var(--font-display);font-size:25px;color:#fff}.work-review-kpi span{font-size:16px;color:#cce1ea}.work-review-kpi em{font-family:var(--font-mono);font-size:13px;font-style:normal;text-align:right;color:var(--accent)}
+.work-review-section{border-top:1px solid rgba(98,232,255,.28);padding-top:6px;margin-top:3px}.work-review-section h4{margin:0 0 4px;font-family:var(--font-mono);font-size:13px;letter-spacing:.12em;color:var(--accent)}.work-review-strategy{min-height:88px}.work-review-strategy p{font-size:16px;line-height:1.4;color:#c8e0ea}.work-review-results{height:150px}.work-review-results ul{margin:0;padding:0;list-style:none}.work-review-results li{font-size:15.5px;line-height:1.35;color:#d7edf6;margin:3px 0}.work-review-results li:before{content:"✓";color:var(--accent);margin-right:7px}
+.work-review-projects{margin-top:3px}.work-project-head,.work-project-row{display:grid;grid-template-columns:1fr 60px 64px;gap:6px;align-items:center}.work-project-head{height:24px;font-family:var(--font-mono);font-size:11px;color:var(--muted)}.work-project-row{min-height:35px;padding:4px 0;border-top:1px solid rgba(143,176,195,.16);font-size:14.5px;line-height:1.2;color:#cde3ed}.work-project-row span:nth-child(2){color:var(--accent);text-align:center}.work-project-row span:nth-child(3){color:var(--muted);text-align:right}
+/* === SOURCE-RICH H1 REVIEW PAGES === */
+.harmony-review .action-title,.project-review .action-title,.acquisition-review .action-title,.account-review .action-title,.ai-cases .action-title,.ai-system .action-title{font-size:54px;line-height:1.03;margin-bottom:14px;max-width:1660px}
+.source-metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:12px}.source-metric{min-height:72px;padding:9px 14px;border-top:2px solid var(--cyan);background:rgba(7,38,64,.76)}.source-metric:nth-child(even){border-color:var(--lime)}.source-metric b{font-family:var(--font-display);font-size:31px}.source-metric span{display:block;font-size:14px;color:var(--muted)}.source-metric small{font-size:13px;color:var(--lime)}
+.acquisition-review .source-metrics{grid-template-columns:repeat(6,1fr)}
+.source-chart{padding:12px 14px 8px;background:rgba(6,32,55,.82);border:1px solid var(--line)}.source-chart-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}.source-chart-head h3{font-size:20px}.source-legend{display:flex;gap:12px;color:var(--muted);font-size:13px}.source-legend i{display:inline-block;width:15px;height:4px;margin-right:5px;vertical-align:middle}.source-chart svg{display:block;width:100%}.source-bar{transform-box:fill-box;transform-origin:center bottom;transform:scaleY(0)}.slide.active .source-bar{animation:chartBar .72s var(--ease) forwards;animation-delay:calc(.12s + var(--bar) * .08s)}
+.harmony-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.harmony-grid .source-chart{height:326px}.harmony-grid svg{height:278px}.harmony-bottom{display:grid;grid-template-columns:1fr 1fr .9fr;gap:14px;margin-top:12px}.harmony-note{min-height:146px;padding:14px 17px;background:rgba(8,40,67,.72);border-top:3px solid var(--cyan)}.harmony-note:nth-child(2){border-color:var(--lime)}.harmony-note:nth-child(3){border-color:var(--amber)}.harmony-note h3{font-size:19px;margin-bottom:6px}.harmony-note li,.harmony-note p{font-size:16px;line-height:1.42;color:#cbe1eb;margin:3px 0}.harmony-note ul{margin:0;padding-left:18px}
+.project-review .source-metrics{grid-template-columns:repeat(var(--source-metric-cols,3),1fr);margin-bottom:10px}.project-review-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:16px;height:738px}.project-review-grid.has-metrics{height:650px}.project-review-grid.has-metrics .project-group-grid{height:650px}.project-review-left,.project-review-right{min-width:0}.project-review-left{display:grid;grid-template-rows:auto auto 1fr;gap:10px}.project-review-left .source-chart{height:270px}.project-review-left .source-chart svg{height:220px}.source-copy{padding:14px 17px;background:rgba(8,40,67,.72);border-left:5px solid var(--cyan)}.source-copy.strategy{border-color:var(--lime)}.source-copy h3{font-size:18px;margin-bottom:5px}.source-copy p{font-size:16px;line-height:1.43;color:#c9e0ea}.project-group-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;height:738px;align-content:start}.project-group{padding:10px 13px;background:rgba(6,32,55,.82);border-top:3px solid var(--cyan)}.project-group:nth-child(2n){border-color:var(--lime)}.project-group h3{font-size:18px;margin-bottom:5px}.project-group small{display:block;color:var(--amber);font-size:13px;margin-bottom:5px}.project-group li{list-style:none;font-size:14.5px;line-height:1.3;color:#cce1ea;padding:3px 0;border-top:1px solid rgba(143,176,195,.13)}.project-group li:before{content:"•";color:var(--cyan);margin-right:6px}.project-group ul{margin:0;padding:0}
+.source-dual-chart{display:grid;grid-template-rows:1fr 1fr;gap:10px}.source-dual-chart .source-chart{height:226px}.source-dual-chart .source-chart svg{height:178px}
+.acquisition-body{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px}.acquisition-left .source-chart{height:322px}.acquisition-left .source-chart svg{height:274px}.acquisition-sections{display:grid;grid-template-columns:1fr 1fr;gap:10px}.acquisition-section{padding:12px 15px;background:rgba(6,32,55,.82);border-top:3px solid var(--cyan)}.acquisition-section:nth-child(2n){border-color:var(--lime)}.acquisition-section.community{grid-column:1/-1;border-color:var(--amber)}.acquisition-section h3{font-size:18px;margin-bottom:6px}.acquisition-section li{font-size:15px;line-height:1.38;color:#cce1ea;margin:5px 0}.source-summary{margin-top:11px;padding:13px 17px;border-left:7px solid var(--amber);background:rgba(255,200,87,.075);font-size:16px;line-height:1.42;color:#dcecf3}
+.account-body{display:grid;grid-template-columns:.82fr 1.18fr;gap:16px}.account-left .source-chart{height:338px}.account-left .source-chart svg{height:288px}.account-data{display:grid;gap:8px;margin-top:10px}.account-data div{padding:10px 14px;border-left:4px solid var(--cyan);background:rgba(7,38,64,.72)}.account-data b{font-family:var(--font-display);font-size:29px}.account-data span{font-size:15px;color:#cce1ea;margin-left:10px}.account-sections{display:grid;grid-template-columns:1fr 1fr;gap:10px}.account-section{padding:12px 15px;background:rgba(6,32,55,.82);border-top:3px solid var(--cyan)}.account-section:first-child{grid-column:1/-1;border-color:var(--lime)}.account-section h3{font-size:19px;margin-bottom:5px}.account-section li{font-size:15.5px;line-height:1.38;color:#cce1ea;margin:6px 0}
+.ai-case-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.ai-case{height:340px;display:grid;overflow:hidden;background:rgba(6,32,55,.82);border-top:4px solid var(--cyan)}.ai-case:nth-child(2){border-color:var(--lime)}.ai-case:nth-child(3){border-color:var(--amber)}.ai-case:nth-child(4){border-color:#7aa7ff}.ai-case.wide{grid-template-columns:1fr;grid-template-rows:196px 144px}.ai-case.portrait{grid-template-columns:34% 66%}.ai-case figure{margin:0;padding:10px;background:#eef7fb;overflow:hidden}.ai-case figure.pair{display:grid;grid-template-columns:1.58fr .72fr;gap:8px}.ai-case img{width:100%;height:100%;object-fit:contain;object-position:center}.ai-case.text-only{display:block;padding:28px 34px;background:linear-gradient(135deg,rgba(13,55,88,.96),rgba(8,33,57,.88))}.ai-case.text-only:before{content:"04 / AI BUILD";font-family:var(--font-mono);font-size:14px;letter-spacing:.12em;color:var(--cyan)}.ai-case.text-only .ai-case-copy{padding:18px 0}.ai-case.text-only .ai-case-copy h3{font-family:var(--font-display);font-size:30px;margin-bottom:18px}.ai-case.text-only .ai-case-copy li{font-size:18px;line-height:1.5;padding:10px 0;border-top:1px solid var(--line)}.ai-case-copy{padding:13px 18px}.ai-case-copy h3{font-size:21px;margin-bottom:5px}.ai-case-copy p,.ai-case-copy li{font-size:15px;line-height:1.36;color:#cbe1eb;margin:4px 0}.ai-case-copy ul{padding-left:18px;margin:0}.ai-case-copy b{color:var(--lime)}
+.ai-system-grid{display:grid;grid-template-columns:1fr 1.12fr .88fr;gap:14px;height:675px}.ai-system-col{padding:16px 18px;background:rgba(6,32,55,.82);border-top:4px solid var(--cyan);overflow:hidden}.ai-system-col:nth-child(2){border-color:var(--lime)}.ai-system-col:nth-child(3){border-color:var(--amber)}.ai-system-col h3{font-size:24px;margin-bottom:10px}.ai-system-col h4{font-size:17px;color:var(--cyan);margin:12px 0 5px}.ai-system-col li,.ai-system-col p{font-size:15.5px;line-height:1.42;color:#cbe1eb;margin:6px 0}.ai-system-col ul{padding-left:18px;margin:0}.ai-system-col img{width:100%;height:180px;object-fit:cover;margin-top:12px;border:1px solid var(--line)}.ai-system-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}.ai-system-stats div{padding:10px 14px;border-top:2px solid var(--lime);background:rgba(182,255,95,.055)}.ai-system-stats b{font-family:var(--font-display);font-size:31px}.ai-system-stats span{display:block;font-size:14px;color:var(--muted)}
+.ai-data-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;height:650px}.ai-data-category{display:grid;grid-template-columns:1fr;grid-template-rows:300px 350px;background:rgba(6,32,55,.82);border-top:5px solid var(--cyan);overflow:hidden}.ai-data-category:nth-child(2){border-color:var(--lime)}.ai-data-category figure{margin:0;padding:14px;background:#edf6fa;overflow:hidden}.ai-data-category figure.pair{display:grid;grid-template-columns:1.52fr .78fr;gap:10px}.ai-data-category img{width:100%;height:100%;object-fit:contain;object-position:center}.ai-data-copy{padding:14px 22px}.ai-data-copy h3{font-family:var(--font-display);font-size:29px;margin-bottom:8px}.ai-data-block{padding:8px 0;border-top:1px solid var(--line)}.ai-data-block h4{font-size:18px;color:var(--cyan);margin:0 0 4px}.ai-data-block p,.ai-data-block li{font-size:15.5px;line-height:1.35;color:#cbe1eb;margin:4px 0}.ai-data-block ul{margin:0;padding-left:19px}.ai-data-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}.ai-data-stats div{padding:10px 14px;border-top:2px solid var(--lime);background:rgba(182,255,95,.055)}.ai-data-stats b{font-family:var(--font-display);font-size:30px}.ai-data-stats span{display:block;font-size:14px;color:var(--muted)}
+.ai-combined .project-heading{margin-bottom:12px}.ai-combined-grid{display:grid;grid-template-columns:1.02fr 1fr 1.05fr;gap:14px;height:710px}.ai-combined-col{display:grid;grid-template-rows:42px 220px 1fr;min-width:0;padding:15px 16px;background:rgba(6,32,55,.84);border:1px solid rgba(98,232,255,.2);border-top:5px solid var(--cyan);overflow:hidden}.ai-combined-col:nth-child(2){border-top-color:var(--lime)}.ai-combined-col:nth-child(3){border-top-color:var(--amber)}.ai-combined-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}.ai-combined-head h3{font-size:24px;line-height:1.05}.ai-combined-head span{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;color:var(--cyan);white-space:nowrap}.ai-combined-col:nth-child(2) .ai-combined-head span{color:var(--lime)}.ai-combined-col:nth-child(3) .ai-combined-head span{color:var(--amber)}.ai-combined-media{display:grid;gap:8px;margin:8px 0 12px}.ai-combined-media.count-1{grid-template-columns:1fr}.ai-combined-media.count-2{grid-template-columns:1fr 1fr}.ai-combined-media.count-3{grid-template-columns:1.12fr .88fr;grid-template-rows:1fr 1fr}.ai-combined-media.count-3 figure:first-child{grid-row:1/3}.ai-combined-media figure{margin:0;padding:8px;background:#edf6fa;border:1px solid rgba(255,255,255,.16);overflow:hidden}.ai-combined-media img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}.ai-combined-body{display:grid;grid-template-rows:auto 1fr;gap:9px;min-height:0}.ai-combined-summary{padding:9px 11px;border-left:4px solid var(--cyan);background:rgba(98,232,255,.06);font-size:15px;line-height:1.36;color:#d8edf5}.ai-combined-col:nth-child(2) .ai-combined-summary{border-color:var(--lime);background:rgba(182,255,95,.06)}.ai-combined-col:nth-child(3) .ai-combined-summary{border-color:var(--amber);background:rgba(255,200,87,.07)}.ai-combined-list{margin:0;padding:0;display:grid;gap:6px;align-content:start}.ai-combined-list li{list-style:none;padding:7px 0 7px 14px;border-top:1px solid rgba(143,176,195,.14);font-size:14.7px;line-height:1.32;color:#cce1ea;position:relative}.ai-combined-list li:before{content:"";position:absolute;left:0;top:14px;width:5px;height:5px;border-radius:50%;background:var(--cyan)}.ai-combined-col:nth-child(2) .ai-combined-list li:before{background:var(--lime)}.ai-combined-col:nth-child(3) .ai-combined-list li:before{background:var(--amber)}.ai-combined-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.ai-combined-stat{padding:9px 12px;border-top:2px solid var(--lime);background:rgba(182,255,95,.055)}.ai-combined-stat b{font-family:var(--font-display);font-size:28px}.ai-combined-stat span{display:block;font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.source-bar{transform:none}.slide.active .source-bar{animation:none}}
+/* === RETROSPECTIVE === */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:30px}.split-panel{min-height:580px;padding:34px 38px;background:rgba(6,34,58,.76);border-top:4px solid var(--cyan)}.split-panel.risk{border-color:var(--amber)}.split-panel h3{font-family:var(--font-display);font-size:44px;margin-bottom:24px}.split-panel li{list-style:none;font-size:23px;line-height:1.5;padding:18px 0;border-top:1px solid var(--line)}.split-panel li:before{content:"✓";color:var(--lime);margin-right:14px}.split-panel.risk li:before{content:"!";color:var(--amber)}
+.retrospective .project-heading{margin-bottom:10px}.retrospective-metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:12px}.retrospective-metric{padding:11px 13px;background:rgba(6,32,55,.82);border-top:3px solid var(--cyan)}.retrospective-metric:nth-child(2n){border-color:var(--lime)}.retrospective-metric:nth-child(3n){border-color:var(--amber)}.retrospective-metric b{display:block;font-family:var(--font-display);font-size:30px;line-height:1;color:#fff}.retrospective-metric span{display:block;margin-top:5px;font-size:14px;color:#d7edf6}.retrospective-metric small{display:block;margin-top:2px;font-size:12px;color:var(--muted)}.retrospective .split{gap:20px}.retrospective .split-panel{min-height:430px;padding:28px 32px}.retrospective .split-panel h3{font-size:36px;margin-bottom:14px}.retrospective .split-panel li{font-size:19px;line-height:1.42;padding:12px 0}
+/* === DIVIDER === */
+.divider .slide-inner{display:flex;flex-direction:column;justify-content:center;padding-left:150px}.divider h2{font-family:var(--font-display);font-size:112px;line-height:.95;max-width:1400px;padding-bottom:18px}.divider h2 span{display:block;color:var(--lime)}.divider p{font-size:30px;color:var(--muted);margin-top:24px}.divider-ring{position:absolute;right:120px;top:130px;width:540px;height:540px;border:1px solid rgba(98,232,255,.26);border-radius:50%;box-shadow:0 0 0 90px rgba(98,232,255,.025),0 0 0 180px rgba(182,255,95,.018)}
+/* === STRATEGY === */
+.target-cross{position:absolute;right:100px;top:250px;width:560px;height:560px;border:1px solid var(--line);border-radius:50%}.target-cross:before,.target-cross:after{content:"";position:absolute;background:var(--line)}.target-cross:before{left:50%;top:0;width:1px;height:100%}.target-cross:after{top:50%;left:0;height:1px;width:100%}.target-point{position:absolute;text-align:center}.target-point b{font-family:var(--font-display);font-size:50px;color:var(--lime);display:block}.target-point span{font-size:18px;color:var(--muted)}.north{left:205px;top:-20px}.east{right:-55px;top:230px}.south{left:205px;bottom:-20px}.west{left:-55px;top:230px}
+.pillars{width:1020px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.pillar{padding:24px 26px;border-top:2px solid var(--cyan);background:rgba(8,43,72,.72)}.pillar i{font-family:var(--font-mono);font-style:normal;color:var(--lime)}.pillar h3{font-size:27px;margin:8px 0}.pillar p{font-size:19px;color:var(--muted)}
+/* === THREE / ROADMAP / MATRIX === */
+.three-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}.col{min-height:610px;padding:30px 30px;border-top:3px solid var(--cyan);background:rgba(7,36,61,.76)}.col .tag{font-family:var(--font-mono);color:var(--cyan);font-size:16px}.col h3{font-family:var(--font-display);font-size:40px;margin:18px 0}.col .metric{font-family:var(--font-display);font-size:68px;color:var(--lime)}.col .label{color:var(--muted);font-size:18px}.col li{font-size:20px;line-height:1.45;margin:22px 0;list-style:none;border-top:1px solid var(--line);padding-top:15px}
+.roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:24px}.stage-card{padding:30px;background:rgba(7,37,62,.78);border-top:4px solid var(--cyan);min-height:380px}.stage-card .month{font-family:var(--font-mono);color:var(--lime)}.stage-card h3{font-family:var(--font-display);font-size:44px;margin:18px 0}.stage-card b{display:block;font-size:23px}.stage-card p{font-size:20px;color:var(--muted);line-height:1.5;margin-top:16px}.target-row{display:flex;gap:18px;margin-top:30px}.target-chip{flex:1;border-top:1px solid var(--line);padding:16px}.target-chip b{font-family:var(--font-display);font-size:40px;color:var(--lime)}.target-chip span{display:block;color:var(--muted)}
+.target-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}.target-strip div{padding:16px 18px;border-top:2px solid var(--lime);background:rgba(182,255,95,.055)}.target-strip b{font-family:var(--font-display);font-size:38px}.target-strip span{display:block;color:var(--muted);font-size:16px}
+.matrix{width:100%;border-collapse:collapse}.matrix th{font-family:var(--font-mono);font-size:17px;color:var(--cyan);text-align:left;padding:12px 18px;border-bottom:1px solid var(--cyan)}.matrix td{font-size:21px;line-height:1.35;padding:17px 18px;border-bottom:1px solid var(--line)}.matrix td:first-child{color:var(--lime);font-weight:700;width:200px}
+/* === SOURCE-RICH H2 PLAN PAGES === */
+.h2-detail .project-heading,.h2-roadmap-detail .project-heading{margin-bottom:12px}
+.h2-metrics{display:grid;grid-template-columns:repeat(var(--metric-cols,4),1fr);gap:12px;margin-bottom:12px}.h2-metric{min-height:70px;padding:9px 14px;border-top:2px solid var(--lime);background:rgba(182,255,95,.055)}.h2-metric:nth-child(even){border-color:var(--cyan);background:rgba(98,232,255,.045)}.h2-metric b{font-family:var(--font-display);font-size:31px}.h2-metric span{display:block;font-size:14px;color:var(--muted)}.h2-metric small{font-size:13px;color:var(--lime)}
+.h2-overview{padding:10px 16px;margin-bottom:10px;border-left:5px solid var(--amber);background:rgba(255,200,87,.07);font-size:16.5px;line-height:1.4;color:#d9eaf2}
+.h2-grid{display:grid;grid-template-columns:repeat(var(--cols,3),1fr);gap:11px;align-content:start}.h2-card{min-height:0;padding:13px 15px;background:rgba(6,32,55,.82);border-top:3px solid var(--cyan);overflow:hidden}.h2-card:nth-child(2n){border-color:var(--lime)}.h2-card:nth-child(3n){border-color:var(--amber)}.h2-card h3{font-size:21px;margin-bottom:5px}.h2-card small{display:block;min-height:18px;color:var(--lime);font-size:13.5px;margin-bottom:5px}.h2-card ul{margin:0;padding:0}.h2-card li{list-style:none;font-size:15px;line-height:1.34;color:#cce1ea;padding:3px 0;border-top:1px solid rgba(143,176,195,.13)}.h2-card li:before{content:"•";color:var(--cyan);margin-right:7px}
+.h2-targets-clear .project-heading{margin-bottom:18px}.target-clear-grid{display:grid;grid-template-columns:repeat(var(--target-cols,5),1fr);gap:14px;margin-bottom:22px}.target-clear-card{min-height:148px;padding:20px 22px;background:linear-gradient(180deg,rgba(12,50,79,.86),rgba(6,31,53,.72));border-top:4px solid var(--cyan);box-shadow:inset 0 0 48px rgba(98,232,255,.035)}.target-clear-card:nth-child(2){border-color:var(--lime)}.target-clear-card:nth-child(3){border-color:var(--amber)}.target-clear-card:nth-child(4){border-color:#7aa7ff}.target-clear-card:nth-child(5){border-color:#ff7a59}.target-clear-card b{display:block;font-family:var(--font-display);font-size:48px;line-height:.98;color:#fff}.target-clear-card span{display:block;margin-top:10px;font-size:20px;color:#cfe5ee}.target-clear-card small{display:block;margin-top:9px;color:var(--lime);font-size:17px;line-height:1.28}.target-clear-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}.target-clear-panel{height:430px;padding:28px 30px;background:rgba(6,32,55,.84);border:1px solid rgba(98,232,255,.16);border-top:5px solid var(--cyan);overflow:hidden}.target-clear-panel:nth-child(2){border-top-color:var(--lime)}.target-clear-panel:nth-child(3){border-top-color:var(--amber)}.target-clear-panel h3{font-family:var(--font-display);font-size:36px;line-height:1.08;margin-bottom:7px}.target-clear-panel .panel-tag{display:block;color:var(--lime);font-size:18px;margin-bottom:18px}.target-clear-items{display:grid;gap:12px}.target-clear-item{display:grid;grid-template-columns:94px 1fr;gap:14px;align-items:center;min-height:82px;padding:14px 16px;background:rgba(98,232,255,.055);border-left:4px solid var(--cyan)}.target-clear-panel:nth-child(2) .target-clear-item{border-left-color:var(--lime)}.target-clear-panel:nth-child(3) .target-clear-item{border-left-color:var(--amber)}.target-clear-item b{font-family:var(--font-display);font-size:34px;color:#fff}.target-clear-item span{display:block;font-size:20px;color:#e7f7ff}.target-clear-item small{display:block;margin-top:4px;font-size:16px;line-height:1.32;color:var(--muted)}.target-clear-note{margin-top:22px;padding:17px 20px;border-left:6px solid var(--lime);background:rgba(182,255,95,.07);font-size:21px;line-height:1.42;color:#effbff}
+.h2-decision-chain .project-heading{grid-template-columns:auto minmax(0,1fr);gap:24px;align-items:end;margin-bottom:12px}.h2-decision-chain .project-name{font-size:50px}.h2-decision-chain .project-conclusion{font-size:22px;padding-bottom:2px}.decision-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;height:700px}.decision-column{min-width:0;padding:15px 17px;background:rgba(6,32,55,.84);border-top:5px solid var(--cyan);overflow:hidden}.decision-column:nth-child(2){border-color:var(--lime)}.decision-column:nth-child(3){border-color:var(--amber)}.decision-column h3{font-family:var(--font-display);font-size:30px;margin-bottom:10px}.decision-metrics{display:grid;grid-template-columns:repeat(var(--mcols,2),1fr);gap:8px;margin-bottom:11px}.decision-metric{min-height:68px;padding:8px 10px;background:rgba(98,232,255,.055);border-left:3px solid var(--cyan)}.decision-metric span{display:block;font-size:13px;color:var(--muted)}.decision-metric b{font-family:var(--font-display);font-size:28px;color:#fff}.decision-work{padding:11px 13px;margin-top:9px;background:rgba(8,40,67,.72);border-left:4px solid var(--line)}.decision-work h4{font-size:18px;margin-bottom:3px}.decision-work strong{display:block;margin-bottom:6px;color:var(--amber);font-size:15px}.decision-work ul{margin:0;padding:0}.decision-work li{list-style:none;font-size:14.8px;line-height:1.34;color:#cce1ea;padding:4px 0;border-top:1px solid rgba(143,176,195,.13)}.decision-work li:before{content:"•";color:var(--cyan);margin-right:7px}
+.h2-roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.h2-roadmap-stage{height:520px;padding:20px 21px;background:rgba(6,32,55,.82);border-top:5px solid var(--cyan)}.h2-roadmap-stage:nth-child(2){border-color:var(--lime)}.h2-roadmap-stage:nth-child(3){border-color:var(--amber)}.h2-roadmap-stage .month{font-family:var(--font-mono);font-size:15px;color:var(--lime)}.h2-roadmap-stage h3{font-family:var(--font-display);font-size:34px;margin:10px 0 7px}.h2-roadmap-stage strong{display:block;font-size:18px;color:#e9faff;margin-bottom:11px}.h2-roadmap-stage li{font-size:16.5px;line-height:1.4;color:#cbe1eb;margin:9px 0}.h2-roadmap-stage p{margin-top:15px;padding-top:12px;border-top:1px solid var(--line);font-size:15.5px;color:var(--amber)}.h2-months{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:12px}.h2-months div{padding:8px 10px;border-top:2px solid var(--cyan);background:rgba(7,38,64,.72)}.h2-months b{font-size:15px;color:var(--lime)}.h2-months span{display:block;font-size:13px;line-height:1.3;color:var(--muted)}
+.h2-roadmap-target{display:grid;grid-template-columns:190px 1fr;align-items:center;min-height:70px;margin-bottom:12px;padding:10px 18px;background:linear-gradient(90deg,rgba(182,255,95,.11),rgba(98,232,255,.05));border-left:6px solid var(--lime)}.h2-roadmap-target span{font-family:var(--font-mono);font-size:15px;letter-spacing:.08em;color:var(--lime)}.h2-roadmap-target b{font-family:var(--font-display);font-size:38px;color:#fff}.h2-roadmap-target+.h2-roadmap-grid .h2-roadmap-stage{height:438px}.h2-roadmap-target~.h2-months{margin-top:10px}
+.h2-strategy-detail .project-heading{margin-bottom:10px}.strategy-vision{display:grid;grid-template-columns:100px 1fr;align-items:center;min-height:62px;padding:10px 18px;border-left:6px solid var(--lime);background:linear-gradient(90deg,rgba(182,255,95,.11),rgba(98,232,255,.035))}.strategy-vision span{font-family:var(--font-mono);font-size:14px;letter-spacing:.12em;color:var(--lime)}.strategy-vision strong{font-family:var(--font-display);font-size:28px;color:#fff}.strategy-targets{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}.strategy-target{min-height:82px;padding:9px 14px;border-top:3px solid var(--cyan);background:rgba(6,32,55,.82)}.strategy-target:nth-child(2){border-color:var(--amber)}.strategy-target:nth-child(3){border-color:var(--lime)}.strategy-target:nth-child(4){border-color:#7aa7ff}.strategy-target b{font-family:var(--font-display);font-size:30px}.strategy-target span{display:block;font-size:14px;color:#dceef5}.strategy-target small{font-size:13px;color:var(--muted)}
+.strategy-core{display:grid;grid-template-columns:1.32fr .68fr;gap:10px;margin-top:10px}.strategy-statement{padding:13px 17px;border-left:5px solid var(--cyan);background:rgba(7,38,64,.76)}.strategy-statement h3{font-size:18px;margin-bottom:5px;color:var(--cyan)}.strategy-statement p{font-size:15px;line-height:1.42;color:#cce1ea}.strategy-principles{display:grid;grid-template-columns:1fr;gap:5px}.strategy-principle{display:grid;grid-template-columns:48px 1fr;align-items:center;padding:7px 11px;background:rgba(182,255,95,.055);border-left:3px solid var(--lime)}.strategy-principle b{font-size:14px;color:var(--lime)}.strategy-principle span{font-size:14px;color:#d8eaf2}
+.strategy-funnel{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px}.strategy-stage{position:relative;min-height:252px;padding:14px 16px;background:rgba(6,32,55,.82);border-top:4px solid var(--cyan)}.strategy-stage:nth-child(2){border-color:var(--amber)}.strategy-stage:nth-child(3){border-color:var(--lime)}.strategy-stage:not(:last-child):after{content:"→";position:absolute;right:-11px;top:104px;z-index:2;color:var(--lime);font-size:23px}.strategy-stage-head{display:grid;grid-template-columns:42px 1fr;gap:9px;align-items:center;margin-bottom:7px}.strategy-stage-head i{font-family:var(--font-mono);font-style:normal;font-size:13px;color:var(--muted)}.strategy-stage-head h3{font-family:var(--font-display);font-size:27px}.strategy-stage strong{display:block;color:var(--lime);font-size:14px;margin-bottom:7px}.strategy-stage ul{margin:0;padding:0}.strategy-stage li{list-style:none;font-size:14.5px;line-height:1.35;color:#cce1ea;padding:5px 0;border-top:1px solid rgba(143,176,195,.14)}.strategy-stage li:before{content:"•";color:var(--cyan);margin-right:7px}
+.h2-workstream-detail .project-heading{margin-bottom:10px}.workstream-targets{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}.workstream-target{padding:9px 14px;min-height:70px;border-top:3px solid var(--cyan);background:rgba(7,38,64,.76)}.workstream-target:nth-child(2){border-color:var(--lime)}.workstream-target:nth-child(3){border-color:var(--amber)}.workstream-target:nth-child(4){border-color:#7aa7ff}.workstream-target b{font-family:var(--font-display);font-size:30px}.workstream-target span{display:block;font-size:14px;color:var(--muted)}.workstream-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;height:620px}.workstream-card{padding:21px 23px;background:rgba(6,32,55,.84);border-top:5px solid var(--cyan);overflow:hidden}.workstream-card:nth-child(2){border-color:var(--amber)}.workstream-card:nth-child(3){border-color:var(--lime)}.workstream-card .tag{font-family:var(--font-mono);font-size:13px;letter-spacing:.1em;color:var(--cyan)}.workstream-card h3{font-family:var(--font-display);font-size:31px;margin:9px 0 11px}.workstream-goal{padding:9px 12px;margin-bottom:12px;border-left:4px solid var(--lime);background:rgba(182,255,95,.065);font-size:16px;color:#e8f9ff}.workstream-block{padding-top:10px;margin-top:8px;border-top:1px solid var(--line)}.workstream-block h4{font-size:15px;color:var(--amber);margin:0 0 6px}.workstream-block p{font-size:16px;line-height:1.45;color:#cbe1eb}.workstream-card ol{margin:0;padding-left:23px}.workstream-card li{font-size:16px;line-height:1.4;color:#d4e8f0;padding:7px 0;border-top:1px solid rgba(143,176,195,.13)}.workstream-card li::marker{font-family:var(--font-mono);color:var(--cyan)}
+.source-image-full .slide-inner{padding:0;background:#fff}.source-page-full{position:absolute;inset:0}.source-page-full img{display:block;width:1920px;height:1080px;object-fit:cover}.source-correction{position:absolute;left:1047px;top:244px;width:796px;height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(90deg,#ff7545,#ff6b3f);color:#fff;border-radius:18px;box-shadow:0 4px 10px rgba(0,0,0,.18)}.source-correction b{font-size:33px;line-height:1}.source-correction span{font-size:20px;margin-top:8px}.source-overlay-header{position:absolute;left:0;right:0;top:0;height:116px;z-index:2;pointer-events:none;background:linear-gradient(180deg,var(--navy) 0,var(--navy) 78px,rgba(6,26,46,.96) 92px,rgba(6,26,46,0) 116px)}
+.direct-png .project-heading{margin-bottom:10px}.direct-png-frame{position:relative;width:100%;height:770px;margin-top:0;display:flex;align-items:center;justify-content:center;overflow:visible}.direct-png-frame:before{content:"";position:absolute;inset:0;border:1px solid rgba(98,232,255,.14);background:linear-gradient(180deg,rgba(8,39,66,.24),rgba(8,39,66,.08));box-shadow:inset 0 0 80px rgba(98,232,255,.045);pointer-events:none}.direct-png-frame img{position:relative;display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 18px 38px rgba(0,0,0,.34))}.direct-png-frame.light-board{height:770px;padding:14px 18px;box-sizing:border-box;overflow:hidden;border-radius:18px;background:linear-gradient(180deg,#fffdfa 0%,#f5fbff 100%);border:1px solid rgba(98,232,255,.34);box-shadow:0 20px 48px rgba(0,0,0,.28),0 0 0 1px rgba(255,255,255,.08)}.direct-png-frame.light-board:before{display:none}.direct-png-frame.light-board img{width:100%;height:100%;object-fit:contain;filter:none;border-radius:8px}#h2-05b .project-heading{margin-bottom:8px}#h2-05b .project-name{font-size:54px}#h2-05b .project-conclusion{font-size:22px}#h2-05b .direct-png-frame{height:794px;overflow:hidden;border-radius:18px;background:linear-gradient(180deg,rgba(7,30,51,.92),rgba(3,18,32,.96));border:1px solid rgba(98,232,255,.26);box-shadow:0 18px 44px rgba(0,0,0,.32),inset 0 0 70px rgba(98,232,255,.045)}#h2-05b .direct-png-frame:before{display:none}#h2-05b .direct-png-frame img{width:100%;height:100%;object-fit:contain;filter:none}
+.research-skills-map .project-heading{margin-bottom:13px}.skills-map-shell{height:762px;display:grid;grid-template-rows:126px 1fr 86px;gap:14px}.skills-map-context{display:grid;grid-template-columns:1.05fr 1.2fr 1fr;gap:14px}.skills-context-card{position:relative;padding:18px 22px;background:linear-gradient(180deg,rgba(12,49,78,.84),rgba(6,31,53,.72));border:1px solid rgba(98,232,255,.2);border-top:4px solid var(--cyan);overflow:hidden}.skills-context-card:nth-child(2){border-top-color:var(--lime)}.skills-context-card:nth-child(3){border-top-color:var(--amber)}.skills-context-card:after{content:"";position:absolute;right:-38px;top:-58px;width:132px;height:132px;border-radius:50%;background:rgba(98,232,255,.08)}.skills-context-card b{display:block;font-family:var(--font-display);font-size:28px;letter-spacing:.02em;margin-bottom:7px;color:#fff}.skills-context-card p{font-size:19px;line-height:1.42;color:#cfe5ee}.skills-stage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;min-height:0}.skills-stage-card{position:relative;display:flex;flex-direction:column;padding:20px 22px 18px;background:rgba(5,28,49,.86);border:1px solid rgba(98,232,255,.22);box-shadow:inset 0 0 54px rgba(98,232,255,.035)}.skills-stage-card:nth-child(1){border-top:5px solid var(--cyan)}.skills-stage-card:nth-child(2){border-top:5px solid var(--lime)}.skills-stage-card:nth-child(3){border-top:5px solid var(--amber)}.skills-stage-card:not(:last-child):after{content:"→";position:absolute;right:-24px;top:44%;z-index:2;font-family:var(--font-display);font-size:42px;color:var(--lime);text-shadow:0 0 18px rgba(182,255,95,.45)}.skills-stage-top{display:grid;grid-template-columns:78px 1fr;gap:14px;align-items:start;margin-bottom:14px}.skills-stage-no{font-family:var(--font-display);font-size:60px;line-height:.85;color:transparent;-webkit-text-stroke:1px rgba(98,232,255,.85)}.skills-stage-card:nth-child(2) .skills-stage-no{-webkit-text-stroke-color:rgba(182,255,95,.9)}.skills-stage-card:nth-child(3) .skills-stage-no{-webkit-text-stroke-color:rgba(255,200,87,.95)}.skills-stage-top span{display:block;font-family:var(--font-mono);font-size:13px;letter-spacing:.13em;color:var(--muted);margin-bottom:4px}.skills-stage-top h3{font-size:30px;line-height:1.12}.skills-anchor{padding:10px 12px;margin-bottom:13px;border-left:5px solid var(--cyan);background:rgba(98,232,255,.07);font-size:19px;line-height:1.35;color:#eafaff}.skills-stage-card:nth-child(2) .skills-anchor{border-left-color:var(--lime);background:rgba(182,255,95,.07)}.skills-stage-card:nth-child(3) .skills-anchor{border-left-color:var(--amber);background:rgba(255,200,87,.08)}.skills-stage-desc{min-height:82px;font-size:18px;line-height:1.46;color:#cce1ea;margin-bottom:13px}.skills-value-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:auto}.skills-value{min-height:94px;padding:12px 13px;background:rgba(8,40,67,.76);border:1px solid rgba(143,176,195,.16)}.skills-value b{display:inline-block;margin-bottom:8px;padding:3px 8px;border-radius:999px;background:rgba(98,232,255,.12);color:var(--cyan);font-family:var(--font-mono);font-size:13px;letter-spacing:.08em}.skills-value:nth-child(2) b{background:rgba(182,255,95,.12);color:var(--lime)}.skills-value span{display:block;font-size:18px;line-height:1.35;color:#fff}.skills-path{display:grid;grid-template-columns:repeat(4,1fr);align-items:stretch;border:1px solid rgba(98,232,255,.22);background:linear-gradient(90deg,rgba(98,232,255,.12),rgba(182,255,95,.06),rgba(255,200,87,.09))}.skills-path div{position:relative;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:#fff}.skills-path div:not(:last-child):after{content:"";position:absolute;right:-12px;width:24px;height:24px;border-top:2px solid var(--lime);border-right:2px solid var(--lime);transform:rotate(45deg);background:#07223a}
+.h2-plan-full .project-heading{margin-bottom:10px}.h2-plan-full .h2-metrics{margin-bottom:10px}.plan-full-grid{display:grid;grid-template-columns:repeat(var(--cols,4),1fr);gap:14px;height:595px}.plan-full-grid.has-overview{height:510px}.plan-full-card{height:100%;padding:20px 22px;background:rgba(6,32,55,.84);border-top:5px solid var(--cyan);overflow:hidden}.plan-full-card:nth-child(2n){border-color:var(--lime)}.plan-full-card:nth-child(3n){border-color:var(--amber)}.plan-full-card:nth-child(4n){border-color:#7aa7ff}.plan-full-card h3{font-family:var(--font-display);font-size:28px;margin-bottom:8px}.plan-full-card small{display:block;min-height:40px;color:var(--lime);font-size:15px;line-height:1.35;margin-bottom:10px}.plan-full-card ul{margin:0;padding:0}.plan-full-card li{list-style:none;font-size:17px;line-height:1.43;color:#d3e7ef;padding:9px 0;border-top:1px solid rgba(143,176,195,.15)}.plan-full-card li:before{content:"•";color:var(--cyan);margin-right:8px}
+.seeding-strategy .project-heading{margin-bottom:8px}.seeding-targets{display:grid;grid-template-columns:1.2fr repeat(4,1fr);gap:10px;margin-bottom:10px}.seeding-qual,.seeding-target{min-width:0;padding:10px 13px;background:rgba(6,32,55,.82);border-top:3px solid var(--cyan)}.seeding-qual{border-color:var(--lime);font-size:15px;line-height:1.35;color:#d8edf5}.seeding-qual b{display:block;color:var(--lime);font-size:13px;letter-spacing:.06em;margin-bottom:3px}.seeding-target b{display:block;font-family:var(--font-display);font-size:28px;line-height:1;color:#fff}.seeding-target span{display:block;margin-top:4px;font-size:14px;color:#d7edf6}.seeding-target small{display:block;margin-top:2px;font-size:12px;color:var(--muted)}.seeding-problems{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px}.seeding-problem{padding:8px 10px;background:rgba(255,200,87,.065);border-left:3px solid var(--amber);font-size:12.8px;line-height:1.3;color:#dbeaf0}.seeding-problem b{display:block;margin-bottom:2px;color:var(--amber);font-size:12.5px}.seeding-table{height:570px;border:1px solid rgba(98,232,255,.22);background:rgba(6,32,55,.72);display:grid;grid-template-rows:42px repeat(4,1fr);overflow:hidden}.seeding-row{display:grid;grid-template-columns:.8fr .72fr 2.15fr 1.18fr 1.35fr;min-height:0;border-top:1px solid rgba(143,176,195,.16)}.seeding-row:first-child{border-top:0}.seeding-head{background:rgba(98,232,255,.08);border-top:0}.seeding-cell{min-width:0;min-height:0;padding:9px 10px;border-left:1px solid rgba(143,176,195,.16);overflow:hidden}.seeding-cell:first-child{border-left:0}.seeding-head .seeding-cell{display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--cyan);font-weight:800;letter-spacing:.04em}.seeding-domain b{display:block;font-size:17px;line-height:1.15;color:#fff}.seeding-domain small{display:block;margin-top:4px;font-size:12px;color:var(--muted)}.seeding-audience{font-size:15px;color:var(--lime);font-weight:800}.seeding-cell p{margin:0 0 6px;font-size:12.9px;line-height:1.31;color:#d5e8f0}.seeding-cell ul{margin:0;padding:0}.seeding-cell li{list-style:none;position:relative;padding-left:10px;font-size:12.6px;line-height:1.28;color:#cce1ea}.seeding-cell li:before{content:"";position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:var(--lime)}
+.execution-strategy .project-heading{margin-bottom:8px}.execution-top{display:grid;grid-template-columns:1.04fr .96fr;gap:12px;margin-bottom:10px}.execution-metrics{display:grid;grid-template-columns:repeat(var(--metric-cols,4),1fr);gap:10px}.execution-metric{min-width:0;padding:10px 12px;border-top:3px solid var(--cyan);background:rgba(6,32,55,.82)}.execution-metric:nth-child(2n){border-color:var(--lime)}.execution-metric:nth-child(3n){border-color:var(--amber)}.execution-metric b{display:block;font-family:var(--font-display);font-size:29px;line-height:1.02;color:#fff}.execution-metric span{display:block;margin-top:4px;font-size:14px;color:#d7edf6}.execution-metric small{display:block;margin-top:2px;font-size:12px;line-height:1.25;color:var(--muted)}.execution-problems{display:grid;grid-template-columns:repeat(var(--problem-cols,3),1fr);gap:8px}.execution-problem{padding:9px 11px;background:rgba(255,200,87,.065);border-left:3px solid var(--amber);font-size:13.4px;line-height:1.34;color:#dbeaf0}.execution-problem b{display:block;margin-bottom:3px;color:var(--amber);font-size:13px;letter-spacing:.04em}.execution-sections{height:632px;display:grid;grid-template-columns:repeat(var(--cols,3),1fr);gap:12px}.execution-section{min-width:0;min-height:0;display:grid;grid-template-rows:auto auto 1fr auto;gap:8px;padding:14px 14px 12px;background:rgba(6,32,55,.86);border:1px solid rgba(98,232,255,.2);border-top:5px solid var(--cyan);overflow:hidden}.execution-section:nth-child(2){border-top-color:var(--lime)}.execution-section:nth-child(3){border-top-color:var(--amber)}.execution-section-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}.execution-section-head h3{font-family:var(--font-display);font-size:27px;line-height:1.02}.execution-section-head span{font-family:var(--font-mono);font-size:12px;color:var(--muted);letter-spacing:.08em;white-space:nowrap}.execution-strategy-line{padding:8px 10px;background:rgba(98,232,255,.055);border-left:4px solid var(--cyan);font-size:14px;line-height:1.32;color:#d5edf5}.execution-section:nth-child(2) .execution-strategy-line{background:rgba(182,255,95,.055);border-color:var(--lime)}.execution-section:nth-child(3) .execution-strategy-line{background:rgba(255,200,87,.06);border-color:var(--amber)}.execution-projects{min-height:0;display:grid;gap:6px;align-content:start;overflow:hidden}.execution-project{padding:7px 9px;background:rgba(3,22,39,.58);border:1px solid rgba(143,176,195,.13)}.execution-project strong{display:block;margin-bottom:3px;font-size:11px;letter-spacing:.04em;color:#8fb0c3;font-weight:700}.execution-project h4{font-size:16.5px;line-height:1.12;color:#fff;margin-bottom:3px}.execution-project p{margin:0;font-size:12.8px;line-height:1.28;color:#cde2ea}.execution-target{padding:8px 10px;background:rgba(182,255,95,.07);border:1px solid rgba(182,255,95,.22);font-size:13.2px;line-height:1.3;color:#e9fbd8}.execution-target b{color:var(--lime);margin-right:6px}
+.strategy-map .project-heading{margin-bottom:10px}.strategy-map-wrap{height:730px;display:grid;grid-template-columns:118px 1fr;gap:12px}.strategy-map-rail,.strategy-map-main{display:grid;grid-template-rows:54px 76px 66px 410px 64px;gap:10px}.strategy-map-rail div{display:flex;align-items:center;justify-content:center;text-align:center;background:#062944;border:2px solid rgba(98,232,255,.36);box-shadow:inset 0 0 0 1px rgba(98,232,255,.16);border-radius:8px;font-size:22px;font-weight:800;letter-spacing:.05em;color:#eafaff}.strategy-map-rail .tall{writing-mode:vertical-rl;letter-spacing:.12em}.strategy-map-main>section{min-width:0;min-height:0}.strategy-map-vision{display:flex;align-items:center;justify-content:center;border:2px solid rgba(98,232,255,.34);border-radius:8px;background:rgba(5,38,63,.9);font-size:29px;font-weight:850;color:#6f98ff;letter-spacing:.02em}.strategy-map-targets{display:grid;grid-template-columns:repeat(var(--targets,4),1fr);gap:12px}.strategy-map-target{display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px solid rgba(98,232,255,.34);border-radius:8px;background:rgba(5,38,63,.92)}.strategy-map-target b{font-family:var(--font-display);font-size:34px;line-height:1;color:#fff}.strategy-map-target span{font-size:18px;color:#d7edf6;margin-top:3px}.strategy-map-target small{font-size:14px;color:var(--muted);margin-top:3px}.strategy-map-statement{display:flex;align-items:center;border:2px solid rgba(98,232,255,.34);border-radius:8px;background:rgba(5,38,63,.88);padding:0 24px;font-size:20px;line-height:1.36;color:#d9eef7}.strategy-map-directions{display:grid;grid-template-columns:repeat(var(--dirs,3),1fr);gap:12px;min-height:0}.strategy-map-direction{display:grid;grid-template-rows:58px minmax(0,1fr);gap:8px;min-width:0;min-height:0}.strategy-map-direction-head{display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px solid rgba(98,232,255,.34);border-radius:8px;background:rgba(5,38,63,.92)}.strategy-map-direction-head h3{font-size:22px;line-height:1.1;text-align:center}.strategy-map-direction-head span{font-size:13.5px;color:var(--muted);margin-top:2px}.strategy-map-blocks{display:grid;grid-template-rows:repeat(3,minmax(0,1fr));gap:8px;min-height:0}.strategy-map-block{min-height:0;padding:7px 10px;border:2px solid rgba(98,232,255,.28);border-radius:8px;background:rgba(5,32,55,.9);overflow:hidden}.strategy-map-block:nth-child(2){border-color:rgba(182,255,95,.34)}.strategy-map-block:nth-child(3){border-color:rgba(255,200,87,.34)}.strategy-map-block h4{font-size:17px;text-align:center;margin-bottom:3px;color:#fff}.strategy-map-block ul{margin:0;padding:0}.strategy-map-block li{list-style:none;text-align:center;font-size:12.8px;line-height:1.18;color:#cce1ea;padding:1px 0}.strategy-map-foundation{display:grid;grid-template-columns:repeat(var(--foundations,4),1fr);gap:12px}.strategy-map-foundation div{display:flex;align-items:center;justify-content:center;text-align:center;border:2px dashed rgba(98,232,255,.36);border-radius:8px;background:rgba(5,38,63,.68);font-size:20px;font-weight:800;color:#7797ff}.strategy-map-foundation div:nth-child(2n){color:#ff9e4d}
+.project-strategy-map .project-heading{margin-bottom:8px}.project-map-wrap{height:730px;display:grid;grid-template-columns:118px 1fr;gap:10px}.project-map-rail,.project-map-main{display:grid;grid-template-rows:52px 88px 58px 56px 386px 50px;gap:8px}.project-map-rail div{display:flex;align-items:center;justify-content:center;text-align:center;background:#062944;border:2px solid rgba(98,232,255,.36);box-shadow:inset 0 0 0 1px rgba(98,232,255,.16);border-radius:8px;font-size:21px;font-weight:850;letter-spacing:.05em;color:#eafaff}.project-map-rail .tall{writing-mode:vertical-rl;letter-spacing:.12em}.project-map-main>section{min-width:0;min-height:0}.project-map-vision{display:flex;align-items:center;justify-content:center;border:2px solid rgba(98,232,255,.34);border-radius:8px;background:rgba(5,38,63,.9);font-size:28px;font-weight:850;color:#6f98ff}.project-map-targets{display:grid;grid-template-columns:1fr 1fr;gap:12px}.project-map-target{display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px solid rgba(98,232,255,.34);border-radius:8px;background:rgba(5,38,63,.92)}.project-map-target:nth-child(2){border-color:rgba(255,137,85,.45)}.project-map-target b{font-family:var(--font-display);font-size:32px;line-height:1;color:#fff}.project-map-target span{font-size:18px;color:#d7edf6;margin-top:3px}.project-map-target small{font-size:13.5px;color:var(--muted);margin-top:4px}.project-map-statement{display:flex;align-items:center;border:2px solid rgba(98,232,255,.34);border-radius:8px;background:rgba(5,38,63,.88);padding:0 24px;font-size:18px;line-height:1.28;color:#d9eef7}.project-map-directions,.project-map-methods{display:grid;grid-template-columns:.78fr .82fr 1fr .92fr 1.18fr 1.24fr 1.14fr;gap:8px}.project-map-dir{display:flex;align-items:center;justify-content:center;text-align:center;border:2px solid rgba(98,232,255,.34);border-radius:8px;background:rgba(5,38,63,.92);padding:0 8px}.project-map-dir h3{font-size:20px;line-height:1.18}.project-map-dir span{display:block;margin-top:2px;font-size:12.5px;color:var(--muted)}.project-map-dir:nth-child(n+5){border-color:rgba(255,137,85,.42)}.project-method-col{display:grid;grid-auto-rows:minmax(0,1fr);gap:8px;min-width:0;min-height:0}.project-method-block{min-height:0;display:flex;flex-direction:column;justify-content:center;padding:7px 8px;border:2px solid rgba(98,232,255,.28);border-radius:8px;background:rgba(5,32,55,.9);overflow:hidden}.project-method-col:nth-child(n+5) .project-method-block{border-color:rgba(255,137,85,.36)}.project-method-block h4{font-size:15.5px;line-height:1.13;text-align:center;color:#fff}.project-method-block ul{margin:3px 0 0;padding:0}.project-method-block li{list-style:none;text-align:center;font-size:11.2px;line-height:1.14;color:#cce1ea;padding:1px 0}.project-method-block strong{display:block;text-align:center;font-size:12px;color:var(--amber);font-weight:700}.project-map-foundation{display:grid;grid-template-columns:1.35fr .72fr .92fr .7fr 1.15fr;gap:10px}.project-map-foundation div{display:flex;align-items:center;justify-content:center;text-align:center;border:2px dashed rgba(98,232,255,.36);border-radius:8px;background:rgba(5,38,63,.68);font-size:17px;font-weight:850;color:#7797ff}.project-map-foundation div:nth-child(n+3){color:#ff9e4d}
+/* === TIMELINE / CLOSING === */
+.timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:60px}.month-card{min-height:380px;padding:22px 18px;background:rgba(7,38,64,.78);border-top:3px solid var(--cyan)}.month-card b{font-family:var(--font-display);font-size:38px;color:var(--lime)}.month-card p{font-size:18px;line-height:1.55;margin-top:22px;color:#cce1ea}
+.closing .slide-inner{padding-top:150px}.closing-points{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.closing-point{min-height:420px;border-top:4px solid var(--cyan);padding:28px;background:rgba(8,41,69,.72)}.closing-point i{font-family:var(--font-display);font-size:60px;color:var(--lime);font-style:normal}.closing-point h3{font-size:30px;margin:12px 0}.closing-point p{font-size:22px;color:#bfd7e2;line-height:1.55}.closing-final{font-family:var(--font-display);font-size:45px;color:var(--lime);margin-top:36px}
+/* === DETAIL SLIDES === */
+.detail-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}.detail-metric{padding:18px;border-top:2px solid var(--cyan);background:rgba(7,38,64,.72)}.detail-metric b{font-family:var(--font-display);font-size:44px;color:var(--lime)}.detail-metric span{display:block;color:var(--muted);font-size:17px}
+.bullet-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 42px}.bullet-grid li{list-style:none;font-size:24px;line-height:1.5;padding:22px 0;border-top:1px solid var(--line)}.bullet-grid li:before{content:"↗";color:var(--cyan);margin-right:13px}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.gallery-grid figure{margin:0;height:465px;background:#eaf4fa;border:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden}.gallery-grid img{width:100%;height:400px;object-fit:contain}.gallery-grid figcaption{color:#0b2740;font-size:17px;padding:12px;text-align:center}
+.gallery-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:22px}.gallery-stats div{border-top:2px solid var(--lime);padding-top:10px}.gallery-stats b{font-family:var(--font-display);font-size:38px}.gallery-stats span{display:block;color:var(--muted)}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:30px}.check{min-height:430px;padding:34px;border-top:4px solid var(--amber);background:rgba(255,200,87,.065)}.check h3{font-size:32px;color:var(--amber)}.check p{font-size:23px;line-height:1.55;margin-top:24px}.check strong{display:block;color:var(--lime);margin-top:28px;font-size:20px}
+/* === OUTSIDE-STAGE CONTROLS === */
+.deck-controls{display:flex;align-items:center;gap:10px;background:rgba(3,14,26,.9);border:1px solid rgba(98,232,255,.25);border-radius:999px;padding:8px 12px;color:#fff;backdrop-filter:blur(12px)}
+.deck-controls button{border:0;background:transparent;color:#b9d5e1;padding:8px 12px;border-radius:999px;cursor:pointer}.deck-controls button:hover,.deck-controls button.active{background:rgba(98,232,255,.14);color:var(--cyan)}
+.progress{width:120px;height:4px;background:#19354a;border-radius:4px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--lime))}
+.counter{font-family:var(--font-mono);font-size:12px;color:#9db7c5;min-width:72px;text-align:center}.deck-controls button:disabled{opacity:.35;cursor:default}
+.edit-hotzone{position:fixed;top:0;left:0;width:80px;height:80px;z-index:10000}.edit-toggle{position:fixed;left:18px;top:18px;z-index:10001;opacity:0;pointer-events:none;background:#0b263d;color:#fff;border:1px solid var(--line);border-radius:50%;width:44px;height:44px;transition:.25s}.edit-toggle.show,.edit-toggle.active{opacity:1;pointer-events:auto}.edit-toolbar{position:fixed;left:72px;top:18px;z-index:10001;display:none;gap:8px}.edit-toolbar.show{display:flex}.edit-toolbar button{background:#0b263d;color:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 14px}
+.editing [data-editable]{outline:2px dashed rgba(182,255,95,.55);outline-offset:4px}
+@keyframes orbitPulse{50%{transform:scale(1.018);opacity:.82}}
+@media (prefers-reduced-motion:reduce){.orbit{animation:none}}
+</style>
+</head>
+<body>
+<div class="deck-viewport"><main class="deck-stage" id="deckStage"></main></div>
+<nav class="deck-controls" aria-label="演示控制">
+<button id="prevBtn" aria-label="上一页">←</button><div class="progress"><i id="progressBar"></i></div><span class="counter" id="counter"></span><button id="nextBtn" aria-label="下一页">→</button><button id="detailBtn">详情 D</button>
+</nav>
+<div class="edit-hotzone" title="编辑模式"></div><button class="edit-toggle" id="editToggle" title="编辑模式 E">✎</button><div class="edit-toolbar" id="editToolbar"><button id="saveEdits">保存本地</button><button id="exportHtml">导出 HTML</button></div>
+<script>
+/* === SOURCE CONTENT === */
+var slidesData=[{"id":"s01","mode":"core","section":"OPEN","layout":"cover","eyebrow":"B2C-10 / FUTURES GROWTH SYSTEM","title":"期货业务 2026 年中|复盘与下半年计划","subtitle":"从增长结果回到增长机制，定义下半年的产品、用户与 AI 战役。","metrics":[["100 万","年度日活目标"],["7 亿","年度收入目标"]]},{"id":"s02","mode":"core","section":"上半年复盘","layout":"kpi","title":"上半年规模、收入与开户同步增长，日活留存仍是下半年目标达成的关键变量","metrics":[{"label":"期货日活","value":"75.10 万","goal":"年目标 100 万","ratio":19.96,"note":"目标完成度 19.96%（增量口径）"},{"label":"期货收入","value":"3.55 亿","goal":"年目标 7 亿","ratio":50.7,"note":"目标完成度 50.7%"},{"label":"总开户","value":"16.48 万","goal":"原年目标 21 万","ratio":78,"note":"原口径完成度 78%｜H2 调整为 30.5 万"},{"label":"实盘登录日活","value":"7.11 万","goal":"年目标 8 万","ratio":88.91,"note":"目标完成度 88.91%"}],"footer":"管理判断：收入与开户为累计指标；期货日活完成率按原素材的前值增量口径为 19.96%，行情退潮后的回落进一步说明下半年要把留存作为核心抓手。","details":["期货日活 75.10 万，年度目标 100 万，原素材完成率 19.96%，采用前值增量口径。","期货收入 3.55 亿，年度目标 7 亿，原素材完成率 50.7%。","总开户 16.48 万，按原年度目标 21 万计算完成率为 78%；下半年年度目标已调整为 30.5 万。","实盘登录日活 7.11 万，年度目标 8 万，原素材完成率 88.91%。","完成率统一沿用原素材口径，不按当前值直接除以年度目标。"]},{"id":"s04","mode":"core","section":"上半年复盘","layout":"growth-analysis","title":"日活与月活增长均由留存主导，行情高点放大增量，也暴露高基数下的留存压力","summary":[["APP 日活","69.16 万"],["月活","184.0 万｜环比 +41%"]],"drivers":[["留存增长","+19.57 万","+43%"],["拉新增长","+2.06 万","+63%"],["回流增长","+0.70 万","+34%"]],"dauMonths":["25.06","07","08","09","10","11","12","26.01","02","03","04","05","06"],"appDau":[46.82,47.25,47.85,48.82,54.39,51.81,55.97,65.11,74.58,83.36,70.95,70.52,69.16],"realDau":[18.81,20.07,20.46,20.35,20.84,20.77,21.95,24.04,24.44,27.46,25.39,25.29,25.19],"mauPeriods":["23H1","23H2","24H1","24H2","25H1","25H2","26H1"],"mauRetained":[38.98,46.98,53.7,64.99,70.73,81.6,117.7],"mauRecall":[9.52,10.42,11.37,13.16,14.97,18.1,21.9],"mauNew":[14.89,15.49,18.26,23.24,23.6,30.7,44.4],"mauTotal":[63.39,72.89,83.33,101.39,109.32,130.4,184],"causes":[["行情驱动","3 月成交量 11.86 亿手创历史新高，有效客户突破 300 万，拉新与留存同步上行。"],["高基数回落","5—6 月高基数效应显现，核心交易用户稳定，流失集中于非实盘观望用户。"],["留存压力","次月留存率 83.34%，同比下降 1.12pp；留存月活增量月均 4.4 万。"]],"details":["APP 日活 69.16 万，由留存增长 19.57 万、拉新增长 2.06 万、回流增长 0.70 万构成。","2026 年上半年月活 184.0 万，环比 2025 年下半年增长 41%，同比增长 75 万。","月均拉新 44.4 万，环比月均增长 13.7 万；月均召回 21.9 万，环比月均增长 3.8 万。","上月留存用户次月留存率 83.34%，同比下降 1.12pp。","2026 年上半年留存月活增量月均 4.4 万，高于 2025 年下半年的 2.0 万。"]},{"id":"s05","mode":"core","section":"市场分析 / 竞品动态","layout":"competitor-analysis","title":"期货通 APP 在一季度完成反超，PC 领先同步扩大","summary":[["APP 3 月领先","48.12 万","223.36 vs 175.24"],["APP Q1 增量","+65.74 万","竞品 +17.62 万"],["PC 3 月领先","3.47 万","27.43 vs 23.96"],["PC Q1 增量","+4.48 万","约为 WH6 的 1.65 倍"]],"months":["4月","5月","6月","7月","8月","9月","10月","11月","12月","26-1月","2月","3月"],"appFutures":[128.31,120.44,122.53,131.53,130.97,134.77,137.28,136.07,157.62,191.36,178.84,223.36],"appCompetitor":[162.21,151.78,148.18,151.54,148.59,149.74,153,148.07,158.01,166.99,158.01,175.24],"pcFutures":[20.49,19.57,19.81,21.1,20.92,21.08,20.72,21.35,22.95,24.06,21.82,27.43],"pcCompetitor":[19.23,18.67,19.02,20.19,20.31,20.59,19.93,20,21.23,22.04,19.97,23.96],"competitorMoves":[["多周期与 K 线重构","支持最高 6 图、十字光标联动、小报价区滑屏切合约；图表高度自定义并独立记忆，强化专业盯盘效率。"],["基本面与复盘数据加码","新增 AI 小文财报/估值、估值数据表、历史资金流向与现货数据；账户报告支持分享。"],["期权筛选与交易体验优化","升级 T 型报价和下单链路，补充行权提示、预估保证金、IAT 交易，并修复多市场盈亏计算。"]],"details":["2026 年 1 月期货通 APP 月活首次超过随身行；截至 3 月为 223.36 万，领先 48.12 万。","原稿口径：文华随身行 Q1 月活增长 17.62 万，期货通 APP Q1 增长 65.74 万。","截至 3 月，期货通 PC 月活 27.43 万，WH6 通用版 23.96 万；期货通 PC Q1 增长 4.48 万，约为 WH6 的 1.65 倍。","PC 竞品数据为去重独立 Mac 用户，仅对比 WH6 通用版，不含 WH6 OEM、WH7 等版本。","管理含义：规模领先已形成，但竞品正在专业盯盘、复盘分析和多品种交易稳定性上持续加码。"]},{"id":"s06","mode":"core","section":"上半年重点工作","layout":"work-review","title":"行情交易、PC 与期权重点工作和成果","streams":[{"name":"行情交易特色产品","subtitle":"产品精细化 + 自定义","metrics":[["57.10 万","行情交易日活","H1 +16%"],["25.19 万","实盘交易日活","H1 +14%"],["34.77%","鸿蒙系统市占率","H1 +15%"]],"strategy":"围绕用户真实需求，结合 AI 场景化提升用户体验，推动多设备联动，解决用户不知道、不会用、不好用的核心问题。","results":["鸿蒙完成 95% 功能覆盖，上线 176 个功能点，产品力基本赶上安卓。","交易性能优化方案已定但进度不及预期；优化 6 处交易高风险缺陷，APP 容器化部署上线。","CME 行情源切换上线。"],"projects":[["鸿蒙核心交易功能（条件单/止盈止损/期权交易等）","已上线","李浩然"],["鸿蒙核心行情功能（指标/画线/预警等）","已上线","李浩然"],["自编策略 & 策略广场","已上线","施凌冲"],["OPC 黑白版跟随系统切换","已上线","裴正阳"],["OPC AI 策略助手","已上线","施凌冲"],["行情回放（基础）","排期中","裴正阳"]]},{"name":"PC 终端","subtitle":"专业化死磕","metrics":[["10.23 万","PC 日活","H1 +15%"],["2.77 万","PC 交易日活","H1 +14%"],["24.79%","专业功能日活占比","H1 +0.4%"]],"strategy":"交易功能对标无限易，通过深耕专业化行情交易功能形成核心竞争力，在高端用户圈层树立口碑并向下传导，逐步占领市场。","results":["期货通 Mac 版首个正式版本上线同花顺官网。"],"projects":[["交易持仓合并及其他优化","待测试","王道跑"],["Mac 版本交易组件","开发中","王道跑"],["Mac 版本客户端","开发中","杨博文"],["国内期货期权半日分时图","开发中","杨博文"]]},{"name":"期权","subtitle":"同花顺期权业务整合","metrics":[["25.95%","期权交易占比","H1 +18%"],["495 万","金融期权累计收入","同比 +50%"]],"strategy":"股票期权支持头部期商和券商，侧重期权运营（期货通 + 手炒），助力用户通过金融期权实现多元化资产配置。","results":["股票期权交易新接入 3 家期货公司。","股票期权支持模拟交易和条件单。","OPC 期权波动率 3D 曲面和解读上线。"],"projects":[["模拟 ETF 期权交易—手炒（安卓）","已上线","胡尚民"],["隐含波动率日内走势和历史行情","已上线","王道跑"],["股票期权条件单（实盘）—期货通 iOS","已上线","胡尚民"],["OPC 期权波动率 3D 曲面和解读","已上线","胡尚民"],["期权行情支持自定义参数与实时计算","开发中","王道跑"]]}],"projectTitle":"行情交易 / PC / 期权","conclusion":"核心指标均实现增长，鸿蒙、Mac 与期权专业能力持续补齐。"},{"id":"s06b","mode":"core","section":"上半年重点工作","layout":"harmony-review","title":"鸿蒙功能覆盖提升至 96%，二季度增量趋势逆转，但日活仍落后文华 2.16 万","metrics":[["4.6 万","期货通鸿蒙日活","上半年结果"],["11 万","期货通鸿蒙月活","市占率 37%"],["6.8 万","随身行鸿蒙日活","月活 13.3 万"],["2.16 万","与文华日活差距","月活市占率差 8pp"],["96%","期货通功能覆盖率","文华 98%"]],"chart1":{"title":"鸿蒙日活趋势（万）","aria":"期货通与文华鸿蒙日活趋势","labels":["1月","2月","3月","4月","5月","6月"],"min":0,"max":7.5,"ticks":[0,2,4,6],"series":[{"name":"期货通","color":"#62e8ff","values":[2.91,3.04,4.24,4.14,4.32,4.64],"endLabel":"4.64"},{"name":"文华","color":"#ffc857","values":[4.2,5,6.3,6.18,6.66,6.8],"endLabel":"6.80"}]},"chart2":{"title":"功能覆盖率趋势","aria":"期货通与文华鸿蒙功能覆盖率","labels":["1月","2月","3月","4月","5月","6月"],"min":0.5,"max":1.01,"ticks":[0.5,0.75,1],"tickSuffix":"%","series":[{"name":"期货通","color":"#b6ff5f","values":[0.566,0.571,0.698,0.835,0.951,0.962],"endLabel":"96%"},{"name":"文华","color":"#8fb0c3","values":[0.98,0.98,0.98,0.98,0.98,0.98],"endLabel":"98%"}]},"notes":[["一季度：功能差距制约留存",["鸿蒙用户增长 63%，从 3200 万增至 5200 万。","期货通覆盖率约 57%—70%，显著低于文华 98%；1—3 月日活增量为 1.31、0.13、1.20 万。"]],["二季度：覆盖追平后增量逆转",["鸿蒙用户增长 25%，从 5200 万增至 6500 万。","期货通覆盖率从 70% 升至 96%；4—6 月增量为 -0.10、+0.18、+0.32 万，6 月超过文华 +0.14 万。"]],["三季度计划","端外付费拉新提升 2 倍，端内手炒拉新提升 2.5 倍；目标是期货通鸿蒙日活超过文华、市占率超过 50%。"]],"projectTitle":"鸿蒙","conclusion":"功能覆盖提升至 96%，二季度增量趋势逆转，但日活仍落后文华 2.16 万。"},{"id":"s06c","mode":"core","section":"上半年重点工作","layout":"project-review","title":"手炒期货流量与转化随行情冲高，5 月后回落但日活仍稳定在 200 万以上","charts":[{"title":"手炒期货日活（人）","kind":"line","aria":"手炒期货日活趋势","labels":["12月","1月","2月","3月","4月","5月","6月"],"min":1000000,"max":3300000,"ticks":[1000000,2000000,3000000],"series":[{"name":"手炒期货日活","color":"#62e8ff","values":[1164700,1739000,2713100,3110000,2497200,2080000,2100000],"endLabel":"210万"}]},{"title":"下载与开户（人）","kind":"bar","aria":"手炒期货下载和开户趋势","labels":["12月","1月","2月","3月","4月","5月","6月"],"barMax":75000,"ticks":[0,25000,50000,75000],"tickFormat":{"25000":"2.5w","50000":"5w","75000":"7.5w"},"bars":[{"name":"期货下载","color":"#2e8dff","values":[26400,61000,37500,69600,41600,23000,21300]},{"name":"期货开户","color":"#ffc857","values":[6000,6650,4600,9850,6800,3150,3200]}]}],"review":"上半年受美伊冲突带动，热点专题、期股关联、期权、快讯和夜间运营共同推高流量与转化，3 月日活超过 300 万、月开户 9850。5 月后行情缓和，流量和转化回落，但日活仍在 200 万以上。产品资源主要投入鸿蒙适配，开户和期权交易因技术难度待 Q3 完成；期股融合已上线 4 个产业链组件，但运营力度不足。","strategy":"期货业务赋能手炒，通过期股深度融合服务集群用户，挖掘潜在期货用户并提升收入。","groups":[["鸿蒙与大屏适配","目标：16 万日活，占手炒鸿蒙日活 13%",["期货期权行情适配：完成","私域运营场景适配：完成","鸿蒙期货开户：开发中","交易 Tab 适配：完成 70%，期权待排期","Mac 大屏适配：完成"]],["期股融合","目标：产业链组件日活 1500",["商品现货、期货与股票数据关联：完成","商品选股前端：需求设计","现货股票数据基建：完成","钼、钨及光伏组件 F10：上线","商品现货 F10 三级行业：上线","涤纶工业丝、钴、六氟磷酸锂 F10：开发中"]],["期股联动内容运营","目标：20—30 篇/日，PV 3—4 万/日",["AI 生成期股联动资讯、板块异动资讯：完成","AI 生成现货股票联动资讯：进行中"]],["手炒期货场景运营","黄金专区日活 25 万，开户 18 个/日",["ETF 黄金专区合作：上线","商品价格趋势和榜单插件：上线","手炒搜索增加期货热榜：上线，曝光日活 1 万，点击率 2%"]],["手炒期货资讯运营","资讯阅读量 32 万增至 46 万（+43%）",["分时精细化运营：扩大板块、基金、个股覆盖，新增期权与期股联动文章","热点专题运营：90 个专题，开户 9116","PUSH 分层精推：阅读量 15 万增至 18.6 万","夜间运营：夜间阅读占比 40% 升至 50%"]]],"projectTitle":"手炒期货","conclusion":"流量与转化随行情冲高，5 月后回落但日活仍稳定在 200 万以上。"},{"id":"s06d","mode":"core","section":"上半年重点工作","layout":"project-review","title":"内容流量一季度创高后回落，AIGC 日活增长 41.5%，专业深度仍需补齐","charts":[{"title":"内容与 AIGC 趋势（万）","kind":"line","aria":"期货内容日活AIGC日活和内容PV趋势","labels":["12月","1月","2月","3月","4月","5月","6月"],"min":0,"max":180,"ticks":[0,50,100,150],"series":[{"name":"内容日活","color":"#62e8ff","values":[32.77,39.06,45.56,53.21,44.16,38.39,37.9],"endLabel":"37.9"},{"name":"AIGC 日活","color":"#b6ff5f","values":[7.8,9.33,8.6,14.31,10.83,10.24,11.04],"endLabel":"11.04"},{"name":"内容 PV","color":"#ffc857","values":[96.86,116.7,122.89,175,126.13,105.92,114],"endLabel":"114"}]},{"title":"数据产品日活（万）","kind":"line","aria":"期货通数据产品日活趋势","labels":["12月","1月","2月","3月","4月","5月","6月"],"min":10,"max":20,"ticks":[10,15,20],"series":[{"name":"数据产品日活","color":"#2e8dff","values":[13.52,15.35,14.32,18.21,15.25,13.8,14.38],"endLabel":"14.38"}]}],"review":"内容日活从年初 32.77 万增至 37.9 万（+15.6%），阅读量增长 17.8%，内容转化开户 7806 人、完成率 65%。一季度抓住贵金属、美伊等行情并拓展夜盘，数据创高；二季度随事件与行情平淡回落。AIGC 日活从 7.8 万增至 11 万（+41.5%），但专业深度内容和数据产品仍不足。","strategy":"借助 KYC 与 AI，结合行情交易功能，做好期货专业内容的生产、消费和传播，对内提升用户生命周期，对外提升市场影响力。","groups":[["AIGC 产品功能","AIGC 日活 11 万（+41%）",["AI 资讯深度解读助手：已上线","AI 全球异动分析：开发中，7 月上线"]],["AIGC 文章生产","深度、期权、期股与夜间内容矩阵",["期货深度研究：每周 2—3 篇，PV 1 万/篇","期权原创：异动、榜单等文章，PV 5.5 万","期股关联：20—30 篇/日，PV 4 万/日","夜间运营文章：已上线","原创内容质检：已上线"]],["内容消费运营","快讯阅读量 17 万，峰值 34 万",["快讯内容源从 190 篇扩至 345 篇，机器人监控发送完成","分时低质内容监控过滤完成，AI 置顶与优质内容分发","分时月均 UV 6.2 万、PV 25 万，优质内容占比 37.4%"]],["热点、期权与夜盘","扩大高价值内容场景",["专题/热榜日均 PV 3 万，开户 5882","期权资讯新增运营，文章 PV 5.5 万","夜盘内容日活 23.2 万，占比从 40% 升至 60.9%"]],["数据产品","插件曝光日活 10.1 万，点击 UV 5854",["期权主力持仓分析：需求设计完成，7 月上线","主力涨跌、资金流向、现货价格、期权走势等 9 个插件上线"]]],"projectTitle":"数据与大内容","conclusion":"内容流量一季度创高后回落，AIGC 日活增长 41.5%，专业深度仍需补齐。"},{"id":"s06e","mode":"core","section":"上半年重点工作","layout":"acquisition-review","title":"新增下载同比增长 91%，新渠道和买断扩量有效，5 月后行情与流量质量共同承压","metrics":[["276 万","上半年新增下载","全年完成 68.1%"],["2.38 万","交易日日均下载","按 116 个交易日"],["68.1%","全年目标完成度","年度目标约 405 万"],["165 万","付费新增","半年目标 111 万｜149%"],["31 万","手炒新增","半年目标 15 万｜204%"],["20 万","PC 新增","半年目标 18.5 万｜108%"]],"chart":{"title":"新增下载月度对比（人）","aria":"2025与2026新增下载月度对比","labels":["1月","2月","3月","4月","5月","6月"],"barMax":700000,"ticks":[0,200000,400000,600000],"tickFormat":{"200000":"20w","400000":"40w","600000":"60w"},"bars":[{"name":"25 年","color":"#34506a","values":[180000,195000,225000,312833,243586,252449]},{"name":"26 年","color":"#2e8dff","values":[568018,368000,640000,482000,365674,347622]}],"lines":[{"name":"同比增长","color":"#b6ff5f","values":[2.156,0.887,1.844,0.541,0.501,0.377]}],"lineMin":0,"lineMax":2.2},"summary":"上半年新增下载 276 万，按 116 个期货交易日折算日均 2.38 万，全年目标完成 68.1%。渠道侧付费新增 165 万、自分享新增 6.5 万、活动新增 5.4 万、手炒新增 31 万、PC 新增 20 万，社媒曝光 5150 万。1—3 月行情与社媒共同拉动增长，5 月后受行情回落、618 抢量和渠道缩量影响，新增承压。","sections":[["付费新增",["快手新渠道 ROI 5，ASA 优化复用至 vivo/小米，激活 +212%、ROI +28%。","买断二阶段扩量至 1440 万，付费占比升至 43%，带动整体消耗 +13%。"]],["社媒与私域运营",["交易茶话会完成首轮出圈，单栏目全网曝光破 1 亿。","《期货投资实战指南》引流 1223 人，发售 4500 本，已售 3000+。","新增小红书投放，累计开户 285，ROI 4+。"]],["品牌与活动",["期货日报实盘赛报名 8.3 万，创历史新高，同比 +8%。","接入大盘手网，新增报名 1 万；接入夺冠高手实盘赛。","上半年高校模拟赛活动拉新 5.2 万。"]],["手炒与 PC 增长",["手炒开户断点干预全量覆盖，实验组开户率 +6.8%，净增约 35 户/日。","产业链内容落地页 UV 108 万、留资 2015、开户 101；完成 11 个营销版本。","手炒 KYC 拉新效率 +12%、流转效率 +8%，预计日均拉新增量 50+。","PC 通过关键词矩阵、精细化出价和商店算法优化，新增 2 万+，ROI 翻倍。"]],["社区运营",["内容侧新开拓阅读转化入口，期商内容供稿和转化形成新增长路径；期商合作形成相对稳定的“7+40”矩阵，整体内容开户 5486，环比增长 156.25%。","打造傅海棠社区入驻标杆，跑通社区创作者邀约及入驻流程。"]]],"projectTitle":"新增下载","conclusion":"上半年新增下载 276 万，全年目标完成 68.1%，增长由付费、手炒与 PC 多渠道共同贡献。"},{"id":"s06f","mode":"core","section":"上半年重点工作","layout":"account-review","title":"上半年总开户 16.48 万、同比增长 122.4%，联合运营验证交易转化与召回价值","chart":{"title":"月度开户目标与实际（人）","aria":"月度开户目标实际及完成率","labels":["1月","2月","3月","4月","5月","6月"],"barMax":50000,"ticks":[0,15000,30000,45000],"bars":[{"name":"开户目标","color":"#34506a","values":[14100,12300,16300,17500,16150,17200]},{"name":"开户实际","color":"#2e8dff","values":[38158,23052,43729,30300,14450,15147]}],"lines":[{"name":"完成率","color":"#b6ff5f","values":[2.706,1.874,2.683,1.731,0.895,0.881]}],"lineMin":0,"lineMax":3},"summary":[["16.48 万","1—6 月总开户，同比 +122.4%，多 9.07 万；市占率预计 13.18%，+0.65pp"],["12.82 万","期货通总开户，同比 +104.9%，多 6.5 万"],["6.2 万","开户实盘登录日活，完成率 84.1%，同比 +44.1%"]],"sections":[["开户与留存",["买断二阶段：期商结算 1440 万元，开户率 22%+，带来 3100 户；6 月常驻期商 11 家，预计 7 月 13 家。","预开户：37 家采购、13 家上线、灰度 40%；次日开户率从 8% 升至 16%。","模拟大赛：报名 11.8 万、报名率 26%、开户 650；活动交易转化率 50%，手炒付费 PUSH 的 ROI 为以往 13 倍。","ETF 及股指期权开户 4000，鸿蒙开户带来 800 户，常态化活动带来 350 户。"]],["入金交易",["联合运营合作期商 4 家、立项推进 6 家，覆盖已开户日活 20%。","新开户首笔交易率最高 +6—8pp，流失期回流率最高 +3—4pp；每月额外新增交易 315、流失召回 606。","服务体系稳定覆盖 15 家期商，收入 226 万；增值服务推进 4 家首批上线，2 家高意向排期。"]],["B 端与基础建设",["期商服务平台基本完成数据底层基建，新版本可用性约提升 2 倍。","通过联合运营推进 AI 物料、AI 洞察与 AI Claw。"]]],"projectTitle":"开户","conclusion":"总开户 16.48 万、同比增长 122.4%，联合运营验证交易转化与召回价值。"},{"id":"s06g","mode":"core","section":"上半年重点工作","layout":"ai-cases","title":"AI 运营从物料提效扩展到广告诊断、个性化承接与经营监控","cases":[{"title":"PC 下载网站 AI 全流程","image":"assets/ai-pc.png","items":["利用 Claude Code 从 0 到 1 完成期货通 PC 下载网站。","AI 覆盖 UI 视觉、前端交互、代码自测与上线发布，减少跨角色等待。"],"imageMode":"wide"},{"title":"KYC 夜盘个性化页面","image":"assets/ai-kyc.png","items":["基于股票行为、交易偏好和技术指标标签，生成个性化夜盘参与理由。","运营位点击率 +12%，分享率 +86%，关键点击率 +14%，下载率 +13%。"],"imageMode":"portrait"},{"title":"AI 产业链落地页","image":"assets/ai-workflow.png","items":["AI 生成产业链文本，并在 Codex 和 OpenMirror 完成开发、测试和发布。","节省 2 天文本与 UI 制作时间，减少与期商反复沟通修改。"],"imageMode":"wide"},{"title":"多模态内容与 GEO","image":"assets/ai-content-workflow.png","items":["GEO 文章端外阅读量 19 万、曝光 72.6 万，单篇改写从 30 分钟降至 10 分钟内。","AI 图文与视频端外曝光 1000 万+、涨粉 2.2 万；视频制作从 1 小时以上降至约 15 分钟。"],"imageMode":"wide"}],"projectTitle":"AI 生成物料","conclusion":"网站、个性化页面、产业链内容与多模态传播形成可复用生产链路。"},{"id":"s06h","mode":"core","section":"上半年重点工作","layout":"ai-data-infra","title":"AI 基建、内容生产和 Skills 沉淀形成可复用的运营生产系统","stats":[["3 条/日","异常广告提醒"],["60+","日均影响留资"],["8 个","运营 Skills"],["70%+","内容生产提效"]],"projectTitle":"AI 数据复盘与基建","conclusion":"经营监控、UED 能力和 Skills 沉淀共同构成可追踪的运营系统。","categories":[{"title":"AI 数据复盘","image":"assets/ai-dashboard.png","blocks":[["经营监控",["广告异常预警覆盖手炒、期货通与端外拉新，统一监控消耗、留资和开户。","期货通看板日均提醒异常广告 3 条，直接影响留资 60+、开户 4+。"]],["自动分析",["沉淀广告复盘、常用表查询、AB 实验、人群画像和开户分析能力。","从发现异常推进到原因定位、策略建议和效果追溯。"]]]},{"title":"AI 基建","image":"assets/ai-skills-map.png","blocks":[["生产底座",["接入公司 UED 标准，支持行情页、落地页、RP 生图与广告图生产。","单广告图约 5 分钟，落地页与行情页约 20 分钟，投放效果与人工基本一致。"]],["Skills 与平台",["累计沉淀 8 个 Skills，覆盖用户洞察、开户分析与运营策略。","部分能力接入 B2B 智能营销 Claw，后续推进期商侧复用。"]]]}]},{"id":"s07","mode":"core","section":"上半年复盘","layout":"retrospective","title":"上半年赢在行情承接和执行效率，短板集中在留存、专业能力与协同","leftTitle":"被验证的增长机制","left":["行情事件 + 精细化运营，拉动日活、开户和内容消费同步增长。","渠道结构优化与买断扩量，使新增同比增长 91%。","AIGC、看板与自动化工作流开始显著降低运营成本。","联合运营验证了首笔交易转化和流失召回价值。"],"rightTitle":"必须正视的缺口","right":["次月留存率下降 1.12pp，增长质量仍受行情影响。","鸿蒙日活与文华仍有约 2.16 万差距。","专业深度内容、数据产品与部分交易能力仍在开发。","跨产品、运营、期商协同仍依赖人工推进。"],"insight":"复盘的结论不是“继续加量”，而是把增长从事件驱动改造成系统驱动。"},{"id":"s08","mode":"core","section":"下半年计划","layout":"divider","kicker":"2026 H2 / STRATEGY SHIFT","title":"期货下半年计划","subtitle":"产品力 × AI 生产力 × 全域增长 × 期商服务"},{"id":"h2-01","mode":"core","section":"下半年计划","layout":"h2-detail","projectTitle":"下半年项目目标","conclusion":"目标调整后，下半年同时承接 100 万日活、3.5 亿收入、14 万开户和 304 万新增下载。","metrics":[["100 万","期货日活","下半年目标"],["3.5 亿","期货收入","下半年目标"],["7 亿","期货收入","全年目标"],["14 万","总开户","下半年目标｜全年 30.5 万"],["304 万","新增下载","下半年目标｜全年 580 万"],["市占率第一","核心愿景","超越文华"]],"columns":3,"overview":"下半年对开户和新增下载目标进行了调整：开户全年目标提高至 30.5 万、下半年承接 14 万；新增下载全年目标提高至 580 万、下半年承接 304 万。","groups":[["日活结构","下半年目标 100 万",["APP 日活 90 万。","PC 日活 12 万。","OEM 日活 15 万。"]],["收入与流量","全年与下半年双口径",["期货收入：全年 7 亿，下半年累计 3.5 亿。","新增下载：全年 580 万，下半年 304 万。","流量目标按渠道和月份继续拆解。"]],["用户经营","开户与留存",["总开户：全年 30.5 万，下半年 14 万。","新开户留存率 26.7%。","开户实盘登录日活 8 万。"]]],"metricColumns":3},{"id":"h2-02","mode":"core","section":"下半年计划","layout":"source-image-full","sourceImage":"assets/source-project-strategy.png","sourceImageAlt":"2026 项目策略原稿","sourceCorrection":["收入 7 亿","总开户量 30.5 万｜新开户留存率 26.7%｜开户实盘登录数 8 万"],"projectTitle":"2026 项目策略","conclusion":"以产品竞争力和全域增长贯通“知道—兴趣—转化”，共同承接规模与收入目标。","vision":"超越文华，成为衍生品市场市占率第一的交易行情服务商","targetCards":[["100 万","期货日活","APP 90 万｜PC 12 万｜OEM 15 万"],["7 亿","期货收入","下半年 3.5 亿"],["30.5 万","全年总开户","下半年 14 万｜实盘登录日活 8 万"],["580 万","全年新增下载","下半年 304 万"]],"strategy":"占领端内外新用户流量获取渠道；围绕真实需求精细化打磨产品，结合 AI 和数据提升行情交易体验、深耕专业化产品并整合期权业务；与期商、产业机构、投研机构和 KOL 共建原创内容与期货生态。","principles":[["入口","多端覆盖，吸引市场新用户"],["产品","AI + 数据提升专业体验"],["生态","原创内容与合作提升品牌声量"]],"stages":[{"step":"01","title":"知道","goal":"品牌声量提升","items":["内容矩阵：PGC、创作者、产品内容化、活动内容化。","社区化分发：社媒矩阵、创作者计划与大赛联动。","多端覆盖：PC、鸿蒙、Pad、Mac 与厂商生态。"]},{"step":"02","title":"兴趣","goal":"期货通拉新与留资","items":["竞技赛升级：实盘赛平台化、模拟赛多玩法。","赚钱机会投教：期股联动、重点品种与投资指引。","AI + KYC 个性化承接，提升问询与流转效率。"]},{"step":"03","title":"转化","goal":"开户、入金与交易","items":["新用户 7 日承接、断点召回与夜间预开户。","用户生命周期运营：潜在、成熟、风险与流失分层。","联合运营、期商服务与增值付费提升留存和收入。"]}]},{"id":"h2-03","mode":"core","section":"下半年计划","layout":"h2-workstream-detail","projectTitle":"行情交易 / PC / 期权","conclusion":"围绕真实需求补齐精细化体验，以专业能力和差异化定价消耗文华优势。","topTargets":[["9 月","鸿蒙日活赶上文华"],["100%","鸿蒙功能 7 月覆盖"],["80%","Mac 覆盖 Windows"],["12 家","股票期权交易接入"]],"streams":[{"name":"行情交易特色产品","tag":"产品精细化 + 自定义","goal":"7 月覆盖功能，9 月日活赶上文华","strategy":"围绕用户真实需求，结合 AI 场景化提升体验，推动多设备联动，解决用户不知道、不会用、不好用的核心问题。","plans":["鸿蒙 7 月完成 100% 功能覆盖，三季度聚焦运营增长。","9 月日活赶上文华，年底完成 PC、车机等鸿蒙全生态建设。","完成外盘期货市场行情源全部切换。","推动交易性能优化方案进入开发，并推进信创完整方案落地。","上线支持 MCP 的期货 AI 助手。"]},{"name":"PC 终端","tag":"专业化死磕","goal":"Windows 专业化升级，Mac 覆盖 80%","strategy":"对标头部竞品，死磕专业用户核心需求，通过免费和差异化定价策略形成专业口碑，挤压 WH7 营收空间。","plans":["Windows 上线订单流图表免费版。","交易主界面支持自定义页面。","上线期货通 Skill，承接 AI 助手与专业工具调用。","Mac 版本功能覆盖 Windows 的 80%。","持续补齐大屏、多窗口与专业盯盘体验。"]},{"name":"期权","tag":"同花顺期权业务整合","goal":"交易接入 12 家，强化决策与运营","strategy":"股票期权支持头部期商和券商，侧重期货通与手炒运营，帮助用户通过金融期权实现多元化资产配置。","plans":["股票期权交易接入 12 家期商 / 券商。","升级期权决策、分析和复盘产品。","完善期权组合策略、波动率和行情分析工具。","AI 行情解析融合期权题材，自动生成文章、社区和投教内容。","加强金融期权用户触达、教育与开户转化。"]}]},{"id":"h2-04","mode":"core","section":"下半年计划","layout":"h2-plan-full","projectTitle":"AI 助手与多平台融合","conclusion":"四条产品线共同支撑行情交易日活 85 万，并新增 3 万大屏日活。","metrics":[["10 万","AI 智能服务日活","自主决策参谋"],["+3 万","大屏增量日活","Mac / 折叠屏 / Pad"],["50%","鸿蒙市占率","目标超越文华"],["85 万","行情交易日活","基础建设支撑"]],"columns":4,"groups":[["AI 助手","感知—决策—执行—反馈",["7 月跑通从对话到执行。","8—9 月处理复杂多步指令。","10 月扩展复合工具库。","11—12 月持续进化与运营。"]],["多平台融合","高 ARPU 高活跃入口",["Mac、折叠屏和平板共同覆盖高价值用户。","形成跨设备场景联动。","驱动端内外拉新能力。"]],["鸿蒙","生态流量增量",["7 月功能 100% 覆盖。","8—9 月上线元服务（鸿蒙小程序）。","10—12 月完成鸿蒙大屏适配。","进入负一屏、AI 助手和车机等场景。"]],["基础建设","高可用低延迟底座",["建设行情决策与复盘工具。","推进策略和自动化交易。","完善期权组合策略与期权工具。","持续处理基础卫生与性能优化。"]]]},{"id":"h2-05","mode":"core","section":"下半年计划","layout":"h2-detail","projectTitle":"手炒期货与数据","conclusion":"期股融合、内容运营与数据投研统一到用户决策链路，覆盖日活、开户和分享增长。","metrics":[["15 万","期股融合日活","开户 2000"],["25 万","AI 内容日活","AIGC"],["120 万","期货分享量","传播目标"],["30 万","数据产品日活","投研平台"]],"columns":4,"groups":[["期股融合","商品数据与产业链",["补齐商品期现货、关联股票、板块与基金数据。","上线 10 个主流现货产业链 F10。","商品选股覆盖 APP 与 PC。","分时、专题、热榜和 PUSH 做期股联动运营。"]],["期货资讯运营","内容日活 250 万 / 开户 1.8 万",["快讯、PUSH、热点、分时与夜盘精细化运营。","优质期货内容在手炒期股场景分发。","覆盖鸿蒙端。"]],["AIGC 内容","AI 内容日活 25 万",["建设 AI 深度研究专栏。","AI 研报空间做可视化、多空对比与观点总结。","AI 自动梳理事件脉络。","全球期货异动覆盖外盘与外汇。"]],["分享与快讯","分享 120 万 / 快讯 PV 240 万",["产品分享支持小红书、抖音。","监控马棕油、USDA 等重要数据并自动发布。","扩大端外传播与端内回流。"]],["分时资讯专业版","UV 翻倍至 10 万",["增加研报与 AI 驱动内容 TAB。","引入深度产业链内容。","优质内容占比提升至 40%。"]],["发现页","日活提升至 25 万",["建设期货全景数据专栏。","补齐深度研究、期权与宏观研究栏目。","经纬智期手机版形成专业内容与数据矩阵。"]],["期权内容","200 篇/日 / PV 15 万",["持续生产科普投教与专业策略分析。","服务全市场期权用户。"]],["数据平台","系统化投研能力",["期权龙虎榜支持全部期权持仓分析。","经纬智期 PC 版服务专业用户。","建设品种与产业链研究工作台。"]]]},{"id":"h2-06","mode":"core","section":"下半年计划","layout":"h2-roadmap-detail","projectTitle":"经纬智期","conclusion":"8—12 月分三阶段，从数据工作台升级为 AI 驱动的智能投研平台。","stages":[{"month":"MVP 1.0 · 8 月","version":"01","title":"基础数据投研工作台 + 内容集合","items":["聚合核心品种基本面数据，形成统一看板。","接入龙虎榜、资讯和深度研究基础框架。","解决数据与信息分散、跳转成本高的问题。","形成 APP 发现页入口与 PC 工作台雏形。"],"goal":"目标：跑通基础投研链路，验证核心品种需求。"},{"month":"2.0 · 10 月","version":"02","title":"升级到全产业链投研框架","items":["构建宏观—板块异动—品种聚合数据链路。","补齐上下游产业链数据与核心指标分析。","AI 助手回答个性化问题并生成总结。","建设产业链驾驶舱与单品种深度页面。"],"goal":"目标：建立系统化产业链研究能力。"},{"month":"AI 3.0 · 12 月","version":"03","title":"个性化投研推荐 + AI 研究生产","items":["基于关注品种与浏览行为做个性化推荐。","上线 AI 异动监测与异动原因分析。","生成日报、周报、事件专题与品种深度研报。","沉淀预警—分析—研报—决策支持闭环。"],"goal":"目标：形成 AI 驱动的智能投研平台。"}],"months":[["7 月","方案与数据清单"],["8 月","MVP 上线"],["9 月","产业链 + AI 助手开发"],["10 月","2.0 上线"],["11 月","AI 异动 / 研报开发"],["12 月","3.0 上线复盘"]]},{"id":"h2-07","mode":"core","section":"下半年计划","layout":"source-image-full","sourceImage":"assets/source-operation-strategy.png","sourceImageAlt":"运营策略原稿","projectTitle":"运营策略","conclusion":"全域种草解决“知道”，竞技赛和投教放大“兴趣”，生命周期运营兑现“转化”。","metrics":[["350 万","手炒商品日活","增长目标"],["8500 万","社媒内容曝光","全域种草目标"],["560 万","总拉新","兴趣与问询"],["30.5 万","年度开户","实盘登录 8 万"]],"columns":4,"groups":[["内容矩阵","品牌声量提升",["PGC、专业商品内容、KOL/KOB 创作者内容。","商品选股、F10 等产品内容化。","大赛、利诱与节点活动内容化。"]],["社区化分发","内容矩阵 × 社媒种草",["建设社媒矩阵与 MCN。","创作者计划与大赛联动。","固定直播、素材多样性和社区活跃。","GEO 与厂商生态融合。"]],["竞技赛与投教","兴趣持续经营",["实盘赛平台化、模拟赛多玩法、期商投研赛。","拓展高校、EMBA、企业定制和社会赛。","建设期股联动、重点品种栏目与《万物可期》。"]],["生命周期运营","转化与收入",["潜在期、成熟期、风险流失期分层。","智能广告、自动投放与回传基建。","联合运营与用户体系化留存。","小额指标与大额投顾形成增值服务。"]]]},{"id":"h2-08","mode":"core","section":"下半年计划","layout":"h2-plan-full","projectTitle":"全域种草","conclusion":"降低对短视频和行情大盘的单一依赖，用社媒、同花顺、终端与 GEO 构建可持续流量。","metrics":[["8500 万","社媒内容曝光","25 年 3000 万"],["580 万","新增下载","全年目标｜下半年 304 万"],["350 万","手炒日活","25 年 150 万"],["75 万","期货社区日活","25 年 13 万"]],"columns":4,"overview":"现状问题：社媒高度依赖短视频，图文爆款和直播不足；同花顺域触达类型单一；终端厂商依赖行情大盘；官网承接弱且 GEO 信源引用率仍略低于文华。","groups":[["社媒域","补齐图文、直播与拔草链路",["建立图文、短视频和直播组合。","通过 KOL/KOC 与创作者计划放大内容。","用 deeplink 打通社媒到期货通端内承接。"]],["同花顺域","增加期股融合场景",["围绕商品选股、国际机会与夜盘机会组织内容。","强化产品内容化与活动内容化。","基于用户画像做个性化诊断和开户承接。"]],["终端厂商域","降低大盘流量依赖",["覆盖更多终端品牌与场景。","形成通用爆款转化策略。","完善端内个性化承接与渠道覆盖。"]],["SEO + GEO","提升官网与信源能力",["重构 PC 官网为内容与功能分发平台。","降低跳出率并强化特色功能承接。","用权威数据、研究内容和结构化页面提升信源引用。"]]]},{"id":"h2-09","mode":"core","section":"下半年计划","layout":"h2-plan-full","projectTitle":"开户","conclusion":"下半年重点不再是单纯放量，而是用 AI + KYC、场景补齐和期商服务提升转化效率。","metrics":[["14 万","下半年总开户","全年 30.5 万｜H1 16.5 万"],["11 万","期货通开户","下半年目标"],["3 万","手炒开户","下半年目标"],["18.7%","整体转化率","期货通 27.6% / 手炒 8.6%"]],"columns":3,"overview":"当前主要问题是物料与用户关联度低、新用户 7 日和断点场景承接不足、夜间与多系统开户不完整，以及期商诊断和反馈仍依赖人工。","groups":[["激发兴趣","AI + KYC 提升关联度",["按行为和来源拆解用户画像，生成个性化广告方案。","期货通与手炒总号码目标 75 万。","整合入口、时间与人群标签，优化期商推荐。","用模拟赛、节点活动和期商福利提升趣味性。"]],["链路优化","减少关键场景流失",["强化 7 日内新用户大 Banner、产品卡片与 deeplink。","按点击、关键行为、留资后和开户中断四类场景召回。","手炒支持 iOS 与鸿蒙在线开户。","推动 60%+ 期商支持夜间预开户，覆盖端内外。"]],["期商转化","平台 AI 化降低重复沟通",["沉淀期商数据现状与历史交流知识库。","自动生成各公司的数据分析与诊断建议。","提升平台可视化与问题反馈效率。","目标减少 30% 重复沟通工作。"]]]},{"id":"h2-10","mode":"core","section":"下半年计划","layout":"h2-plan-full","projectTitle":"联合运营与增值付费","conclusion":"把期商合作从人工项目制升级为标准产品、分层服务与 AI 经营闭环。","metrics":[["8.1 万","实盘登录日活","H1 6 万"],["42%","新开户交易率","当前 30%"],["10%","流失期召回率","当前 8%"],["500 万","服务体系创收","增值 + 联合运营"]],"columns":3,"overview":"现状问题：增值服务仍以非标准化指标接入为主；联合运营策略生产慢、交易辅助内容少、业务理解和人工对接成本较高。","groups":[["增值付费","20 家期商 / 收入 200 万",["批量接入期商自研指标，支持用户在线购买。","用直播、课程、社群和组合包联动指标与投顾服务。","双 11 / 双 12 推出限时特价与周期套餐。","建设标准交易产品、指标商城、策略回测与独立产品页。","完成结算系统、结算数据与标准化 API。"]],["联合运营","15 家期商采购 / 服务收入 300 万",["建设广告策略库并与产品场景融合。","接入直播、研报与策略报，按生命周期定向推送。","企微按高潜名单、话术与内容做分层服务。","建设期商用户经营看板与智能营销 Claw。"]],["AI 提效","洞察—策略—素材全流程",["AI 自动诊断经营异常并生成待办。","基于洞察结论生成运营策略。","生成符合不同期商风格的多场景素材。","打通营销页、自动投放与效果追溯。"]]]},{"id":"s26","mode":"extended","section":"附录","layout":"checks","title":"原稿数据口径有两处需在正式汇报前确认","checks":[["日活完成率","期货日活 75.10 万、年目标 100 万，但原稿标注完成率 19.96%；APP、PC、OEM 也存在类似情况，可能采用增量口径。","建议统一写明公式与基期。"],["手炒开户基数","下半年手炒开户目标 3 万，但原稿括号中的上半年完成值与期货通同为 12.8 万，疑似复制错误。","建议核对后再进入管理层版本。"]],"note":"本 HTML 未擅自修正原始数值；主汇报只使用可确认的当前值、目标值与同比趋势。"},{"id":"s16","mode":"core","section":"结论","layout":"closing","title":"下半年要把项目清单变成可量化、可复盘、可复制的增长系统","points":[["01","产品排期","AI 助手、鸿蒙、多端与专业交易能力不能被碎片需求稀释。"],["02","数据底座","经纬智期和 AI 运营共用数据、知识与评估体系，避免重复建设。"],["03","协同机制","产品、运营、渠道与期商围绕同一指标周节奏推进，形成可追责闭环。"]],"final":"管理重点不是继续堆项目，而是确保每个项目都兑现用户增长、经营效率或收入结果。"}];
+slidesData.forEach(function(slide){
+  if(slide.id!=="h2-03"||!Array.isArray(slide.streams)) return;
+  slide.streams.forEach(function(stream){
+    if(stream.name!=="PC 终端"||!Array.isArray(stream.plans)) return;
+    stream.plans=stream.plans.map(function(plan){
+      return plan==="交易主界面支持自定义页面。"?"围绕 Mac 新版客户端打造成为 AI Native 客户端。":plan;
+    });
+  });
+});
+/* === RENDER HELPERS === */
+var stage=document.getElementById("deckStage");
+function esc(v){return String(v==null?"":v).replace(/[&<>"']/g,function(c){return({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]})}
+function brand(){return '<div class="brand"><img src="assets/logo.png" alt="同花顺期货通"><span>同花顺期货通</span></div>'}
+slidesData=slidesData.filter(function(s){return s.id!=="s26"&&s.id!=="s16"});
+var growthSlide=slidesData.find(function(s){return s.id==="s04"});
+if(growthSlide){
+  growthSlide.projectTitle="用户活跃与留存复盘";
+  growthSlide.title="Q2 月活环比回落 1.7%，新增放缓与新老用户留存下降共同拖累净增";
+  growthSlide.conclusion=growthSlide.title;
+  growthSlide.summary=[["APP 日活","68.97 万"],["Q2 月均月活","184 万｜环比 -1.7%"]];
+  growthSlide.drivers=[["月均新增","39 万","环比 -23.8%"],["新用户次月留存","24.78%","环比 -8.95pp"],["老用户次月留存","81.9%","环比 -3.33pp"]];
+  growthSlide.stackTitle="月活结构（H1 月均，万）";
+  growthSlide.causes=[["新增放缓","Q2 月均新增 39 万，较 Q1 减少 12 万；行情退潮后，新增对月活的支撑明显减弱。"],["留存下降","新用户次月留存降至 24.78%，老用户次月留存降至 81.9%，下半年目标分别为 28% 和 86%。"],["净增转负","Q2 月均月活净增 -0.7 万，Q1 为 +10.4 万，是近 12 个月首次转负；月均流失增加 7.6 万。"]];
+  growthSlide.details=["2026 年 Q2 月均月活 184 万，较 Q1 减少 3 万，环比下降 1.7%。","Q2 月均新增 39 万，较 Q1 减少 12 万，环比下降 23.8%。","新用户次月留存率 24.78%，环比下降 8.95pp；下半年目标为 28%。","老用户次月留存率 81.9%，环比下降 3.33pp；下半年目标为 86%。","Q2 月均流失用户增加 7.6 万，增幅 51%；月均月活净增从 Q1 的 +10.4 万转为 -0.7 万。"];
+}
+var kpiSlide=slidesData.find(function(s){return s.id==="s02"});
+if(kpiSlide){
+  kpiSlide.projectTitle="上半年核心指标";
+  kpiSlide.conclusion="拆成日活与收入两条主线：日活下钻 APP/PC/OEM，收入下钻开户与实盘登录转化。";
+  kpiSlide.title="上半年核心指标：日活看结构，收入看转化";
+  kpiSlide.metrics=[
+    {label:"期货日活（APP+PC）",value:"75.10 万",goal:"年目标 100 万",ratio:19.96,note:"完成率 19.96%｜上半年增长 6.21 万",subColumns:3,breakdown:[
+      ["APP 日活","69.16 万","年目标 90 万｜完成率 39.47%"],
+      ["PC 日活","10.23 万","年目标 12 万｜完成率 42.72%"],
+      ["OEM 日活","7.98 万","年目标 15 万｜完成率 5.90%"]
+    ]},
+    {label:"期货收入",value:"3.55 亿",goal:"年目标 7 亿",ratio:50.7,note:"完成率 50.7%｜上半年同比增长 40%",subColumns:2,breakdown:[
+      ["总开户","16.48 万","年目标 21 万｜完成率 78%"],
+      ["已开户实盘登录日活","7.11 万","年目标 8 万｜完成率 88.91%"]
+    ]}
+  ];
+  kpiSlide.footer="管理判断：收入主线完成度 50.7%，开户与实盘登录转化已接近或超过时间进度；日活主线按增量口径完成率 19.96%，拆到 APP、PC、OEM 后可以看到 PC 接近目标、OEM 明显不足，下半年重点要落到留存修复和多端增长。";
+  kpiSlide.details=["期货日活 75.10 万，年度目标 100 万，完成率采用增量口径 19.96%，上半年增长 6.21 万。","日活下钻：APP 日活 69.16 万，年目标 90 万，完成率 39.47%；PC 日活 10.23 万，年目标 12 万，完成率 42.72%；OEM 日活 7.98 万，年目标 15 万，完成率 5.90%。","期货收入 3.55 亿，年目标 7 亿，完成率 50.7%，上半年同比增长 40%。","总开户 16.48 万，上半年基准年目标 21 万，完成率 78%；下半年经营目标已调整为 30.5 万。","已开户实盘登录日活 7.11 万，年目标 8 万，完成率 88.91%。"];
+}
+var h2TargetsSlide=slidesData.find(function(s){return s.id==="h2-01"});
+if(h2TargetsSlide){
+  h2TargetsSlide.layout="h2-targets-clear";
+  h2TargetsSlide.projectTitle="下半年项目目标";
+  h2TargetsSlide.conclusion="下半年同时承接规模、收入、开户和新增下载四类目标，核心从增长规模进入经营质量。";
+  h2TargetsSlide.targetColumns=5;
+  h2TargetsSlide.targets=[
+    ["100 万","期货日活","APP 90｜PC 12｜OEM 15"],
+    ["3.5 亿","H2 期货收入","全年 7 亿"],
+    ["14 万","H2 总开户","全年 30.5 万"],
+    ["304 万","H2 新增下载","全年 580 万"],
+    ["市占率第一","核心愿景","超越文华"]
+  ];
+  h2TargetsSlide.drilldowns=[
+    ["日活结构","100 万由三端承接",[["APP","90 万","主端留存、内容消费与行情场景"],["PC","12 万","专业交易与多窗口盯盘"],["OEM","15 万","外部端流量与合作承接"]]],
+    ["收入与新增","收入和下载采用 H2 / 全年双口径",[["收入","3.5 亿","下半年承接｜全年 7 亿"],["下载","304 万","下半年承接｜全年 580 万"],["节奏","按月拆解","避免只看全年总数"]]],
+    ["开户与留存","开户不只看数量，还要看交易留存",[["开户","14 万","下半年承接｜全年 30.5 万"],["留存","26.7%","新开户留存率目标"],["实盘","8 万","开户实盘登录日活目标"]]]
+  ];
+  h2TargetsSlide.managementNote="管理判断：下半年目标不只是规模放量，还要同时看日活结构、收入节奏、开户留存和新增下载承接，保证增长质量可持续。";
+  h2TargetsSlide.details=["期货日活下半年目标 100 万，拆为 APP 90 万、PC 12 万、OEM 15 万。","期货收入下半年目标 3.5 亿，全年目标 7 亿。","总开户下半年目标 14 万，全年目标 30.5 万；新开户留存率目标 26.7%，开户实盘登录日活目标 8 万。","新增下载下半年目标 304 万，全年目标 580 万。","核心愿景为市占率第一，超越文华。"];
+}
+var competitorIndex=slidesData.findIndex(function(s){return s.id==="s05"});
+if(competitorIndex>=0){
+  slidesData.splice(competitorIndex+1,0,
+    {
+      id:"s05-market-research",mode:"core",section:"市场分析 / 调研结论",layout:"market-research",
+      projectTitle:"市场与交易结构",
+      conclusion:"市场扩容继续提供增长空间，但历史开户用户流失与交返取消成为经营质量的主要风险。",
+      metrics:[["125 万","2026 H1 市场开户预测","同比约 +80%"],["13.18%","期货通开户市占率","较 2025 年底 +0.65pp"],["+42.4%","期货通成交量增幅","市场同期 +24.84%"],["15%—30%","存量收入风险敞口","交返取消情景"]],
+      marketShare:{title:"期货通开户市占率趋势",aria:"期货通开户市占率趋势",labels:["2019","2020","2021","22H1","2022","23H1","2023","24H1","2024","25H1","2025","26H1E"],min:0.05,max:0.135,ticks:[0.05,0.07,0.09,0.11,0.13],values:[0.0533,0.081,0.0809,0.0844,0.0851,0.0913,0.0941,0.0974,0.1021,0.1065,0.1253,0.1318],pointLabels:[[0,"5.33%"],[8,"10.21%"],[10,"12.53%"],[11,"13.18%"]]},
+      cards:[
+        ["市占率抬升",["2019 年开户市占率 5.33%，2024 年全年提升至 10.21%。","2025 年底达到 12.53%，2026 年中预计 13.18%，较 2025 年底 +0.65pp。","市场总开户预计 125 万，期货通开户 16.48 万。"]],
+        ["交易转化",["1—5 月市场成交量 +24.84%，期货通 +42.4%，增速快于大盘。","交易用户增幅比月活低 23pp：实盘登录约 -10pp、登录后入金约 -12pp。","新开户交易率与开户基本一致，缺口主要来自历史开户用户流失。"]],
+        ["收入风险",["市场交返可能全面取消，交易所手续费基础预计下降 15%—30%。","新用户固定价格收费，相对不受交易所下滑影响。","存量历史按倍数定价的收入承压，需提前布局增值与服务收入。"]]
+      ],
+      shareStats:[
+        ["5.33%","2019 全年市占率"],
+        ["10.21%","2024 全年市占率"],
+        ["12.53%","2025 年底市占率"],
+        ["13.18%","2026 年中预测"]
+      ],
+      details:["开户市占率：2019 全年 5.33%、2020 全年 8.10%、2021 全年 8.09%、2022 年中 8.44%、2022 全年 8.51%、2023 年中 9.13%、2023 全年 9.41%、2024 年中 9.74%、2024 全年 10.21%、2025 年中 10.65%、2025 年底 12.53%、2026 年中预测 13.18%。","预计 2026 年上半年市场总开户约 125 万，同比增长约 80%；期货通开户 16.48 万，市占率预计 13.18%。","2026 年 1—5 月市场成交量同比增长 24.84%，期货通成交量增长 42.4%，增速高于市场。","新增用户交易表现较好，主要问题集中在历史开户用户流失和实盘登录、入金链路。","经营风险按当前情景测算，不代表已经确认发生。"]
+    },
+    {
+      id:"s05-channel-research",mode:"core",section:"市场分析 / 调研结论",layout:"channel-research",
+      projectTitle:"渠道与 GEO 竞争",
+      conclusion:"安卓优势应继续防守，华为与苹果是投放补强重点；GEO 已实现曝光反超，下一步要提升专业信源占比。",
+      defend:[
+        ["小米","562.6 万","主要竞品最高 281.6 万",562.6],
+        ["OPPO","293 万","主要竞品最高 220 万",293],
+        ["vivo","491 万","主要竞品最高 260 万",491]
+      ],
+      attack:[
+        ["华为","709.8 万","中信约 1500 万",709.8],
+        ["苹果","218.8 万","中信约 1200 万",218.8],
+        ["荣耀","140 万","中信约 200 万",140]
+      ],
+      geo:[["72.80%","可见度","文华 68.90%｜+3.90pp"],["19.50%","信源占比","文华 20.30%｜-0.80pp"],["29.50%","Top1 占比","文华 28.30%｜+1.20pp"],["71.20%","Top5 占比","文华 63.50%｜+7.70pp"]],
+      proof:[["小米 DAU","9.11 万","随身行 5.6 万｜东方 3.1 万"],["OPPO DAU","4.0 万","东方 1.8 万｜中信 0.8 万"],["vivo DAU","6.05 万","东方 2.20 万｜中信 1.99 万"],["苹果下载","12 万","国泰 4.8 万｜东方 2.4 万"]],
+      details:["小米、OPPO、vivo 的投放金额和安卓日活均保持领先，应维持优势。","华为和苹果与高投放竞品差距明显，是下半年优先补强渠道；荣耀作为次优先。","苹果端期货通总下载约 12 万，仍高于国泰 4.8 万、东方 2.4 万、华泰 1.2 万和中信 0.7 万，说明现有投放效率较高。","GEO 监测显示期货通可见度、Top1 和 Top5 占比领先文华，但信源占比仍低 0.8pp。"]
+    }
+  );
+}
+var handTradingSlide=slidesData.find(function(s){return s.id==="s06c"});
+if(handTradingSlide){
+  handTradingSlide.title="手炒期货";
+  handTradingSlide.projectTitle="手炒期货";
+  handTradingSlide.subtitle="抓住上半年美伊冲突的行情机会，扩大期货下载和开户增长";
+  handTradingSlide.conclusion="抓住上半年美伊冲突的行情机会，扩大期货下载和开户增长";
+  handTradingSlide.metrics=[
+    ["210 万","手炒期货日活","H1 增长 75%"],
+    ["3.39 万","手炒期货开户","完成率 75%"],
+    ["31 万","手炒期货下载","完成率 88%"]
+  ];
+  handTradingSlide.charts=[
+    {"title":"手炒期货日活（人）","kind":"line","aria":"手炒期货日活趋势","labels":["12月","1月","2月","3月","4月","5月","6月"],"min":1000000,"max":3300000,"ticks":[1000000,2000000,3000000],"series":[{"name":"手炒期货日活","color":"#62e8ff","values":[1164700,1739000,2713100,3110000,2497200,2080000,2100000],"endLabel":"210万","peakLabel":"3月峰值 311万"}]},
+    {"title":"下载与开户（人）","kind":"bar","aria":"手炒期货下载和开户趋势","labels":["12月","1月","2月","3月","4月","5月","6月"],"barMax":75000,"ticks":[0,25000,50000,75000],"tickFormat":{"25000":"2.5w","50000":"5w","75000":"7.5w"},"bars":[{"name":"期货下载","color":"#2e8dff","values":[26400,61000,37500,69600,41600,23000,21300],"peakLabel":"3月 6.96万"},{"name":"期货开户","color":"#ffc857","values":[6000,6650,4600,9850,6800,3150,3200],"peakLabel":"3月 9850"}]}
+  ];
+  handTradingSlide.strategy="期货业务赋能手炒，通过期股深度融合服务集群用户，在行情机会中扩大期货下载和开户增长。";
+  handTradingSlide.review="上半年抓住美伊冲突带来的贵金属和大宗行情机会，热点专题、期股关联、期权、快讯和夜间运营共同推高手炒期货流量与转化。手炒期货日活 210 万，H1 增长 75%；手炒期货开户 3.39 万，完成率 75%；手炒期货下载 31 万，完成率 88%。";
+  handTradingSlide.groups=[
+    ["鸿蒙与大屏适配","成果：16 万日活，占手炒鸿蒙日活 13%",["期货期权行情适配：完成","私域运营场景适配：完成","鸿蒙期货开户：开发中","交易 Tab 适配：完成 70%，期权待排期","Mac 大屏适配：完成"]],
+    ["期股融合","成果：期股融合产品日活 4.3 万",["商品现货、期货与股票数据关联：完成","商品选股前端：需求设计","现货股票数据基建：完成","钼、钨及光伏组件 F10：上线","商品现货 F10 三级行业：上线","涤纶工业丝、钴、六氟磷酸锂 F10：开发中"]],
+    ["期股联动内容运营","成果：20—30 篇/日，PV 3—4 万/日",["AI 生成期股联动资讯、板块异动资讯：完成","AI 生成现货股票联动资讯：进行中"]],
+    ["手炒期货场景运营","黄金专区日活 25 万，开户 18 个/日",["ETF 黄金专区合作：上线","商品价格趋势和榜单插件：上线","手炒搜索增加期货热榜：上线，曝光日活 1 万，点击率 2%"]],
+    ["手炒期货内容运营","成果：资讯阅读量 32 万增至 46 万（+43%），内容转化开户 1.1 万",["分时精细化运营：扩大板块、基金、个股覆盖，新增期权与期股联动文章","热点专题运营：90 个专题，开户 9116","PUSH 分层精推：阅读量 15 万增至 18.6 万","夜间运营：夜间阅读占比 40% 升至 50%"]]
+  ];
+}
+var contentDataSlide=slidesData.find(function(s){return s.id==="s06d"});
+if(contentDataSlide){
+  contentDataSlide.metricColumns=4;
+  contentDataSlide.metrics=[
+    ["37.5 万","内容日活","H1 增长 25%"],
+    ["11 万","AIGC 日活","H1 增长 41.5%"],
+    ["14.4 万","数据产品日活","H1 增长 50%"],
+    ["52.7 万","APP 分享量","完成率 44%"]
+  ];
+  contentDataSlide.charts=[
+    {"title":"内容与 AIGC 趋势（万）","kind":"line","aria":"期货内容日活AIGC日活和内容PV趋势","labels":["12月","1月","2月","3月","4月","5月","6月"],"min":0,"max":180,"ticks":[0,50,100,150],"series":[{"name":"内容日活","color":"#62e8ff","values":[32.77,39.06,45.56,53.21,44.16,38.39,37.5],"endLabel":"37.5","peakLabel":"3月峰值 53.2万"},{"name":"AIGC 日活","color":"#b6ff5f","values":[7.8,9.33,8.6,14.31,10.83,10.24,11],"endLabel":"11","peakLabel":"3月峰值 14.3万"},{"name":"内容 PV","color":"#ffc857","values":[96.86,116.7,122.89,175,126.13,105.92,114],"endLabel":"114"}]},
+    {"title":"数据产品日活（万）","kind":"line","aria":"期货通数据产品日活趋势","labels":["12月","1月","2月","3月","4月","5月","6月"],"min":10,"max":20,"ticks":[10,15,20],"series":[{"name":"数据产品日活","color":"#2e8dff","values":[13.52,15.35,14.32,18.21,15.25,13.8,14.4],"endLabel":"14.4","peakLabel":"3月峰值 18.2万"}]}
+  ];
+  contentDataSlide.review="内容日活 37.5 万，H1 增长 25%；AIGC 日活 11 万，H1 增长 41.5%；数据产品日活 14.4 万，H1 增长 50%；APP 分享量 52.7 万，完成率 44%。一季度抓住贵金属、美伊等行情并拓展夜盘，内容、AIGC 与数据产品均在 3 月冲高。";
+  contentDataSlide.groups=[
+    ["AIGC 产品功能","AIGC 日活 11 万（H1 +41.5%）",["AI 资讯深度解读助手：已上线","AI 全球异动分析：开发中，7 月上线"]],
+    ["AIGC 文章生产","深度、期权、期股与夜间内容矩阵",["期货深度研究：每周 2—3 篇，PV 1 万/篇","期权原创：异动、榜单等文章，PV 5.5 万","期股关联：20—30 篇/日，PV 4 万/日","夜间运营文章：已上线","原创内容质检：已上线"]],
+    ["内容消费运营","快讯阅读量 17 万，峰值 34 万",["快讯行情播报速度领先金十","快讯内容源从 190 篇扩至 345 篇，机器人监控发送完成","分时低质内容监控过滤完成，AI 置顶与优质内容分发","分时月均 UV 6.2 万、PV 25 万，优质内容占比 37.4%"]],
+    ["热点、期权与夜盘","扩大高价值内容场景",["专题/热榜日均 PV 3 万，开户 5882","期权资讯新增运营，文章 PV 5.5 万","夜盘内容日活 23.2 万，占比从 40% 升至 60.9%"]],
+    ["数据产品","数据产品日活 14.4 万，产品插件日活 28 万",["期权主力持仓分析：需求设计完成，7 月上线","主力涨跌、资金流向、现货价格、期权走势等 9 个插件上线"]]
+  ];
+}
+var handContentPlanSlide=slidesData.find(function(s){return s.id==="h2-05"});
+if(handContentPlanSlide){
+  handContentPlanSlide.layout="h2-decision-chain";
+  handContentPlanSlide.projectTitle="手炒期货 / 期货数据与内容";
+  handContentPlanSlide.conclusion="期股融合KYC运营、期货智能投资分析，驱动日活和收入增长";
+  handContentPlanSlide.decisionColumns=[
+    {
+      title:"手炒期货",
+      metrics:[["手炒期货日活","300万"],["开户","3万"],["下载","25万"]],
+      works:[
+        ["期股融合（覆盖鸿蒙）","日活15万，开户2000",["补全商品期现货、关联股票、板块数据","上线10个主流产业链F10","商品选股覆盖APP与PC端","期货KYC运营"]],
+        ["期货内容运营","内容日活250万，开户8000",["手炒期货快讯、push运营","手炒期股热点及夜盘运营","期股联动内容运营"]]
+      ]
+    },
+    {
+      title:"期货内容",
+      metrics:[["期货内容日活","60万"],["AIGC日活","25万"]],
+      works:[
+        ["AIGC内容","AIGC日活25万",["AI深度研究专栏","AI研报可视化总结","AI全球异动监控","期权资讯"]],
+        ["内容新流量场","日活25万",["分时资讯专业版（引入产业链、研报内容）","APP图片分享功能","发现页期权、热点专栏"]]
+      ]
+    },
+    {
+      title:"期货数据产品",
+      metrics:[["数据产品日活","30万"],["智能分析agent日活","10万"]],
+      works:[
+        ["发现页数据专栏","日活10万",["宏观数据专栏","产业链数据专栏","全景数据专栏","期权龙虎榜"]],
+        ["智能决策平台","日活10万",["全产业链投资分析框架","APP与PC智能分析平台"]]
+      ]
+    }
+  ];
+}
+var labAiNativeIndex=slidesData.findIndex(function(s){return s.id==="h2-05"});
+if(labAiNativeIndex>=0&&!slidesData.some(function(s){return s.id==="h2-05b"})){
+  slidesData.splice(labAiNativeIndex+1,0,{
+    id:"h2-05b",
+    mode:"core",
+    section:"下半年计划",
+    layout:"direct-png",
+    directImage:"assets/lab-ai-native-terminal-body.png",
+    directImageAlt:"Lab版期货AI Native终端流程图",
+    projectTitle:"Lab版期货AI Native终端",
+    conclusion:"以用户故事和数据中心为输入，由 AI Agent 自动完成策略构思、回测调优、验证、预警、交易与再优化闭环"
+  });
+}
+var jingweiPlanSlide=slidesData.find(function(s){return s.id==="h2-06"});
+if(jingweiPlanSlide){
+  jingweiPlanSlide.projectTitle="“经纬智期”智能分析平台";
+  jingweiPlanSlide.conclusion="以宏观基本面为底座，聚合舆情、量价数据，升级为期货智能决策分析平台";
+  jingweiPlanSlide.target=["26年数据目标","日活10万"];
+}
+var researchSkillsMapIndex=slidesData.findIndex(function(s){return s.id==="h2-06"});
+if(researchSkillsMapIndex>=0&&!slidesData.some(function(s){return s.id==="h2-06b"})){
+  slidesData.splice(researchSkillsMapIndex+1,0,{
+    id:"h2-06b",
+    mode:"core",
+    section:"下半年计划",
+    layout:"source-image-full",
+    sourceImage:"assets/research-skills-map-v2.png",
+    sourceImageAlt:"期商投研生态发展2版终局地图",
+    sourceChrome:true,
+    projectTitle:"期商投研生态发展",
+    conclusion:"抢占业内先机，以 Skills 为切入口汇聚期商投研能力，形成 2B × 2C 双向增长飞轮"
+  });
+}
+var competitorSummarySlide=slidesData.find(function(s){return s.id==="s05"});
+if(competitorSummarySlide){
+  competitorSummarySlide.projectTitle="市场分析 / 竞品动态";
+  competitorSummarySlide.conclusion="期货通 APP 在一季度完成反超，PC 领先同步扩大；但竞品正持续加码专业盯盘、复盘数据和期权交易体验。";
+}
+var h1SummarySlide=slidesData.find(function(s){return s.id==="s07"});
+if(h1SummarySlide){
+  h1SummarySlide.projectTitle="上半年复盘总结";
+  h1SummarySlide.conclusion="上半年不是单一行情红利：流量、开户、收入和 AI 提效均被验证；但 Q2 留存回落、交易转化断层和专业产品短板说明增长还没有完全系统化。";
+  h1SummarySlide.metrics=[
+    ["75.10 万","期货日活","完成度 19.96%｜增量口径"],
+    ["3.55 亿","期货收入","全年完成 50.7%"],
+    ["16.48 万","总开户","同比 +122.4%｜市占率 13.18%"],
+    ["276 万","新增下载","同比 +91%｜交易日日均 +94%"],
+    ["11 万","AIGC 日活","H1 增长 41.5%"]
+  ];
+  h1SummarySlide.leftTitle="已验证的增长链路";
+  h1SummarySlide.left=[
+    "行情承接有效：行情交易日活 57.10 万，手炒期货日活 3 月峰值 311 万，内容日活在一季度同步创高。",
+    "渠道扩量有效：新增下载 276 万、同比 +91%；快手 ROI 5、买断 1440 万、社媒曝光突破形成组合增量。",
+    "开户与收入转化成立：总开户 16.48 万、同比 +122.4%，市占率 13.18%；期货收入 3.55 亿。",
+    "AI 提效开始进入经营链路：AIGC 日活 11 万，广告诊断、AI 物料、数据复盘和 Skills 基建已形成复用能力。"
+  ];
+  h1SummarySlide.rightTitle="仍需补齐的系统短板";
+  h1SummarySlide.right=[
+    "活跃增长不够稳定：Q2 月活 184 万、环比 -1.7%，月活净增从 Q1 +10.4 万转为 -0.7 万。",
+    "留存质量是核心瓶颈：新用户次月留存 24.78%（环比 -8.95pp），老用户次月留存 81.9%（环比 -3.33pp）。",
+    "交易转化仍有断层：交易用户增幅低于月活 23pp，主要损失在实盘登录约 10pp、登录后入金约 12pp。",
+    "专业能力和收入结构仍需补齐：鸿蒙日活落后文华 2.16 万；交返/手续费下滑情景下，存量收入存在 15%—30% 风险。"
+  ];
+  h1SummarySlide.insight="复盘结论：上半年证明“行情 + 渠道 + AI”能拉动增长；下半年要把增长重心从流量获取，升级为留存经营、专业产品和期商服务的系统化能力。";
+  h1SummarySlide.details=[
+    "核心指标：期货日活 75.10 万、期货收入 3.55 亿、总开户 16.48 万、新增下载 276 万、AIGC 日活 11 万。",
+    "活跃与留存：Q2 月活 184 万，环比下降 1.7%；月活净增从 Q1 月均 +10.4 万转为 -0.7 万。",
+    "留存拆解：新用户次月留存 24.78%，环比 -8.95pp；老用户次月留存 81.9%，环比 -3.33pp。",
+    "市场与交易：2026 年 1—5 月期货通成交量 +42.4%，高于市场 +24.84%；交易用户增幅低于月活 23pp。",
+    "新增下载：对比 25H1 总新增 +91%、交易日日均 +94%，付费 +82%、手炒 +39%、搜索 +123%。",
+    "开户：总开户 16.48 万，同比 +122.4%；市占率预计 13.18%，较 2025 年底 +0.65pp。"
+  ];
+}
+var aiMaterialSlide=slidesData.find(function(s){return s.id==="s06g"});
+if(aiMaterialSlide){
+  aiMaterialSlide.layout="ai-combined";
+  aiMaterialSlide.projectTitle="AI 基建和素材生产";
+  aiMaterialSlide.conclusion="把素材生产、数据复盘、产业链落地页和 Skills 基建整合为可复用的 AI 运营生产系统。";
+  aiMaterialSlide.aiCombinedSections=[
+    {
+      title:"素材生产",
+      tag:"MATERIAL",
+      images:["assets/ai-kyc.png","assets/ai-content-workflow.png","assets/ai-material-new.png"],
+      summary:"KYC 页面、多模态内容、GEO 与 PC 网站形成可复用的 AI 物料生产链路。",
+      items:[
+        "KYC 夜盘个性化页面：基于股票行为、交易偏好和技术指标标签生成参与理由，运营位点击率 +12%。",
+        "多模态内容与 GEO：端外曝光 1000 万+、涨粉 2.2 万，单篇改写从 30 分钟降至 10 分钟内。",
+        "PC 下载网站：Claude Code 覆盖 UI 视觉、前端交互、代码自测与上线发布。"
+      ]
+    },
+    {
+      title:"AI 数据复盘",
+      tag:"DATA REVIEW",
+      images:["assets/ai-review-new-1.png","assets/ai-review-new-2.png"],
+      summary:"经营看板与期货增长日报共同承接异常监控、机会识别和策略复盘。",
+      items:[
+        "广告异常预警覆盖手炒、期货通与端外拉新，统一监控消耗、留资和开户。",
+        "期货通看板日均提醒异常广告 3 条，直接影响留资 60+、开户 4+。",
+        "日报自动汇总开户、留资、广告成本和机会摘要，推进从发现异常到原因定位。"
+      ]
+    },
+    {
+      title:"AI 基建",
+      tag:"INFRA",
+      images:["assets/ai-dashboard.png","assets/ai-insight.png"],
+      summary:"UED 标准、产业链落地页和 Skills 平台共同沉淀 AI 生产底座。",
+      items:[
+        "接入公司 UED 标准，支持行情页、落地页、RP 生图与广告图生产。",
+        "产业链 banner 与落地页纳入 AI 基建展示，形成产业链文本、页面开发与发布链路。",
+        "累计沉淀 8 个 Skills，覆盖用户洞察、开户分析与运营策略，并推进期商侧复用。"
+      ]
+    }
+  ];
+  aiMaterialSlide.aiCombinedStats=[["3 条/日","异常广告提醒"],["60+","日均影响留资"],["8 个","运营 Skills"],["70%+","内容生产提效"]];
+}
+slidesData=slidesData.filter(function(s){return s.id!=="s06h"});
+var projectStrategySlide=slidesData.find(function(s){return s.id==="h2-02"});
+if(projectStrategySlide){
+  projectStrategySlide.layout="project-strategy-map";
+  projectStrategySlide.projectMap={
+    vision:"超越文华成为衍生品市场市占率第一的交易行情服务商",
+    targets:[["期货日活 100万","目标结构","APP 90万｜PC 12万｜OEM 15万"],["收入 7亿","经营结果","总开户量 30.5万｜新增下载 580万｜新开户留存率 26.7%｜开户实盘登录数 8万"]],
+    strategy:"占领端内端外新用户流量获取渠道，吸引市场新用户；围绕用户真实需求，精细化打磨产品并结合 AI 和数据提升行情交易体验；深耕专业化产品、整合期权业务版图；与期商、产业机构、投研机构、KOL 合作，共同打造原创特色内容，建设期货生态，提升品牌声量。",
+    directions:[["PC专业化","深度死磕"],["行情交易","产品智能化"],["期权","业务整合"],["内容","打造影响力"],["知道","品牌声量提升"],["兴趣（吸引+问询）","期货通拉新留资"],["转化","开户入金交易"]],
+    methods:[
+      [["期权",["期权链路","专业盯盘"]],["套利",["组合策略","价差机会"]],["基础功能｜卫生改善",["稳定性","交易体验"]]],
+      [["复盘 / 选期 / 决策",["MCP 触发","AI 辅助分析"]],["行情交易决策",["指标与策略","智能投研"]]],
+      [["ETF期权交易",["头部经纪商覆盖"]],["金融期权产品",["交易与策略"]],["手炒期权行情服务",["端内承接"]],["海外期权",["品类拓展"]]],
+      [["AIGC",["AI 内容生产"]],["深度内容",["研报解读","事件脉络"]],["智能投研",["产业链分析","生产 > 消费 > 转化"]]],
+      [["内容矩阵",["PGC / 创作者","产品 / 活动内容化"]],["社区化分发",["社媒矩阵","创作者计划"]],["多端覆盖",["终端拓展","生态融合"]]],
+      [["竞技赛升级",["平台化实盘赛","多玩法模拟赛"]],["期商投研赛",["合作赛制"]],["赚钱机会投教",["期货投教","期股联动"]]],
+      [["用户生命周期运营",["潜在期 / 成熟期","风险 / 流失期"]],["端内外投承接",["阶段提效","轻量活动"]],["增值服务 + 留存策略",["AI 策略 / 回传数据","沉淀策略模板"]]]
+    ],
+    foundations:["多端生态适配｜MAC / 鸿蒙 / 元服务 / 平板 / 折叠屏","手炒期股深度融合","智能广告体系","AIGC","期商服务智能体"]
+  };
+  projectStrategySlide.layout="direct-png";
+  projectStrategySlide.directImage="assets/project-strategy-user-transparent.png";
+  projectStrategySlide.directImageAlt="2026 项目策略原图";
+}
+var operationStrategySlide=slidesData.find(function(s){return s.id==="h2-07"});
+if(operationStrategySlide){
+  operationStrategySlide.layout="direct-png";
+  operationStrategySlide.directImage="assets/operation-strategy-source-ppt-original.png";
+  operationStrategySlide.directImageAlt="运营策略原图 PPT 配色版";
+  operationStrategySlide.directFrameClass="light-board";
+}
+var seedingStrategySlide=slidesData.find(function(s){return s.id==="h2-08"});
+if(seedingStrategySlide){
+  seedingStrategySlide.layout="seeding-strategy";
+  seedingStrategySlide.projectTitle="全域种草";
+  seedingStrategySlide.conclusion="基于用户兴趣与交易生命周期，占领全域潜在用户心智，并把端外种草明确承接到端内下载和开户转化。";
+  seedingStrategySlide.qualTarget="基于用户兴趣与交易生命周期，占领全域潜在用户心智";
+  seedingStrategySlide.targets=[["8500 万","社媒内容曝光","25 年 3000 万"],["580 万","新增下载","全年目标｜下半年 304 万"],["350 万","手炒日活","25 年 150 万"],["75 万","期货社区日活","25 年 13 万"]];
+  seedingStrategySlide.problems=[
+    ["社媒域","高度依赖短视频栏目，图文爆款少，直播触达缺失，社媒到端内拔草链路不完善。"],
+    ["同花顺域","营销触达类型较单一，期股产品融合场景少。"],
+    ["终端厂商域","过度依赖金融大盘热度，缺乏通用性爆款转化策略，个性化端内承接不完善。"],
+    ["SEO + GEO","PC 官网流量承接不足、跳出率高，GEO 信源引用率对比文华仍有小幅差距。"]
+  ];
+  seedingStrategySlide.rows=[
+    {
+      domain:["社媒全域","抖 / 快 / 微 / 红"],
+      audience:"泛交易人群",
+      strategy:["打造交易素人 + 大咖 IP 采访栏目塑造品牌心智，通过 KOL + KOC 组合种草期货通特色功能。","通过固定直播栏目（高手 / 机构采访、技术分析）配合大型营销活动（AI 投研大赛等）扩大品牌声量，并进行私域转化。"],
+      touchpoints:["高手交易系统","热门交易书籍","特色交易指标","活动 / 福利"],
+      conversion:["大咖内容专区","deeplink 专属承接页","个性化新人首页"]
+    },
+    {
+      domain:["同花顺全域","APP + PC"],
+      audience:"股票兴趣人群",
+      strategy:["APP 首页继续推进商品选股、国际机会、夜间机会等产品楼层，完成个股 F10 及社区期股融合，PC 端同步平移。","双端联合期商打造“涨价题材”“产业链机会”等专题内容，并通过 AI + KYC 精准触达，提高转化率。"],
+      touchpoints:["个性化投资诊断与推荐","期货优势：夜盘 / T+0 / 保证金","期股关联机会","开户福利"],
+      conversion:["个性化开户承接页","品种深度产业链数据"]
+    },
+    {
+      domain:["终端厂商","华 / 米 / O / V"],
+      audience:"金融潜在人群",
+      strategy:["提升渠道覆盖率，拓展 Mac、TV、车机等更多异端渠道，提高人群覆盖面。","拓展更多品牌、IP、工具、活动及数据类营销素材，扩大广告计划与覆盖人群，平衡行情影响权重。","基于媒体延迟 DP 功能，结合人群与行为标签、搜索关键词进行个性化智能外显。"],
+      touchpoints:["大咖入驻与互动","交易辅助工具","活动报名与福利"],
+      conversion:["AI + KYC 个性化承接页","固定广告位引导"]
+    },
+    {
+      domain:["搜索引擎","SEO + GEO"],
+      audience:"期货兴趣人群",
+      strategy:["期货通官网基于 OPC 项目基础，迭代全新内容与功能分发平台，提升停留时长。","GEO 基于 AI 工作流进行文章权威性标注，提升引用率，促进品牌传播与心智种草。"],
+      touchpoints:["特色化功能：美联储观察等","权威数据：期货实盘赛"],
+      conversion:["个性化新人首页"]
+    }
+  ];
+}
+var accountStrategySlide=slidesData.find(function(s){return s.id==="h2-09"});
+if(accountStrategySlide){
+  accountStrategySlide.layout="execution-strategy";
+  accountStrategySlide.projectTitle="开户";
+  accountStrategySlide.conclusion="围绕“激发兴趣—链路优化—期商转化”完整拆解策略打法，用 AI+KYC 和期商服务降低转化流失。";
+  accountStrategySlide.metrics=[["14 万","下半年总开户","H1 完成 16.5 万"],["11 万","期货通开户","下半年目标"],["3 万","手炒开户","下半年目标"],["18.7%","开户转化率","手炒 8.6%｜期货通 27.6%"]];
+  accountStrategySlide.metricColumns=4;
+  accountStrategySlide.problemColumns=3;
+  accountStrategySlide.problems=[
+    ["物料关联度不足","用户运营物料与用户关联度不高，投放形式单一；强关联度物料测试中开户率普遍提升 10% 以上。"],
+    ["关键场景流失","期货通新用户 7 日开户占日均开户 40%，股票开户可达 80%；夜间开户、断点挽留与多系统覆盖仍有空间。"],
+    ["期商转化依赖人工","期商侧重复问题多，转化率需要持续反馈才能维稳，相关工作仍主要靠人工跟进。"]
+  ];
+  accountStrategySlide.execColumns=3;
+  accountStrategySlide.execSections=[
+    {
+      title:"激发兴趣",
+      tag:"链路 01",
+      strategy:"AI+KYC 提升用户与物料的关联关系，同时用常态化活动提升开户趣味性。",
+      target:"总号码 75 万，手炒 35 万，期货通 40 万",
+      projects:[
+        ["KYC 广告运营","基于期货通与手炒用户的行为和来源，拆解画像特征，制定个性化广告投放方案。"],
+        ["期商算法推荐","整合入口、时间等维度，推动人群画像 / 标签、入口与留资率的交叉维度 AI 智能验证。"],
+        ["常态化节点活动","周期性模拟赛、年度盘点、年度冲量活动等节点性活动，持续提升用户参与趣味性。"],
+        ["期商开户福利","梳理每家期商特色开户福利，融入现有开户体系，提升用户转化意向。"],
+        ["特色功能与期股联动","包装期货通特色产品功能，打造“热门期货 + 涨价商品”概念，满足多端投资者差异化需求。"]
+      ]
+    },
+    {
+      title:"链路优化",
+      tag:"链路 02",
+      strategy:"优化细分场景与关键转化链路，通过新用户承接、断点召回和开户系统完善减少非必要流失。",
+      target:"开户转化率 18.7%，手炒 8.6%，期货通 27.6%",
+      projects:[
+        ["新用户场景承接","强化 7 日内用户转化引导，通过新用户开户大 Banner、7 日内产品卡片、deeplink 支持加强转化。"],
+        ["断点场景优化","通过广告、灵动岛等方式，按点击流失、关键行为中断、留资后流失、开户中断四类场景召回。"],
+        ["开户系统完善","手炒支持 iOS、鸿蒙在线开户；推进 60%+ 期商支持夜间预开户，覆盖手炒、期货通、端外全场景。"]
+      ]
+    },
+    {
+      title:"期商转化",
+      tag:"链路 03",
+      strategy:"完善平台 AI 化建设，加强期商经营感知，把人工诊断沉淀为可复用的期商服务智能体。",
+      target:"减少 30% 重复沟通工作",
+      projects:[
+        ["期商服务平台 AI 智能体","根据期商数据现状和历史交流经验，通过 AI 沉淀期商端知识库。"],
+        ["数据分析与诊断","线上化输出各公司针对性建议，解决期货公司基础数据分析和诊断需求。"],
+        ["反馈维稳闭环","围绕转化率持续反馈问题、跟进动作和效果，降低人工重复沟通成本。"]
+      ]
+    }
+  ];
+}
+var serviceStrategySlide=slidesData.find(function(s){return s.id==="h2-10"});
+if(serviceStrategySlide){
+  serviceStrategySlide.layout="execution-strategy";
+  serviceStrategySlide.projectTitle="联合运营与增值付费";
+  serviceStrategySlide.conclusion="把期商合作拆成增值付费、联合运营和 AI 提效三条执行线，形成从服务接入到经营闭环的可落地打法。";
+  serviceStrategySlide.metrics=[["8.1 万","实盘登录日活","H1 6 万"],["42%","新开户交易率","当前 30%"],["10%","流失期召回率","当前 8%"],["500 万","服务体系创收","增值 + 联合运营"]];
+  serviceStrategySlide.metricColumns=4;
+  serviceStrategySlide.problemColumns=3;
+  serviceStrategySlide.problems=[
+    ["增值付费非标","当前仅支持期商非标准化指标接入，人工维护成本较高。"],
+    ["联合运营效率低","期商侧运营策略生产慢、交易辅助类内容少、业务理解低、人工对接成本高。"],
+    ["AI 工具需补齐","需要持续完善 AI 运营工具，提升期商侧效率，减少人工沟通成本。"]
+  ];
+  serviceStrategySlide.execColumns=3;
+  serviceStrategySlide.execSections=[
+    {
+      title:"增值付费",
+      tag:"服务 01",
+      strategy:"以期商指标试点，后续搭建标准化产品，实现产品融合与铺量。",
+      target:"跑通流程，上线 20 家期商，收入 200 万",
+      projects:[
+        ["期商特色付费服务接入","期商自研指标批量接入期货通并支持在线购买；通过直播、课程、社群、组合包联动指标工具和投顾服务转化。"],
+        ["年度折扣活动","开展双 11 策略工具节、双 12 返场，推出限时特价、首月优惠、季卡 / 半年卡套餐。"],
+        ["标准化产品搭建","搭建标准化交易产品，支持期商快速接入；端内自建指标商城，支持策略回测、独立产品页和场景化植入。"],
+        ["数据基建","完成结算系统、结算数据对接，建设标准化 API。"]
+      ]
+    },
+    {
+      title:"联合运营",
+      tag:"服务 02",
+      strategy:"优化细分场景与用户转化关键链路，减少非必要流失，让期商服务真正嵌入用户生命周期。",
+      target:"推进 15 家期商采购；服务体系创收 300 万",
+      projects:[
+        ["广告策略库与产品融合","搭建用户断点转化策略库，通过广告 + 产品融合形式持续触达用户，培养习惯并提升转化。"],
+        ["内容服务完善","将期商交易服务接入用户服务体系，包括直播、研报、策略报等，并按生命周期定向推送物料。"],
+        ["企微用户分层服务","算法每日筛选细分高潜转化名单，AI 提供人群转化策略、话术和内容，形成企微全链路数据闭环。"],
+        ["期商能动性提升","搭建期商用户经营看板，结合智能营销 Claw 输出问题、机会和运营待办。"]
+      ]
+    },
+    {
+      title:"AI 提效",
+      tag:"服务 03",
+      strategy:"完善 AI 化建设，提升内部与期商侧运营效率，把洞察、策略、素材和投放串成闭环。",
+      target:"完成 AI 洞察—分析—策略—物料全流程搭建",
+      projects:[
+        ["AI 洞察","AI 自动诊断用户经营异常数据点，给出诊断结果和待办事项，驱动期商日常运营。"],
+        ["AI 策略","基于洞察结论生成运营策略，打通 AI 素材、线上营销页和自动化投放转化，并追溯策略效果。"],
+        ["AI 素材","满足多场景运营素材生成，并适配不同期商风格。"]
+      ]
+    }
+  ];
+}
+function chrome(s){var period=s.section==="下半年计划"?"2026 H2":"2026 H1";return '<div class="chrome"><span class="section">'+esc(s.section)+'</span><span>B2C-10 / '+period+'</span></div>'+brand()+'<div class="axis"></div>'}
+function title(s){return '<h2 class="action-title reveal" data-editable>'+esc(s.title)+'</h2>'}
+function heading(s){return s.projectTitle?'<div class="project-heading reveal"><h2 class="project-name" data-editable>'+esc(s.projectTitle)+'</h2><p class="project-conclusion" data-editable>'+esc(s.conclusion||s.title)+'</p></div>':title(s)}
+function details(s){if(!s.details||!s.details.length)return "";return '<button class="detail-trigger" aria-label="展开本页详情">展开明细</button><aside class="detail-panel"><button class="detail-close" aria-label="关闭详情">×</button><h3>补充明细</h3><ul class="detail-list">'+s.details.map(function(x){return '<li data-editable>'+esc(x)+'</li>'}).join("")+'</ul></aside>'}
+function growthLineSvg(s){
+  var w=760,h=280,l=44,r=18,t=20,b=34,max=90;
+  function x(i){return l+i*(w-l-r)/(s.appDau.length-1)}
+  function y(v){return t+(max-v)*(h-t-b)/max}
+  function path(a){return a.map(function(v,i){return(i?"L":"M")+x(i).toFixed(1)+","+y(v).toFixed(1)}).join(" ")}
+  var grid=[20,40,60,80].map(function(v){return '<line class="chart-grid" x1="'+l+'" y1="'+y(v)+'" x2="'+(w-r)+'" y2="'+y(v)+'"></line><text class="chart-axis" x="8" y="'+(y(v)+4)+'">'+v+'</text>'}).join("");
+  var labels=s.dauMonths.map(function(m,i){if(i%3!==0&&i!==s.dauMonths.length-1)return "";return '<text class="chart-axis" text-anchor="middle" x="'+x(i)+'" y="270">'+esc(m)+'</text>'}).join("");
+  var dots=s.appDau.map(function(v,i){return '<circle class="chart-dot" style="--dot:'+i+'" cx="'+x(i)+'" cy="'+y(v)+'" r="3.5" fill="#62e8ff"></circle>'}).join("")+s.realDau.map(function(v,i){return '<circle class="chart-dot" style="--dot:'+i+'" cx="'+x(i)+'" cy="'+y(v)+'" r="3" fill="#ffc857"></circle>'}).join("");
+  return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="APP 日活与实盘日活趋势">'+grid+'<path class="trend-line app-line" pathLength="1" d="'+path(s.appDau)+'" fill="none" stroke="#62e8ff" stroke-width="4"></path><path class="trend-line real-line" pathLength="1" d="'+path(s.realDau)+'" fill="none" stroke="#ffc857" stroke-width="4"></path>'+dots+labels+'<text class="chart-value" x="'+(x(9)-12)+'" y="'+(y(s.appDau[9])-10)+'">83.36</text><text class="chart-value" x="'+(x(12)-44)+'" y="'+(y(s.appDau[12])-10)+'">69.16</text><text class="chart-value" x="'+(x(12)-44)+'" y="'+(y(s.realDau[12])-10)+'">25.19</text></svg>'
+}
+function growthStackSvg(s){
+  var w=680,h=280,l=42,r=16,t=22,b=36,max=190,bw=44,step=(w-l-r)/s.mauPeriods.length;
+  function y(v){return t+(max-v)*(h-t-b)/max}
+  var grid=[50,100,150].map(function(v){return '<line class="chart-grid" x1="'+l+'" y1="'+y(v)+'" x2="'+(w-r)+'" y2="'+y(v)+'"></line><text class="chart-axis" x="4" y="'+(y(v)+4)+'">'+v+'</text>'}).join("");
+  var bars=s.mauPeriods.map(function(p,i){var x=l+i*step+(step-bw)/2,ret=s.mauRetained[i],rec=s.mauRecall[i],nw=s.mauNew[i],total=s.mauTotal[i],retY=y(ret),recY=y(ret+rec),newY=y(total);return '<g class="stack-group" style="--bar:'+i+'"><rect x="'+x+'" y="'+retY+'" width="'+bw+'" height="'+(y(0)-retY)+'" fill="#2e8dff" opacity=".72"></rect><rect x="'+x+'" y="'+recY+'" width="'+bw+'" height="'+(retY-recY)+'" fill="#62e8ff"></rect><rect x="'+x+'" y="'+newY+'" width="'+bw+'" height="'+(recY-newY)+'" fill="#b6ff5f"></rect></g><text class="chart-total stack-label" style="--bar:'+i+'" text-anchor="middle" x="'+(x+bw/2)+'" y="'+(newY-7)+'">'+total.toFixed(total%1?1:0)+'</text><text class="chart-axis" text-anchor="middle" x="'+(x+bw/2)+'" y="270">'+esc(p)+'</text>'}).join("");
+  return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="月活留存拉新回流结构趋势">'+grid+bars+'</svg>'
+}
+function competitorLineSvg(s,type){
+  var isApp=type==="app",a=isApp?s.appFutures:s.pcFutures,b=isApp?s.appCompetitor:s.pcCompetitor;
+  var w=760,h=270,l=46,r=72,t=24,bt=32,min=isApp?110:17,max=isApp?230:29.5,ticks=isApp?[120,160,200]:[18,21,24,27];
+  function x(i){return l+i*(w-l-r)/(a.length-1)}
+  function y(v){return t+(max-v)*(h-t-bt)/(max-min)}
+  function path(vals){return vals.map(function(v,i){return(i?"L":"M")+x(i).toFixed(1)+","+y(v).toFixed(1)}).join(" ")}
+  var grid=ticks.map(function(v){return '<line class="chart-grid" x1="'+l+'" y1="'+y(v)+'" x2="'+(w-r)+'" y2="'+y(v)+'"></line><text class="chart-axis" x="5" y="'+(y(v)+4)+'">'+v+'</text>'}).join("");
+  var labels=s.months.map(function(m,i){if(i%2!==0&&i!==s.months.length-1)return "";return '<text class="chart-axis" text-anchor="middle" x="'+x(i)+'" y="264">'+esc(m)+'</text>'}).join("");
+  var dots=a.map(function(v,i){return '<circle class="chart-dot" style="--dot:'+i+'" cx="'+x(i)+'" cy="'+y(v)+'" r="3.2" fill="#62e8ff"></circle>'}).join("")+b.map(function(v,i){return '<circle class="chart-dot" style="--dot:'+i+'" cx="'+x(i)+'" cy="'+y(v)+'" r="2.8" fill="#ffc857"></circle>'}).join("");
+  var cross=isApp?'<line class="competitor-cross-line" x1="'+x(9)+'" y1="22" x2="'+x(9)+'" y2="238"></line><text class="competitor-cross" text-anchor="middle" x="'+x(9)+'" y="17">1 月首次反超</text>':"";
+  var last=a.length-1;
+  return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+(isApp?'期货通 APP 与文华随身行':'期货通 PC 与 WH6 通用版')+'月活趋势">'+grid+cross+'<path class="trend-line" pathLength="1" d="'+path(a)+'" fill="none" stroke="#62e8ff" stroke-width="4"></path><path class="trend-line real-line" pathLength="1" d="'+path(b)+'" fill="none" stroke="#ffc857" stroke-width="4"></path>'+dots+labels+'<text class="competitor-end" fill="#62e8ff" x="'+(x(last)+8)+'" y="'+(y(a[last])+5)+'">'+a[last].toFixed(2)+'</text><text class="competitor-end" fill="#ffc857" x="'+(x(last)+8)+'" y="'+(y(b[last])+5)+'">'+b[last].toFixed(2)+'</text></svg>'
+}
+function sourceLineSvg(c){
+  var w=760,h=270,l=48,r=58,t=22,b=32,min=c.min==null?0:c.min,max=c.max;
+  function x(i){return l+i*(w-l-r)/(c.labels.length-1)}
+  function y(v){return t+(max-v)*(h-t-b)/(max-min)}
+  function path(vals){return vals.map(function(v,i){return(i?"L":"M")+x(i).toFixed(1)+","+y(v).toFixed(1)}).join(" ")}
+  var grid=c.ticks.map(function(v){var lab=c.tickFormat&&c.tickFormat[v]!=null?c.tickFormat[v]:(c.tickSuffix?Math.round(v*100)+c.tickSuffix:(max>=100000?Math.round(v/10000)+'万':v));return '<line class="chart-grid" x1="'+l+'" y1="'+y(v)+'" x2="'+(w-r)+'" y2="'+y(v)+'"></line><text class="chart-axis" x="3" y="'+(y(v)+4)+'">'+esc(lab)+'</text>'}).join("");
+  var labels=c.labels.map(function(m,i){return '<text class="chart-axis" text-anchor="middle" x="'+x(i)+'" y="264">'+esc(m)+'</text>'}).join("");
+  var lines=c.series.map(function(s,si){var dots=s.values.map(function(v,i){return '<circle class="chart-dot" style="--dot:'+i+'" cx="'+x(i)+'" cy="'+y(v)+'" r="3" fill="'+s.color+'"></circle>'}).join("");var last=s.values.length-1,peak="";if(s.peakLabel){var peakIndex=0;s.values.forEach(function(v,i){if(v>s.values[peakIndex])peakIndex=i});peak='<text class="chart-value" text-anchor="middle" fill="'+s.color+'" x="'+x(peakIndex)+'" y="'+Math.max(16,y(s.values[peakIndex])-8)+'">'+esc(s.peakLabel)+'</text>'}return '<path class="trend-line '+(si?'real-line':'')+'" pathLength="1" d="'+path(s.values)+'" fill="none" stroke="'+s.color+'" stroke-width="4"></path>'+dots+peak+'<text class="competitor-end" fill="'+s.color+'" x="'+(x(last)+7)+'" y="'+(y(s.values[last])+4)+'">'+esc(s.endLabel||s.values[last])+'</text>'}).join("");
+  return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(c.aria||"趋势图")+'">'+grid+lines+labels+'</svg>'
+}
+function marketShareSvg(c){
+  var w=760,h=314,l=50,r=36,t=24,b=48,min=c.min,max=c.max,vals=c.values||[];
+  function pct(v){return (v*100).toFixed(2).replace(/\.?0+$/,"")+"%"}
+  function x(i){return l+i*(w-l-r)/(vals.length-1)}
+  function y(v){return t+(max-v)*(h-t-b)/(max-min)}
+  function path(a){return a.map(function(v,i){return(i?"L":"M")+x(i).toFixed(1)+","+y(v).toFixed(1)}).join(" ")}
+  var grid=c.ticks.map(function(v){return '<line class="chart-grid" x1="'+l+'" y1="'+y(v)+'" x2="'+(w-r)+'" y2="'+y(v)+'"></line><text class="chart-axis" x="5" y="'+(y(v)+4)+'">'+pct(v)+'</text>'}).join("");
+  var labels=c.labels.map(function(m,i){return '<text class="chart-axis" text-anchor="middle" x="'+x(i)+'" y="'+(h-15)+'">'+esc(m)+'</text>'}).join("");
+  var area='<path d="'+path(vals)+' L '+x(vals.length-1).toFixed(1)+','+(h-b)+' L '+x(0).toFixed(1)+','+(h-b)+' Z" fill="url(#marketShareFill)" opacity=".42"></path>';
+  var dots=vals.map(function(v,i){return '<circle class="chart-dot" style="--dot:'+i+'" cx="'+x(i)+'" cy="'+y(v)+'" r="'+(i===vals.length-1?5:3.2)+'" fill="'+(i===vals.length-1?'#ffc857':'#b6ff5f')+'"></circle>'}).join("");
+  var pointLabels=(c.pointLabels||[]).map(function(p){var i=p[0],dy=i===vals.length-1?-16:-12,anchor=i===0?'start':(i===vals.length-1?'end':'middle'),tx=x(i)+(i===0?4:(i===vals.length-1?-2:0));return '<text class="market-share-dot-label" text-anchor="'+anchor+'" x="'+tx+'" y="'+Math.max(17,y(vals[i])+dy)+'">'+esc(p[1])+'</text>'}).join("");
+  var last=vals.length-1;
+  return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(c.aria||"期货通开户市占率趋势")+'"><defs><linearGradient id="marketShareFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b6ff5f" stop-opacity=".55"></stop><stop offset="100%" stop-color="#62e8ff" stop-opacity=".04"></stop></linearGradient></defs>'+grid+area+'<path class="trend-line" pathLength="1" d="'+path(vals)+'" fill="none" stroke="#b6ff5f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path><line class="competitor-cross-line" x1="'+x(last)+'" y1="24" x2="'+x(last)+'" y2="'+(h-b)+'"></line>'+dots+pointLabels+labels+'</svg>'
+}
+function sourceBarSvg(c){
+  var w=760,h=270,l=52,r=48,t=22,b=34,max=c.barMax,step=(w-l-r)/c.labels.length,groupW=Math.min(60,step*.66),barW=groupW/c.bars.length;
+  function xg(i){return l+i*step+(step-groupW)/2}
+  function yb(v){return t+(max-v)*(h-t-b)/max}
+  function yl(v){var mn=c.lineMin==null?0:c.lineMin,mx=c.lineMax==null?1:c.lineMax;return t+(mx-v)*(h-t-b)/(mx-mn)}
+  var grid=c.ticks.map(function(v){var lab=c.tickFormat&&c.tickFormat[v]!=null?c.tickFormat[v]:(max>=10000?Math.round(v/10000)+'万':v);return '<line class="chart-grid" x1="'+l+'" y1="'+yb(v)+'" x2="'+(w-r)+'" y2="'+yb(v)+'"></line><text class="chart-axis" x="2" y="'+(yb(v)+4)+'">'+esc(lab)+'</text>'}).join("");
+  var bars=c.bars.map(function(s,si){return s.values.map(function(v,i){var x=xg(i)+si*barW,y=yb(v);return '<rect class="source-bar" style="--bar:'+i+'" x="'+x+'" y="'+y+'" width="'+(barW-3)+'" height="'+(h-b-y)+'" fill="'+s.color+'" opacity="'+(si?'.72':'.9')+'"></rect>'}).join("")}).join("");
+  var barPeakLabels=c.bars.map(function(s,si){if(!s.peakLabel)return "";var peakIndex=0;s.values.forEach(function(v,i){if(v>s.values[peakIndex])peakIndex=i});var x=xg(peakIndex)+si*barW+(barW-3)/2,y=Math.max(16,yb(s.values[peakIndex])-6);return '<text class="chart-value" text-anchor="middle" fill="'+s.color+'" x="'+x+'" y="'+y+'">'+esc(s.peakLabel)+'</text>'}).join("");
+  var lines=(c.lines||[]).map(function(s,si){var pts=s.values.map(function(v,i){return(i?'L':'M')+(xg(i)+groupW/2).toFixed(1)+','+yl(v).toFixed(1)}).join(' ');return '<path class="trend-line '+(si?'real-line':'')+'" pathLength="1" d="'+pts+'" fill="none" stroke="'+s.color+'" stroke-width="4"></path>'}).join("");
+  var labels=c.labels.map(function(m,i){return '<text class="chart-axis" text-anchor="middle" x="'+(xg(i)+groupW/2)+'" y="264">'+esc(m)+'</text>'}).join("");
+  return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+esc(c.aria||"柱状趋势图")+'">'+grid+bars+barPeakLabels+lines+labels+'</svg>'
+}
+function renderBody(s){
+if(s.layout==="cover"){return '<div class="slide-inner"><div class="axis"></div>'+brand()+'<div class="eyebrow reveal">'+esc(s.eyebrow)+'</div><h1 class="cover-title reveal d1" data-editable>'+s.title.split("|").map(function(x,i){return i?'<span>'+esc(x)+'</span>':esc(x)}).join("")+'</h1><p class="cover-sub reveal d2" data-editable>'+esc(s.subtitle)+'</p><div class="cover-metrics">'+s.metrics.map(function(m){return '<div class="cover-metric reveal d3"><b>'+esc(m[0])+'</b><small>'+esc(m[1])+'</small></div>'}).join("")+'</div><div class="orbit"></div></div>'}
+if(s.layout==="source-image-full"){return '<div class="slide-inner"><div class="source-page-full"><img src="'+esc(s.sourceImage)+'" alt="'+esc(s.sourceImageAlt)+'">'+(s.sourceCorrection?'<div class="source-correction"><b>'+esc(s.sourceCorrection[0])+'</b><span>'+esc(s.sourceCorrection[1])+'</span></div>':'')+'</div>'+(s.sourceChrome?'<div class="source-overlay-header"></div>'+chrome(s):'')+'</div>'}
+var out='<div class="slide-inner">'+chrome(s)+heading(s);
+if(s.layout==="direct-png"){out+='<div class="direct-png-frame'+(s.directFrameClass?' '+esc(s.directFrameClass):'')+'"><img src="'+esc(s.directImage)+'" alt="'+esc(s.directImageAlt||s.projectTitle||s.title)+'"></div>'}
+if(s.layout==="research-skills-map"){out+='<div class="skills-map-shell"><div class="skills-map-context">'+s.context.map(function(c){return '<section class="skills-context-card"><b>'+esc(c[0])+'</b><p>'+esc(c[1])+'</p></section>'}).join("")+'</div><div class="skills-stage-grid">'+s.stages.map(function(st){return '<article class="skills-stage-card"><div class="skills-stage-top"><div class="skills-stage-no">'+esc(st.no)+'</div><div><span>'+esc(st.phase)+'</span><h3>'+esc(st.title)+'</h3></div></div><div class="skills-anchor">'+esc(st.anchor)+'</div><p class="skills-stage-desc">'+esc(st.desc)+'</p><div class="skills-value-grid">'+st.values.map(function(v){return '<div class="skills-value"><b>'+esc(v[0])+'</b><span>'+esc(v[1])+'</span></div>'}).join("")+'</div></article>'}).join("")+'</div><div class="skills-path">'+s.path.map(function(p){return '<div>'+esc(p)+'</div>'}).join("")+'</div></div>'}
+if(s.layout==="summary"){out+='<div class="hero-statement reveal d1" data-editable>'+esc(s.statement)+'</div><div class="metric-row">'+s.metrics.map(function(m){return '<div class="big-metric reveal-scale d2"><b>'+esc(m[0])+'</b><span data-editable>'+esc(m[1])+'</span><small data-editable>'+esc(m[2])+'</small></div>'}).join("")+'</div><div class="insight-strip reveal d3" data-editable>'+esc(s.insight)+'</div>'}
+if(s.layout==="kpi"){var kpiGridClass="kpi-grid"+(s.metrics.length===2?" kpi-two":"");out+='<div class="'+kpiGridClass+'">'+s.metrics.map(function(m){var sub=m.breakdown?'<div class="kpi-subgrid" style="--subcols:'+esc(m.subColumns||2)+'">'+m.breakdown.map(function(x){return '<div class="kpi-subitem"><span>'+esc(x[0])+'</span><b>'+esc(x[1])+'</b><small>'+esc(x[2]||"")+'</small></div>'}).join("")+'</div>':'';return '<div class="kpi reveal-scale"><div class="kpi-head"><div><label>'+esc(m.label)+'</label><br><b>'+esc(m.value)+'</b></div><div class="goal">'+esc(m.goal)+'</div></div><div class="gauge"><i style="width:'+Math.min(100,m.ratio)+'%"></i></div><div class="kpi-note">'+esc(m.note)+'</div>'+sub+'</div>'}).join("")+'</div><div class="insight-strip">'+esc(s.footer)+'</div>'}
+if(s.layout==="flow"){out+='<div class="flow-start reveal">'+esc(s.start)+'</div><div class="flow-line">'+s.items.map(function(m){return '<div class="flow-node reveal-scale"><span>'+esc(m[0])+'</span><b>'+esc(m[1])+'</b><small>'+esc(m[2])+'</small></div>'}).join("")+'</div><div class="side-metrics">'+s.side.map(function(m){return '<div><span>'+esc(m[0])+'</span><b>'+esc(m[1])+'</b><small>'+esc(m[2])+'</small></div>'}).join("")+'</div><div class="insight-strip">'+esc(s.insight)+'</div>'}
+if(s.layout==="growth-analysis"){out+='<div class="growth-top"><div class="growth-headlines">'+s.summary.map(function(m){return '<div class="growth-headline"><span>'+esc(m[0])+'</span><b>'+esc(m[1])+'</b></div>'}).join("")+'</div><div class="growth-drivers">'+s.drivers.map(function(m){return '<div class="growth-driver"><span>'+esc(m[0])+'</span><b>'+esc(m[1])+'</b><small>'+esc(m[2])+'</small></div>'}).join("")+'</div></div><div class="growth-charts"><div class="growth-chart"><div class="growth-chart-head"><h3>APP 日活与实盘日活趋势（万）</h3><div class="growth-legend"><span><i style="background:#62e8ff"></i>APP 日活</span><span><i style="background:#ffc857"></i>实盘日活</span></div></div>'+growthLineSvg(s)+'</div><div class="growth-chart"><div class="growth-chart-head"><h3>'+esc(s.stackTitle||"月活增长结构（年度月平均，万）")+'</h3><div class="growth-legend"><span><i style="background:#2e8dff"></i>留存</span><span><i style="background:#62e8ff"></i>回流</span><span><i style="background:#b6ff5f"></i>拉新</span></div></div>'+growthStackSvg(s)+'</div></div><div class="growth-causes">'+s.causes.map(function(c){return '<div class="growth-cause"><b>'+esc(c[0])+'</b><p>'+esc(c[1])+'</p></div>'}).join("")+'</div>'}
+if(s.layout==="competitor-analysis"){out+='<div class="competitor-section-head"><span>市场分析</span><p>过去 12 个月竞争格局与一季度增量变化</p><strong>APP 完成反超｜PC 领先扩大</strong></div><div class="competitor-kpis">'+s.summary.map(function(m){return '<div class="competitor-kpi"><span>'+esc(m[0])+'</span><b>'+esc(m[1])+'</b><small>'+esc(m[2])+'</small></div>'}).join("")+'</div><div class="competitor-charts"><div class="competitor-chart"><div class="competitor-chart-head"><h3>APP 月活趋势（万）</h3><div class="competitor-legend"><span><i style="background:#62e8ff"></i>期货通 APP</span><span><i style="background:#ffc857"></i>文华随身行</span></div></div>'+competitorLineSvg(s,"app")+'</div><div class="competitor-chart"><div class="competitor-chart-head"><h3>PC 月活趋势（万）</h3><div class="competitor-legend"><span><i style="background:#62e8ff"></i>期货通 PC</span><span><i style="background:#ffc857"></i>WH6 通用版</span></div></div>'+competitorLineSvg(s,"pc")+'</div></div><div class="competitor-section-head dynamic"><span>竞品动态</span><p>文华持续加码三类高频专业场景</p><strong>规模领先需转化为专业体验壁垒</strong></div><div class="competitor-moves">'+s.competitorMoves.map(function(m){return '<div class="competitor-move"><b>'+esc(m[0])+'</b><p>'+esc(m[1])+'</p></div>'}).join("")+'</div>'}
+if(s.layout==="market-research"){out+='<div class="research-metrics">'+s.metrics.map(function(m){return '<div class="research-metric"><span>'+esc(m[1])+'</span><b>'+esc(m[0])+'</b><small>'+esc(m[2])+'</small></div>'}).join("")+'</div><div class="market-research-grid"><section class="research-panel"><h3><span>MARKET SHARE</span>期货通开户市占率年度趋势</h3><div class="market-share-chart">'+marketShareSvg(s.marketShare)+'</div>'+(s.shareStats?'<div class="market-share-values">'+s.shareStats.map(function(x){return '<div><b>'+esc(x[0])+'</b><span>'+esc(x[1])+'</span></div>'}).join("")+'</div>':'')+'<div class="research-caption">市场份额趋势显示：期货通开户市占率从 2019 年 5.33% 提升至 2025 年底 12.53%，2026 年中预计 13.18%，较 2025 年底继续提升 0.65pp。</div></section><div class="research-stack">'+s.cards.map(function(c){return '<section class="research-card"><h3>'+esc(c[0])+'</h3>'+(Array.isArray(c[1])?'<ul>'+c[1].map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul>':'<p>'+esc(c[1])+'</p>')+'</section>'}).join("")+'</div></div>'}
+if(s.layout==="channel-research"){function channelGroup(title,items,isGap){return '<section class="channel-group '+(isGap?'gap':'')+'"><h4>'+esc(title)+'</h4><div class="channel-compare">'+items.map(function(r){return '<div class="channel-row '+(isGap?'gap':'')+'"><label>'+esc(r[0])+'</label><div><i style="--value:'+esc(r[3])+'"></i><small>'+esc(r[1])+'｜'+esc(r[2])+'</small></div></div>'}).join("")+'</div></section>'}out+='<div class="channel-grid"><section class="channel-panel"><h3>厂商渠道：守住安卓优势，集中补强华为与苹果</h3><div class="channel-groups">'+channelGroup("优势渠道｜维持投入",s.defend,false)+channelGroup("差距渠道｜优先补强",s.attack,true)+'</div><div class="channel-insight">苹果投放金额虽明显低于中信，但期货通总下载约 12 万，仍显著领先主要竞品，说明当前效率较高；补量时应优先验证边际 ROI，避免只追求金额规模。</div></section><section class="channel-panel"><h3>GEO：曝光已反超，专业信源仍需补齐</h3><div class="geo-kpis">'+s.geo.map(function(g){return '<div class="geo-kpi"><span>'+esc(g[1])+'</span><b>'+esc(g[0])+'</b><small>'+esc(g[2])+'</small></div>'}).join("")+'</div><div class="geo-actions"><h4>下半年优化重点</h4><ul><li>提高专业公信源产出，在文章与研报中明确引用 E10 数据或 AI 分析结论。</li><li>强化“AI 智能 + 新手友好”的差异化标签，同时补足专业深度内容。</li><li>将官网、研究专栏与结构化数据页统一为可被 AI 检索和引用的信源体系。</li></ul></div></section>'+(s.proof?'<section class="channel-proof">'+s.proof.map(function(p){return '<div class="channel-proof-card"><span>'+esc(p[0])+'</span><b>'+esc(p[1])+'</b><small>'+esc(p[2])+'</small></div>'}).join("")+'</section>':'')+'</div>'}
+if(s.layout==="work-review"){out+='<div class="work-review-grid">'+s.streams.map(function(c){return '<article class="work-review-col"><div class="work-review-head"><h3>'+esc(c.name)+'</h3><span>'+esc(c.subtitle)+'</span></div><div class="work-review-kpis">'+c.metrics.map(function(m){return '<div class="work-review-kpi"><b>'+esc(m[0])+'</b><span>'+esc(m[1])+'</span><em>'+esc(m[2])+'</em></div>'}).join("")+'</div><section class="work-review-section work-review-strategy"><h4>STRATEGY / 策略</h4><p>'+esc(c.strategy)+'</p></section><section class="work-review-section work-review-results"><h4>RESULT / 完成结果</h4><ul>'+c.results.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul></section><section class="work-review-section work-review-projects"><h4>PROJECT / 重点工作结果</h4><div class="work-project-head"><span>项目</span><span>状态</span><span>负责人</span></div>'+c.projects.map(function(p){return '<div class="work-project-row"><span>'+esc(p[0])+'</span><span>'+esc(p[1])+'</span><span>'+esc(p[2])+'</span></div>'}).join("")+'</section></article>'}).join("")+'</div>'}
+if(s.layout==="harmony-review"){out+='<div class="source-metrics">'+s.metrics.map(function(m){return '<div class="source-metric"><b>'+esc(m[0])+'</b><span>'+esc(m[1])+'</span><small>'+esc(m[2])+'</small></div>'}).join("")+'</div><div class="harmony-grid"><div class="source-chart"><div class="source-chart-head"><h3>'+esc(s.chart1.title)+'</h3><div class="source-legend">'+s.chart1.series.map(function(x){return '<span><i style="background:'+x.color+'"></i>'+esc(x.name)+'</span>'}).join("")+'</div></div>'+sourceLineSvg(s.chart1)+'</div><div class="source-chart"><div class="source-chart-head"><h3>'+esc(s.chart2.title)+'</h3><div class="source-legend">'+s.chart2.series.map(function(x){return '<span><i style="background:'+x.color+'"></i>'+esc(x.name)+'</span>'}).join("")+'</div></div>'+sourceLineSvg(s.chart2)+'</div></div><div class="harmony-bottom">'+s.notes.map(function(n){return '<div class="harmony-note"><h3>'+esc(n[0])+'</h3>'+(Array.isArray(n[1])?'<ul>'+n[1].map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul>':'<p>'+esc(n[1])+'</p>')+'</div>'}).join("")+'</div>'}
+if(s.layout==="project-review"){out+=(s.metrics?'<div class="source-metrics" style="--source-metric-cols:'+esc(s.metricColumns||3)+'">'+s.metrics.map(function(m){return '<div class="source-metric"><span>'+esc(m[1])+'</span><b>'+esc(m[0])+'</b><small>'+esc(m[2])+'</small></div>'}).join("")+'</div>':'')+'<div class="project-review-grid'+(s.metrics?' has-metrics':'')+'"><div class="project-review-left">'+(s.charts.length>1?'<div class="source-dual-chart">':'')+s.charts.map(function(c){return '<div class="source-chart"><div class="source-chart-head"><h3>'+esc(c.title)+'</h3><div class="source-legend">'+(c.series||c.bars).map(function(x){return '<span><i style="background:'+x.color+'"></i>'+esc(x.name)+'</span>'}).join("")+'</div></div>'+(c.kind==="bar"?sourceBarSvg(c):sourceLineSvg(c))+'</div>'}).join("")+(s.charts.length>1?'</div>':'')+'<div class="source-copy strategy"><h3>策略</h3><p>'+esc(s.strategy)+'</p></div><div class="source-copy"><h3>复盘总结</h3><p>'+esc(s.review)+'</p></div></div><div class="project-review-right"><div class="project-group-grid">'+s.groups.map(function(g){return '<section class="project-group"><h3>'+esc(g[0])+'</h3>'+(g[1]?'<small>'+esc(g[1])+'</small>':'')+'<ul>'+g[2].map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul></section>'}).join("")+'</div></div></div>'}
+if(s.layout==="acquisition-review"){out+='<div class="source-metrics">'+s.metrics.map(function(m){return '<div class="source-metric"><b>'+esc(m[0])+'</b><span>'+esc(m[1])+'</span><small>'+esc(m[2])+'</small></div>'}).join("")+'</div><div class="acquisition-body"><div class="acquisition-left"><div class="source-chart"><div class="source-chart-head"><h3>'+esc(s.chart.title)+'</h3><div class="source-legend">'+s.chart.bars.concat(s.chart.lines||[]).map(function(x){return '<span><i style="background:'+x.color+'"></i>'+esc(x.name)+'</span>'}).join("")+'</div></div>'+sourceBarSvg(s.chart)+'</div><div class="source-summary">'+esc(s.summary)+'</div></div><div class="acquisition-sections">'+s.sections.map(function(g){return '<section class="acquisition-section'+(g[0]==="社区运营"?' community':'')+'"><h3>'+esc(g[0])+'</h3><ul>'+g[1].map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul></section>'}).join("")+'</div></div>'}
+if(s.layout==="account-review"){out+='<div class="account-body"><div class="account-left"><div class="source-chart"><div class="source-chart-head"><h3>'+esc(s.chart.title)+'</h3><div class="source-legend">'+s.chart.bars.concat(s.chart.lines||[]).map(function(x){return '<span><i style="background:'+x.color+'"></i>'+esc(x.name)+'</span>'}).join("")+'</div></div>'+sourceBarSvg(s.chart)+'</div><div class="account-data">'+s.summary.map(function(m){return '<div><b>'+esc(m[0])+'</b><span>'+esc(m[1])+'</span></div>'}).join("")+'</div></div><div class="account-sections">'+s.sections.map(function(g){return '<section class="account-section"><h3>'+esc(g[0])+'</h3><ul>'+g[1].map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul></section>'}).join("")+'</div></div>'}
+if(s.layout==="ai-cases"){out+='<div class="ai-case-grid">'+s.cases.map(function(c){var media=c.images?'<figure class="pair">'+c.images.map(function(im,i){return '<img src="'+esc(im)+'" alt="'+esc(c.title)+'配图 '+(i+1)+'">'}).join("")+'</figure>':(c.image?'<figure><img src="'+esc(c.image)+'" alt="'+esc(c.title)+'"></figure>':'');return '<article class="ai-case '+esc(c.imageMode||'wide')+'">'+media+'<div class="ai-case-copy"><h3>'+esc(c.title)+'</h3><ul>'+c.items.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul></div></article>'}).join("")+'</div>'}
+if(s.layout==="ai-combined"){out+='<div class="ai-combined-grid">'+s.aiCombinedSections.map(function(c){var imgs=c.images||[];return '<section class="ai-combined-col"><div class="ai-combined-head"><h3>'+esc(c.title)+'</h3><span>'+esc(c.tag||"")+'</span></div><div class="ai-combined-media count-'+Math.min(3,imgs.length)+'">'+imgs.map(function(im,i){return '<figure><img src="'+esc(im)+'" alt="'+esc(c.title)+'配图 '+(i+1)+'"></figure>'}).join("")+'</div><div class="ai-combined-body"><p class="ai-combined-summary">'+esc(c.summary||"")+'</p><ul class="ai-combined-list">'+(c.items||[]).map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul></div></section>'}).join("")+'</div>'+(s.aiCombinedStats?'<div class="ai-combined-stats">'+s.aiCombinedStats.map(function(m){return '<div class="ai-combined-stat"><b>'+esc(m[0])+'</b><span>'+esc(m[1])+'</span></div>'}).join("")+'</div>':'')}
+if(s.layout==="ai-system"){out+='<div class="ai-system-grid">'+s.columns.map(function(c){return '<section class="ai-system-col"><h3>'+esc(c.title)+'</h3>'+c.blocks.map(function(b){return '<h4>'+esc(b[0])+'</h4>'+(Array.isArray(b[1])?'<ul>'+b[1].map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul>':'<p>'+esc(b[1])+'</p>')}).join("")+(c.image?'<img src="'+esc(c.image)+'" alt="'+esc(c.title)+'">':'')+'</section>'}).join("")+'</div><div class="ai-system-stats">'+s.stats.map(function(m){return '<div><b>'+esc(m[0])+'</b><span>'+esc(m[1])+'</span></div>'}).join("")+'</div>'}
+if(s.layout==="ai-data-infra"){out+='<div class="ai-data-grid">'+s.categories.map(function(c){var media=c.images?'<figure class="pair">'+c.images.map(function(im,i){return '<img src="'+esc(im)+'" alt="'+esc(c.title)+'配图 '+(i+1)+'">'}).join("")+'</figure>':'<figure><img src="'+esc(c.image)+'" alt="'+esc(c.title)+'"></figure>';return '<section class="ai-data-category">'+media+'<div class="ai-data-copy"><h3>'+esc(c.title)+'</h3>'+c.blocks.map(function(b){return '<div class="ai-data-block"><h4>'+esc(b[0])+'</h4>'+(Array.isArray(b[1])?'<ul>'+b[1].map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul>':'<p>'+esc(b[1])+'</p>')+'</div>'}).join("")+'</div></section>'}).join("")+'</div><div class="ai-data-stats">'+s.stats.map(function(m){return '<div><b>'+esc(m[0])+'</b><span>'+esc(m[1])+'</span></div>'}).join("")+'</div>'}
+if(s.layout==="retrospective"){out+=(s.metrics?'<div class="retrospective-metrics">'+s.metrics.map(function(m){return '<div class="retrospective-metric"><b>'+esc(m[0])+'</b><span>'+esc(m[1])+'</span><small>'+esc(m[2]||"")+'</small></div>'}).join("")+'</div>':'')+'<div class="split"><div class="split-panel reveal-left"><h3>'+esc(s.leftTitle)+'</h3><ul>'+s.left.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul></div><div class="split-panel risk reveal d1"><h3>'+esc(s.rightTitle)+'</h3><ul>'+s.right.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul></div></div><div class="insight-strip">'+esc(s.insight)+'</div>'}
+if(s.layout==="divider"){out='<div class="slide-inner"><div class="eyebrow reveal">'+esc(s.kicker)+'</div><h2 class="reveal d1">'+s.title.split("|").map(function(x,i){return i?'<span>'+esc(x)+'</span>':esc(x)}).join("")+'</h2><p class="reveal d2">'+esc(s.subtitle)+'</p><div class="divider-ring"></div></div>'}
+if(s.layout==="strategy"){out+='<div class="pillars">'+s.pillars.map(function(p){return '<div class="pillar reveal-scale"><i>'+esc(p[0])+'</i><h3>'+esc(p[1])+'</h3><p>'+esc(p[2])+'</p></div>'}).join("")+'</div><div class="target-cross"><div class="target-point north"><b>'+esc(s.north[0])+'</b><span>'+esc(s.north[1])+'</span></div><div class="target-point east"><b>'+esc(s.east[0])+'</b><span>'+esc(s.east[1])+'</span></div><div class="target-point south"><b>'+esc(s.south[0])+'</b><span>'+esc(s.south[1])+'</span></div><div class="target-point west"><b>'+esc(s.west[0])+'</b><span>'+esc(s.west[1])+'</span></div></div>'}
+if(s.layout==="three"){out+='<div class="three-cols">'+s.columns.map(function(c){return '<div class="col reveal-scale"><div class="tag">'+esc(c.tag)+'</div><h3>'+esc(c.title)+'</h3><div class="metric">'+esc(c.metric)+'</div><div class="label">'+esc(c.label)+'</div><ul>'+c.items.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul></div>'}).join("")+'</div>'}
+if(s.layout==="roadmap"){out+='<div class="roadmap">'+s.stages.map(function(c){return '<div class="stage-card reveal-scale"><div class="month">'+esc(c[0])+'</div><h3>'+esc(c[1])+'</h3><b>'+esc(c[2])+'</b><p>'+esc(c[3])+'</p></div>'}).join("")+'</div><div class="target-row">'+s.targets.map(function(t){return '<div class="target-chip"><b>'+esc(t[0])+'</b><span>'+esc(t[1])+'</span></div>'}).join("")+'</div>'}
+if(s.layout==="matrix"){out+='<div class="target-strip">'+s.targets.map(function(t){return '<div><b>'+esc(t[0])+'</b><span>'+esc(t[1])+'</span></div>'}).join("")+'</div><table class="matrix"><thead><tr><th>战场</th><th>端外策略</th><th>端内承接 / 目标</th></tr></thead><tbody>'+s.rows.map(function(r){return '<tr><td>'+esc(r[0])+'</td><td>'+esc(r[1])+'</td><td>'+esc(r[2])+'</td></tr>'}).join("")+'</tbody></table>'}
+if(s.layout==="h2-decision-chain"){out+='<div class="decision-grid">'+s.decisionColumns.map(function(c){return '<section class="decision-column"><h3>'+esc(c.title)+'</h3><div class="decision-metrics" style="--mcols:'+esc(c.metrics.length)+'">'+c.metrics.map(function(m){return '<div class="decision-metric"><span>'+esc(m[0])+'</span><b>'+esc(m[1])+'</b></div>'}).join("")+'</div>'+c.works.map(function(w){return '<div class="decision-work"><h4>'+esc(w[0])+'</h4><strong>'+esc(w[1])+'</strong><ul>'+w[2].map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul></div>'}).join("")+'</section>'}).join("")+'</div>'}
+if(s.layout==="h2-targets-clear"){out+='<div class="target-clear-grid" style="--target-cols:'+esc(s.targetColumns||5)+'">'+s.targets.map(function(t){return '<div class="target-clear-card"><b>'+esc(t[0])+'</b><span>'+esc(t[1])+'</span><small>'+esc(t[2]||"")+'</small></div>'}).join("")+'</div><div class="target-clear-body">'+s.drilldowns.map(function(d){return '<section class="target-clear-panel"><h3>'+esc(d[0])+'</h3><span class="panel-tag">'+esc(d[1]||"")+'</span><div class="target-clear-items">'+d[2].map(function(x){return '<div class="target-clear-item"><b>'+esc(x[0])+'</b><div><span>'+esc(x[1])+'</span><small>'+esc(x[2]||"")+'</small></div></div>'}).join("")+'</div></section>'}).join("")+'</div><div class="target-clear-note">'+esc(s.managementNote||"")+'</div>'}
+if(s.layout==="h2-detail"){out+='<div class="h2-metrics" style="--metric-cols:'+esc(s.metricColumns||4)+'">'+s.metrics.map(function(m){return '<div class="h2-metric"><b>'+esc(m[0])+'</b><span>'+esc(m[1])+'</span><small>'+esc(m[2]||"")+'</small></div>'}).join("")+'</div>'+(s.overview?'<div class="h2-overview">'+esc(s.overview)+'</div>':'')+'<div class="h2-grid" style="--cols:'+esc(s.columns||3)+'">'+s.groups.map(function(g){return '<section class="h2-card"><h3>'+esc(g[0])+'</h3><small>'+esc(g[1]||"")+'</small><ul>'+g[2].map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul></section>'}).join("")+'</div>'}
+if(s.layout==="h2-roadmap-detail"){out+=(s.target?'<div class="h2-roadmap-target"><span>'+esc(s.target[0])+'</span><b>'+esc(s.target[1])+'</b></div>':'')+'<div class="h2-roadmap-grid">'+s.stages.map(function(c){return '<section class="h2-roadmap-stage"><div class="month">'+esc(c.month)+'</div><h3>'+esc(c.version)+'</h3><strong>'+esc(c.title)+'</strong><ul>'+c.items.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul><p>'+esc(c.goal)+'</p></section>'}).join("")+'</div><div class="h2-months">'+s.months.map(function(m){return '<div><b>'+esc(m[0])+'</b><span>'+esc(m[1])+'</span></div>'}).join("")+'</div>'}
+if(s.layout==="h2-strategy-detail"){out+='<div class="strategy-vision"><span>VISION / 愿景</span><strong>'+esc(s.vision)+'</strong></div><div class="strategy-targets">'+s.targetCards.map(function(t){return '<div class="strategy-target"><b>'+esc(t[0])+'</b><span>'+esc(t[1])+'</span><small>'+esc(t[2])+'</small></div>'}).join("")+'</div><div class="strategy-core"><div class="strategy-statement"><h3>策略打法</h3><p>'+esc(s.strategy)+'</p></div><div class="strategy-principles">'+s.principles.map(function(p){return '<div class="strategy-principle"><b>'+esc(p[0])+'</b><span>'+esc(p[1])+'</span></div>'}).join("")+'</div></div><div class="strategy-funnel">'+s.stages.map(function(c){return '<section class="strategy-stage"><div class="strategy-stage-head"><i>'+esc(c.step)+'</i><h3>'+esc(c.title)+'</h3></div><strong>'+esc(c.goal)+'</strong><ul>'+c.items.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul></section>'}).join("")+'</div>'}
+if(s.layout==="project-strategy-map"){var pm=s.projectMap||{};out+='<div class="project-map-wrap"><div class="project-map-rail"><div>愿景</div><div>目标</div><div>策略</div><div>方向</div><div class="tall">策略打法</div><div>底座</div></div><div class="project-map-main"><section class="project-map-vision">'+esc(pm.vision||s.vision||"")+'</section><section class="project-map-targets">'+(pm.targets||[]).map(function(t){return '<div class="project-map-target"><b>'+esc(t[0])+'</b><span>'+esc(t[1])+'</span><small>'+esc(t[2]||"")+'</small></div>'}).join("")+'</section><section class="project-map-statement">'+esc(pm.strategy||s.strategy||"")+'</section><section class="project-map-directions">'+(pm.directions||[]).map(function(d){return '<div class="project-map-dir"><div><h3>'+esc(d[0])+'</h3><span>'+esc(d[1]||"")+'</span></div></div>'}).join("")+'</section><section class="project-map-methods">'+(pm.methods||[]).map(function(col){return '<article class="project-method-col">'+col.map(function(b){return '<div class="project-method-block"><h4>'+esc(b[0])+'</h4>'+(b[2]?'<strong>'+esc(b[2])+'</strong>':'')+'<ul>'+(b[1]||[]).map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul></div>'}).join("")+'</article>'}).join("")+'</section><section class="project-map-foundation">'+(pm.foundations||[]).map(function(f){return '<div>'+esc(f)+'</div>'}).join("")+'</section></div></div>'}
+if(s.layout==="strategy-map"){var m=s.strategyMap||{};var directions=m.directions||[];var foundations=m.foundations||[];out+='<div class="strategy-map-wrap"><div class="strategy-map-rail"><div>愿景</div><div>目标</div><div>策略</div><div class="tall">策略打法</div><div>底座</div></div><div class="strategy-map-main"><section class="strategy-map-vision">'+esc(m.vision||s.conclusion||"")+'</section><section class="strategy-map-targets" style="--targets:'+esc((m.targets||[]).length||4)+'">'+(m.targets||[]).map(function(t){return '<div class="strategy-map-target"><b>'+esc(t[0])+'</b><span>'+esc(t[1])+'</span><small>'+esc(t[2]||"")+'</small></div>'}).join("")+'</section><section class="strategy-map-statement">'+esc(m.strategy||"")+'</section><section class="strategy-map-directions" style="--dirs:'+esc(directions.length||3)+'">'+directions.map(function(d){return '<article class="strategy-map-direction"><div class="strategy-map-direction-head"><h3>'+esc(d.title)+'</h3><span>'+esc(d.subtitle||"")+'</span></div><div class="strategy-map-blocks">'+(d.blocks||[]).map(function(b){return '<div class="strategy-map-block"><h4>'+esc(b[0])+'</h4><ul>'+(b[1]||[]).map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul></div>'}).join("")+'</div></article>'}).join("")+'</section><section class="strategy-map-foundation" style="--foundations:'+esc(foundations.length||4)+'">'+foundations.map(function(f){return '<div>'+esc(f)+'</div>'}).join("")+'</section></div></div>'}
+if(s.layout==="seeding-strategy"){function seedList(arr){return '<ul>'+arr.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul>'}out+='<div class="seeding-targets"><div class="seeding-qual"><b>定性目标</b>'+esc(s.qualTarget||"")+'</div>'+(s.targets||[]).map(function(t){return '<div class="seeding-target"><b>'+esc(t[0])+'</b><span>'+esc(t[1])+'</span><small>'+esc(t[2]||"")+'</small></div>'}).join("")+'</div><div class="seeding-problems">'+(s.problems||[]).map(function(p){return '<div class="seeding-problem"><b>'+esc(p[0])+'</b>'+esc(p[1])+'</div>'}).join("")+'</div><div class="seeding-table"><div class="seeding-row seeding-head"><div class="seeding-cell">种草场域</div><div class="seeding-cell">人群属性</div><div class="seeding-cell">端外种草策略</div><div class="seeding-cell">转化触点</div><div class="seeding-cell">端内拔草承接</div></div>'+(s.rows||[]).map(function(r){return '<div class="seeding-row"><div class="seeding-cell seeding-domain"><b>'+esc(r.domain[0])+'</b><small>'+esc(r.domain[1]||"")+'</small></div><div class="seeding-cell seeding-audience">'+esc(r.audience)+'</div><div class="seeding-cell">'+(r.strategy||[]).map(function(x){return '<p>'+esc(x)+'</p>'}).join("")+'</div><div class="seeding-cell">'+seedList(r.touchpoints||[])+'</div><div class="seeding-cell">'+seedList(r.conversion||[])+'</div></div>'}).join("")+'</div>'}
+if(s.layout==="execution-strategy"){out+='<div class="execution-top"><div class="execution-metrics" style="--metric-cols:'+esc(s.metricColumns||4)+'">'+(s.metrics||[]).map(function(m){return '<div class="execution-metric"><b>'+esc(m[0])+'</b><span>'+esc(m[1])+'</span><small>'+esc(m[2]||"")+'</small></div>'}).join("")+'</div><div class="execution-problems" style="--problem-cols:'+esc(s.problemColumns||3)+'">'+(s.problems||[]).map(function(p){return '<div class="execution-problem"><b>'+esc(p[0])+'</b>'+esc(p[1])+'</div>'}).join("")+'</div></div><div class="execution-sections" style="--cols:'+esc(s.execColumns||3)+'">'+(s.execSections||[]).map(function(sec){return '<section class="execution-section"><div class="execution-section-head"><h3>'+esc(sec.title)+'</h3><span>'+esc(sec.tag||"")+'</span></div><div class="execution-strategy-line">'+esc(sec.strategy||"")+'</div><div class="execution-projects">'+(sec.projects||[]).map(function(p){return '<article class="execution-project"><strong>项目内容</strong><h4>'+esc(p[0])+'</h4><p>'+esc(p[1])+'</p></article>'}).join("")+'</div><div class="execution-target"><b>目标</b>'+esc(sec.target||"")+'</div></section>'}).join("")+'</div>'}
+if(s.layout==="h2-workstream-detail"){out+='<div class="workstream-targets">'+s.topTargets.map(function(t){return '<div class="workstream-target"><b>'+esc(t[0])+'</b><span>'+esc(t[1])+'</span></div>'}).join("")+'</div><div class="workstream-grid">'+s.streams.map(function(c){return '<section class="workstream-card"><div class="tag">'+esc(c.tag)+'</div><h3>'+esc(c.name)+'</h3><div class="workstream-goal">'+esc(c.goal)+'</div><div class="workstream-block"><h4>策略</h4><p>'+esc(c.strategy)+'</p></div><div class="workstream-block"><h4>下半年重点计划</h4><ol>'+c.plans.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ol></div></section>'}).join("")+'</div>'}
+if(s.layout==="h2-plan-full"){out+='<div class="h2-metrics" style="--metric-cols:'+esc(s.metricColumns||4)+'">'+s.metrics.map(function(m){return '<div class="h2-metric"><b>'+esc(m[0])+'</b><span>'+esc(m[1])+'</span><small>'+esc(m[2]||"")+'</small></div>'}).join("")+'</div>'+(s.overview?'<div class="h2-overview">'+esc(s.overview)+'</div>':'')+'<div class="plan-full-grid'+(s.overview?' has-overview':'')+'" style="--cols:'+esc(s.columns||3)+'">'+s.groups.map(function(g){return '<section class="plan-full-card"><h3>'+esc(g[0])+'</h3><small>'+esc(g[1]||"")+'</small><ul>'+g[2].map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul></section>'}).join("")+'</div>'}
+if(s.layout==="timeline"){out+='<div class="timeline">'+s.months.map(function(m){return '<div class="month-card reveal-scale"><b>'+esc(m[0])+'</b><p>'+esc(m[1])+'</p></div>'}).join("")+'</div><div class="insight-strip">'+esc(s.insight)+'</div>'}
+if(s.layout==="closing"){out+='<div class="closing-points">'+s.points.map(function(p){return '<div class="closing-point reveal-scale"><i>'+esc(p[0])+'</i><h3>'+esc(p[1])+'</h3><p>'+esc(p[2])+'</p></div>'}).join("")+'</div><div class="closing-final reveal d3">'+esc(s.final)+'</div>'}
+if(s.layout==="detail"){out+='<div class="detail-metrics">'+s.metrics.map(function(m){return '<div class="detail-metric"><b>'+esc(m[0])+'</b><span>'+esc(m[1])+'</span></div>'}).join("")+'</div><ul class="bullet-grid">'+s.bullets.map(function(x){return '<li data-editable>'+esc(x)+'</li>'}).join("")+'</ul>'}
+if(s.layout==="gallery"){out+='<div class="gallery-grid">'+s.images.map(function(im){return '<figure><img src="'+esc(im[0])+'" alt="'+esc(im[1])+'"><figcaption>'+esc(im[1])+'</figcaption></figure>'}).join("")+'</div><div class="gallery-stats">'+s.stats.map(function(t){return '<div><b>'+esc(t[0])+'</b><span>'+esc(t[1])+'</span></div>'}).join("")+'</div>'}
+if(s.layout==="checks"){out+='<div class="checks">'+s.checks.map(function(c){return '<div class="check"><h3>'+esc(c[0])+'</h3><p>'+esc(c[1])+'</p><strong>'+esc(c[2])+'</strong></div>'}).join("")+'</div><div class="insight-strip">'+esc(s.note)+'</div>'}
+out+=details(s)+'</div>';return out}
+function renderSlides(){stage.innerHTML=slidesData.map(function(s){return '<section class="slide '+esc(s.layout)+'" id="'+esc(s.id)+'" data-mode="'+esc(s.mode)+'" aria-label="'+esc(s.projectTitle||s.title||"封面")+'">'+renderBody(s)+'</section>'}).join("")}
+function sanitizeReportCopy(){
+  var replacements=[
+    [/原\s*PPT/g,"业务数据"],
+    [/源\s*PPT/g,"业务数据"],
+    [/最新\s*PPT/g,"当前测算"],
+    [/原素材/g,"当前数据"],
+    [/原稿/g,"数据"],
+    [/原页/g,"指标"],
+    [/源图口径显示：/g,"市场份额趋势显示："],
+    [/后续计划页已按新年目标/g,"下半年经营目标已按"],
+    [/后续项目页/g,"各专题"],
+    [/第\s*16\s*页/g,"下半年目标总览"],
+    [/上方只看目标口径，下方只看承接拆解，减少同一数字反复出现。/g,"下半年同时承接规模、收入、开户和新增下载四类目标，核心从增长规模进入经营质量。"],
+    [/只承担“目标口径对齐”/g,"聚焦核心目标承接"]
+  ];
+  function cleanText(v){
+    if(typeof v!=="string")return v;
+    replacements.forEach(function(pair){v=v.replace(pair[0],pair[1])});
+    return v;
+  }
+  function walk(v){
+    if(Array.isArray(v)){v.forEach(function(x,i){v[i]=walk(x)});return v}
+    if(v&&typeof v==="object"){Object.keys(v).forEach(function(k){v[k]=walk(v[k])});return v}
+    return cleanText(v)
+  }
+  walk(slidesData);
+}
+sanitizeReportCopy();
+if(!stage.querySelector(".slide"))renderSlides();
+/* === PRESENTATION CONTROLLER === */
+function SlidePresentation(){this.all=Array.from(document.querySelectorAll(".slide"));this.current=0;this.setup();var start=parseInt(new URLSearchParams(location.search).get("slide")||"1",10);this.show(Number.isFinite(start)?start-1:0)}
+SlidePresentation.prototype.visible=function(){return this.all}
+SlidePresentation.prototype.scale=function(){var f=Math.min(innerWidth/1920,innerHeight/1080),x=(innerWidth-1920*f)/2,y=(innerHeight-1080*f)/2;stage.style.transform="translate("+x+"px,"+y+"px) scale("+f+")"}
+SlidePresentation.prototype.show=function(i){var v=this.visible();this.current=Math.max(0,Math.min(i,v.length-1));this.all.forEach(function(s){s.classList.remove("active","visible")});var s=v[this.current];s.classList.add("active","visible");document.getElementById("counter").textContent=(this.current+1)+" / "+v.length;document.getElementById("progressBar").style.width=((this.current+1)/v.length*100)+"%";var detailButton=document.getElementById("detailBtn");detailButton.disabled=!s.querySelector(".detail-panel");this.closeDetails()}
+SlidePresentation.prototype.next=function(){this.show(this.current+1)}
+SlidePresentation.prototype.prev=function(){this.show(this.current-1)}
+SlidePresentation.prototype.toggleDetails=function(){var p=this.visible()[this.current].querySelector(".detail-panel");if(p)p.classList.toggle("open")}
+SlidePresentation.prototype.closeDetails=function(){document.querySelectorAll(".detail-panel.open").forEach(function(p){p.classList.remove("open")})}
+SlidePresentation.prototype.setup=function(){var self=this;this.scale();addEventListener("resize",function(){self.scale()});document.getElementById("nextBtn").onclick=function(){self.next()};document.getElementById("prevBtn").onclick=function(){self.prev()};document.getElementById("detailBtn").onclick=function(){self.toggleDetails()};document.querySelectorAll(".detail-trigger").forEach(function(b){b.onclick=function(){b.nextElementSibling.classList.add("open")}});document.querySelectorAll(".detail-close").forEach(function(b){b.onclick=function(){b.parentElement.classList.remove("open")}});document.addEventListener("keydown",function(e){if(document.body.classList.contains("editing")&&e.target.isContentEditable)return;if(["ArrowRight","ArrowDown"," ","PageDown"].includes(e.key)){e.preventDefault();self.next()}if(["ArrowLeft","ArrowUp","PageUp"].includes(e.key)){e.preventDefault();self.prev()}if(e.key==="Home")self.show(0);if(e.key==="End")self.show(self.visible().length-1);if(e.key==="d"||e.key==="D")self.toggleDetails();if(e.key==="Escape")self.closeDetails()});var sx=0;addEventListener("touchstart",function(e){sx=e.changedTouches[0].screenX},{passive:true});addEventListener("touchend",function(e){var dx=e.changedTouches[0].screenX-sx;if(Math.abs(dx)>50)(dx<0?self.next():self.prev())},{passive:true});var locked=false;addEventListener("wheel",function(e){if(locked)return;locked=true;e.deltaY>0?self.next():self.prev();setTimeout(function(){locked=false},450)},{passive:true})}
+globalThis.deck=new SlidePresentation();
+/* === INLINE EDITING === */
+var editor={active:false,key:"b2c-midyear-2026-edits",toggle:function(){this.active=!this.active;document.body.classList.toggle("editing",this.active);document.getElementById("editToggle").classList.toggle("active",this.active);document.getElementById("editToolbar").classList.toggle("show",this.active);document.querySelectorAll("[data-editable]").forEach(function(el){el.contentEditable=editor.active?"true":"false"})},save:function(){var data={};document.querySelectorAll("[data-editable]").forEach(function(el,i){data[i]=el.innerHTML});localStorage.setItem(editor.key,JSON.stringify(data))},load:function(){var raw=localStorage.getItem(this.key);if(!raw)return;var data=JSON.parse(raw);document.querySelectorAll("[data-editable]").forEach(function(el,i){if(data[i]!=null)el.innerHTML=data[i]})},export:function(){var clone=document.documentElement.cloneNode(true);clone.querySelectorAll("[contenteditable]").forEach(function(el){el.removeAttribute("contenteditable")});var blob=new Blob(["<!doctype html>\n"+clone.outerHTML],{type:"text/html;charset=utf-8"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="期货2026年中总结与计划-编辑版.html";a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},1000)}};
+editor.load();var hot=document.querySelector(".edit-hotzone"),toggle=document.getElementById("editToggle"),hideTimer;function showEdit(){clearTimeout(hideTimer);toggle.classList.add("show")}function hideEdit(){hideTimer=setTimeout(function(){if(!editor.active)toggle.classList.remove("show")},400)}hot.onmouseenter=showEdit;hot.onmouseleave=hideEdit;hot.onclick=function(){editor.toggle()};toggle.onmouseenter=showEdit;toggle.onmouseleave=hideEdit;toggle.onclick=function(){editor.toggle()};document.addEventListener("keydown",function(e){if((e.key==="e"||e.key==="E")&&!e.target.isContentEditable)editor.toggle();if((e.metaKey||e.ctrlKey)&&e.key==="s"&&editor.active){e.preventDefault();editor.save()}});document.getElementById("saveEdits").onclick=function(){editor.save()};document.getElementById("exportHtml").onclick=function(){editor.export()};
+</script>
+</body>
+</html>
